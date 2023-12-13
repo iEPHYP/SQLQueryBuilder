@@ -2,11 +2,14 @@
   "name": "sql-query-builder",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://iephyp.github.io/sql-query-builder",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@date-io/moment": "1.1.0",
@@ -39,6 +42,7 @@
     "@types/uuid": "3.4.4",
     "casual": "1.6.2",
     "customize-cra": "1.0.0",
+    "gh-pages": "^6.1.0",
     "react-app-rewired": "2.2.1",
     "react-scripts": "5.0.1",
     "sass": "1.69.5",
