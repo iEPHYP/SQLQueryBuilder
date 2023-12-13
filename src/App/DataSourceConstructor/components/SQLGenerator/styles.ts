@@ -7,9 +7,9 @@ export const sqlGeneratorStyles: StyleRulesCallback<
 > = (theme) => ({
   root: {
     display: 'flex',
+    flexBasis: '50%',
     flexDirection: 'column',
     padding: '20px',
-    border: '1px solid gray'
   },
   title: {
     fontWeight: 'bold',

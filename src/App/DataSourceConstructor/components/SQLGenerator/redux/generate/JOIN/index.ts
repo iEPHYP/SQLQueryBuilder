@@ -14,8 +14,8 @@ export const drawJoins = (joins: Join[]): string => {
 
   joins.forEach(({ primaryTable: pt, foreignTable: ft }) => {
     const joinString = `
-  LEFT JOIN "${ft.name}" "${ft.alias}"
-  ON ${formatColumn(pt.keyColumn, pt.alias)} = ${formatColumn(
+    LEFT JOIN "${ft.name}" "${ft.alias}"
+    ON ${formatColumn(pt.keyColumn, pt.alias)} = ${formatColumn(
       ft.keyColumn,
       ft.alias
     )}`;

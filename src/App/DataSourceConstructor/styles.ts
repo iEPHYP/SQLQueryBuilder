@@ -7,8 +7,8 @@ export const queryBuilderStyles: StyleRulesCallback<
 > = (theme) => ({
   root: {
     display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column'
+    justifyContent: 'left',
+    alignItems: 'start',
+    flexDirection: 'row'
   }
 });

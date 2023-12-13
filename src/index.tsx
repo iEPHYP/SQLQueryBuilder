@@ -5,7 +5,7 @@ import { databaseSchemaMock } from 'App/DataSourceConstructor/mock.data';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataSourceConstructor databaseSchema={databaseSchemaMock} />
+    <DataSourceConstructor databaseSchema={databaseSchemaMock} showQuery />
   </React.StrictMode>,
   document.getElementById('root')
 );
