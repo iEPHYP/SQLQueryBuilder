@@ -9,15 +9,15 @@ Demo deployed [here](https://iephyp.github.io/sql-query-builder)
 
 ## Filters demo
 
-![Alt text](/public/filters-demonstration.gif)
+![Filters demo](/public/filters-demo.gif)
 
 ## Dates Filters demo
 
-![Alt text](/public/date-filters-demo.gif)
+![Dates Filters demo](/public/date-filters-demo.gif)
 
 ## Aggregations, Grouping, Sorting and etc demo
 
-![Alt text](/public/others-demo.gif)
+![Others](/public/others-demo.gif)
 
 
 ## Available Scripts
