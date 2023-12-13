@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/sql-query-builder/static/js/main.f193e139.js",
+    "index.html": "/sql-query-builder/index.html",
+    "main.f193e139.js.map": "/sql-query-builder/static/js/main.f193e139.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f193e139.js"
+  ]
+}
