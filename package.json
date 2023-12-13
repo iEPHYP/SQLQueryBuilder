@@ -6,8 +6,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "t-qb": "jest --watch --runInBand ./src"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@date-io/moment": "1.1.0",
