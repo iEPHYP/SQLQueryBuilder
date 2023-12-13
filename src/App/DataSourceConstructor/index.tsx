@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Action, Store } from 'redux';
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider } from 'material-ui-pickers';
 import { getConfiguredStore } from 'store';
 import { State } from 'store/models/State';
 
@@ -12,9 +14,11 @@ export class DataSourceConstructor extends React.Component<DataSourceConstructor
 
   public render() {
     return (
-      <Provider store={this.store}>
-        <Controller {...this.props} />
-      </Provider>
+      <MuiPickersUtilsProvider utils={MomentUtils}>
+        <Provider store={this.store}>
+          <Controller {...this.props} />
+        </Provider>
+      </MuiPickersUtilsProvider>
     );
   }
 }
