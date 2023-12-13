@@ -10,11 +10,11 @@ export const oneLvlGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'ID',
         tableName: 'products',
-        type: 'number'
+        type: 'number',
       }).normalize(),
-      foreignTableName: 'Products'
+      foreignTableName: 'Products',
     }).normalize(),
-    id: 'df28eeeb-85e5-4148-8013-920f89a2b237'
+    id: 'df28eeeb-85e5-4148-8013-920f89a2b237',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -24,11 +24,11 @@ export const oneLvlGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'Username',
         tableName: 'users',
-        type: 'string'
+        type: 'string',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'de4a6120-a5ee-4f35-b6d9-8385737934be'
+    id: 'de4a6120-a5ee-4f35-b6d9-8385737934be',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -38,10 +38,10 @@ export const oneLvlGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'Product name',
         tableName: 'products',
-        type: 'string'
+        type: 'string',
       }).normalize(),
-      foreignTableName: 'Products'
+      foreignTableName: 'Products',
     }).normalize(),
-    id: 'c0357427-f6de-419f-b03d-637bc20bc09b'
-  })
+    id: 'c0357427-f6de-419f-b03d-637bc20bc09b',
+  }),
 ];

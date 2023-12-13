@@ -1,6 +1,7 @@
-import * as moment from 'moment';
 import { RemoveButtonProps } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
 import { ClassesProp } from 'App/utils/classes-prop';
+import * as moment from 'moment';
+
 import { FixedDatePickerClassKeys } from './styles';
 
 export interface DateLimits {

@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import { AddEntity } from '../../../common/AddEntity';
 import { CustomColumnMutator } from '../CustomColumnMutator';
+
 import { AddCustomColumnViewProps } from './props';
 
 export const addCustomColumnPlaceholder = 'Add a column';
@@ -16,13 +18,7 @@ export class AddCustomColumn extends React.Component<AddCustomColumnViewProps> {
   }
 
   public render() {
-    const {
-      customColumns,
-      addCustomColumn,
-      isOpen,
-      handleClose,
-      handleOpen
-    } = this.props;
+    const { customColumns, addCustomColumn, isOpen, handleClose, handleOpen } = this.props;
 
     return (
       <>
@@ -33,14 +29,14 @@ export class AddCustomColumn extends React.Component<AddCustomColumnViewProps> {
         >
           {addCustomColumnPlaceholder}
         </AddEntity>
-        { isOpen && (// TODO: resolve this problem another way
+        {isOpen && ( // TODO: resolve this problem another way
           <CustomColumnMutator
             action={addCustomColumn}
             isOpen={isOpen}
             anchorEl={this.popoverLauncher.current}
             onClose={handleClose}
           />
-        ) }
+        )}
       </>
     );
   }

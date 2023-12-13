@@ -1,5 +1,6 @@
 import { FilterAliased } from '../../JOIN/models/ColumnAliased';
 import { getColumnString } from '../utils';
+
 import { expressionReducersByOperator } from './expression-reducers';
 
 export const generateStringOperation = (filter: FilterAliased): string => {
@@ -8,9 +9,7 @@ export const generateStringOperation = (filter: FilterAliased): string => {
   if (filter.operation.type === 'String') {
     const { operator, operands, caseSensitive } = filter.operation;
     const variableOrder =
-      filter.variables &&
-      !(filter.variables instanceof Array) &&
-      filter.variables.order;
+      filter.variables && !(filter.variables instanceof Array) && filter.variables.order;
 
     return expressionReducersByOperator[operator](
       getColumnString(column),
@@ -19,8 +18,6 @@ export const generateStringOperation = (filter: FilterAliased): string => {
       caseSensitive
     );
   } else {
-    throw new Error(
-      'wrong filter was passed to the string sql filter generator'
-    );
+    throw new Error('wrong filter was passed to the string sql filter generator');
   }
 };

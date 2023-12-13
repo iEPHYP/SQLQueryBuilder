@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { Filter } from './model';
 import {
   FilterItemDispatchProps,
@@ -9,7 +10,7 @@ import {
   FilterItemState,
   FilterItemStateProps,
   FilterItemViewProps as ViewProps,
-  FIMapDispatchToProps
+  FIMapDispatchToProps,
 } from './props';
 import { FilterItem as View } from './view';
 
@@ -24,31 +25,31 @@ export const FilterItem = connect<
 )(
   class extends React.Component<FilterItemProps, FilterItemState> {
     public state: FilterItemState = {
-      isMutatorOpen: false
+      isMutatorOpen: false,
     };
 
     public handleFilterRemoval: ViewProps['handleFilterRemoval'] = (id) => () => {
       const { removeFilter } = this.props;
       removeFilter(id);
-    }
+    };
 
     public handleMutatorOpen: ViewProps['handleOpen'] = () => {
       this.setState((state) => ({ isMutatorOpen: !state.isMutatorOpen }));
-    }
+    };
 
     public handleMutatorClose: ViewProps['handleClose'] = () => {
       this.setState({ isMutatorOpen: false });
-    }
+    };
 
     public handleLogicOperatorSwitch: ViewProps['handleLogicOperatorSwitch'] = (logicOperator) => {
       const { updateFilter, filter } = this.props;
 
       updateFilter(
         new Filter(filter, {
-          logicOperator
+          logicOperator,
         })
       );
-    }
+    };
 
     public handleBracketsCountChange: ViewProps['handleBracketsCountChange'] = (
       bracketsCount,
@@ -64,7 +65,7 @@ export const FilterItem = connect<
       }
 
       updateFilter(new Filter(filter, bracketsCountObject));
-    }
+    };
 
     public render() {
       const { isMutatorOpen } = this.state;

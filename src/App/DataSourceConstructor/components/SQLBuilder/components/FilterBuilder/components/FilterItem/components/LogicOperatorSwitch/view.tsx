@@ -1,6 +1,7 @@
-import { Button, List, ListItem, ListItemText, Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { Button, List, ListItem, ListItemText, Typography, withStyles } from '@material-ui/core';
 import { PopoverPaper } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/PopoverPaper';
+
 import { logicOperators } from './logic-operators';
 import { LogicOperatorSwitchViewProps } from './props';
 
@@ -15,19 +16,14 @@ export const LogicOperatorSwitch = withStyles({})(
     }
 
     public render() {
-      const {
-        logicOperator,
-        handleLogicOperatorChange,
-        isOpen,
-        handleOpen,
-        handleClose
-      } = this.props;
+      const { logicOperator, handleLogicOperatorChange, isOpen, handleOpen, handleClose } =
+        this.props;
 
       return (
         <>
           <div style={{ marginLeft: 15 }} ref={this.popoverLauncher} onClick={handleOpen}>
-            <Button size='small' style={{ minWidth: 0 }}>
-              <Typography color='primary'>{logicOperator}</Typography>
+            <Button size="small" style={{ minWidth: 0 }}>
+              <Typography color="primary">{logicOperator}</Typography>
             </Button>
           </div>
           <PopoverPaper
@@ -35,14 +31,10 @@ export const LogicOperatorSwitch = withStyles({})(
             onClose={handleClose}
             anchorEl={this.popoverLauncher.current}
           >
-            <List component='nav' disablePadding={true}>
-              {logicOperators.map(lo => (
-                <ListItem
-                  button={true}
-                  key={lo}
-                  onClick={handleLogicOperatorChange(lo, handleClose)}
-                >
-                  <ListItemText inset={true} primary={lo} style={{ padding: 0 }} />
+            <List component="nav" disablePadding>
+              {logicOperators.map((lo) => (
+                <ListItem button key={lo} onClick={handleLogicOperatorChange(lo, handleClose)}>
+                  <ListItemText inset primary={lo} style={{ padding: 0 }} />
                 </ListItem>
               ))}
             </List>

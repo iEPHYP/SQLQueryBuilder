@@ -2,9 +2,7 @@ import { StyleRulesCallback } from '@material-ui/core';
 
 export type SingleOperandViewClassKeys = 'root' | 'text';
 
-export const singleOperandViewStyles: StyleRulesCallback<
-  SingleOperandViewClassKeys
-> = (theme) => ({
+export const singleOperandViewStyles: StyleRulesCallback<SingleOperandViewClassKeys> = (theme) => ({
   root: {
     padding: '0px 3px',
     background: theme.palette.primary.main,
@@ -13,9 +11,9 @@ export const singleOperandViewStyles: StyleRulesCallback<
     whiteSpace: 'nowrap',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   text: {
-    color: theme.palette.common.white
-  }
+    color: theme.palette.common.white,
+  },
 });

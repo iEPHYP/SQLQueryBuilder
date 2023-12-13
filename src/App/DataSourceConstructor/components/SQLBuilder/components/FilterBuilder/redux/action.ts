@@ -1,4 +1,5 @@
 import { Action } from 'store/models/action-types';
+
 import { Filter } from '../components/FilterItem/model';
 import { MutateFilterPopoverActionCreators } from '../components/MutateFilterPopover/redux/actions';
 
@@ -20,26 +21,26 @@ export const filterActionTypes: FilterActions['type'][] = [
   'ADD_FILTER',
   'UPDATE_FILTER',
   'REMOVE_FILTER',
-  'CLEAR_FILTERS'
+  'CLEAR_FILTERS',
 ];
 
 export const addFilter = (filter: Filter): AddFilterAction => ({
   type: 'ADD_FILTER',
-  filter
+  filter,
 });
 
 export const updateFilter = (filter: Filter): UpdateFilterAction => ({
   type: 'UPDATE_FILTER',
-  filter
+  filter,
 });
 
 export const removeFilter = (id: Filter['id']): RemoveFilterAction => ({
   type: 'REMOVE_FILTER',
-  id
+  id,
 });
 
 export const clearFilters = (): ClearFiltersAction => ({
-  type: 'CLEAR_FILTERS'
+  type: 'CLEAR_FILTERS',
 });
 
 export const FilterBuilderActionCreators = {
@@ -47,5 +48,5 @@ export const FilterBuilderActionCreators = {
   updateFilter,
   removeFilter,
   clearFilters,
-  ...MutateFilterPopoverActionCreators
+  ...MutateFilterPopoverActionCreators,
 };

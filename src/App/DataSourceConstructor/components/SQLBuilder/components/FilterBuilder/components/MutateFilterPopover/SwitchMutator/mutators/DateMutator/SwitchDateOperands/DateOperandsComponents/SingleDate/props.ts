@@ -1,11 +1,10 @@
 import { ClassesProp } from 'App/utils/classes-prop';
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
 import { Variable } from 'types';
+
 import { OperatorViewProp } from '../..';
 import { DatePickerByOperandsTypeProps } from '../../DatePickerByOperandsType/props';
+
 import { SingleDateOperands, SingleDateOperation } from './model';
 import { SingleDateClassKeys } from './styles';
 
@@ -20,19 +19,15 @@ export type SingleDateStateProps = OperandsProp & {
   pickedVariables: Variable | null;
 };
 
-export type SingleDateDispatchProps = PickActionCreators<
-  'setOperation' | 'setPickedVariables'
->;
+export type SingleDateDispatchProps = PickActionCreators<'setOperation' | 'setPickedVariables'>;
 
 const { setOperation, setPickedVariables } = actionCreators;
 export const SDMapDispatchToProps: SingleDateDispatchProps = {
   setOperation,
-  setPickedVariables
+  setPickedVariables,
 };
 
-export type SingleDateProps = SingleDateStateProps &
-  SingleDateDispatchProps &
-  SingleDateOwnProps;
+export type SingleDateProps = SingleDateStateProps & SingleDateDispatchProps & SingleDateOwnProps;
 
 export interface ISingleDateHandlers {
   handleOperandsChange: DatePickerByOperandsTypeProps['onOperandsChange'];

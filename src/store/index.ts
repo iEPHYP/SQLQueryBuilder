@@ -1,38 +1,25 @@
-import {
-  applyMiddleware,
-  compose,
-  createStore,
-  Store
-} from 'redux';
+import { applyMiddleware, compose, createStore, Store } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import { epic } from './epic';
+
 import { Action } from './models/action-types';
 import { dependencies } from './models/Dependencies';
 import { State } from './models/State';
+import { epic } from './epic';
 import { rootReducer } from './reducer';
 
-export const getConfiguredStore = (
-  initialState?: Partial<State>
-): Store<State, Action> => {
+export const getConfiguredStore = (initialState?: Partial<State>): Store<State, Action> => {
   const composeEnhancers: typeof compose =
-    typeof window === 'object' &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    typeof window === 'object' && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
       ? (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
       : compose;
 
   const epicMiddleware = createEpicMiddleware({
-    dependencies
+    dependencies,
   });
 
-  const enhancer = composeEnhancers(
-    applyMiddleware(epicMiddleware)
-  );
+  const enhancer = composeEnhancers(applyMiddleware(epicMiddleware));
 
-  const store = createStore<State, Action, {}, {}>(
-    rootReducer,
-    initialState,
-    enhancer
-  );
+  const store = createStore<State, Action, {}, {}>(rootReducer, initialState, enhancer);
 
   // store.subscribe(() => {
   //   console.log('store state:', store.getState());

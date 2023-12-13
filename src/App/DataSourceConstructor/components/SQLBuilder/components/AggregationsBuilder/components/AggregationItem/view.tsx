@@ -1,9 +1,11 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
 import { ColumnBranch } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { RemoveButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
 import { SequentialColumnView } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/SequentialColumnView';
+
 import { MutateAggregationPopover } from '../MutateAggregationPopover';
+
 import { AggregationItemViewProps } from './props';
 import { aggregationItemStyles } from './styles';
 
@@ -24,7 +26,7 @@ export const AggregationItem = withStyles(aggregationItemStyles)(
         isOpen,
         handleOpen,
         handleClose,
-        handleAggregationRemoval
+        handleAggregationRemoval,
       } = this.props;
 
       const { id, operator, column } = aggregation;
@@ -32,19 +34,12 @@ export const AggregationItem = withStyles(aggregationItemStyles)(
       return (
         <>
           <div className={classes.root}>
-            <div
-              ref={this.popoverLauncher}
-              onClick={handleOpen}
-              className={classes['column-view']}
-            >
-              <SequentialColumnView
-                prefix={operator}
-                {...(column ? column : new ColumnBranch())}
-              />
+            <div ref={this.popoverLauncher} onClick={handleOpen} className={classes['column-view']}>
+              <SequentialColumnView prefix={operator} {...(column ? column : new ColumnBranch())} />
             </div>
             <RemoveButton onClick={handleAggregationRemoval(id)} />
           </div>
-          { isOpen && (
+          {isOpen && (
             <MutateAggregationPopover
               isOpen={isOpen}
               anchorEl={this.popoverLauncher.current}
@@ -52,7 +47,7 @@ export const AggregationItem = withStyles(aggregationItemStyles)(
               onClose={handleClose}
               aggregation={aggregation}
             />
-          ) }
+          )}
         </>
       );
     }

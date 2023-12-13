@@ -1,13 +1,14 @@
 import { Reducer, ReducersMapObject } from 'redux';
+
 import { RowLimitActions } from './action';
 import { RowLimitBuilderState } from './state';
 
 export const defaultRowLimitValue = 2000;
 
-export const rowLimit: Reducer<
-  RowLimitBuilderState['rowLimit'],
-  RowLimitActions
-> = (state = defaultRowLimitValue, action) => {
+export const rowLimit: Reducer<RowLimitBuilderState['rowLimit'], RowLimitActions> = (
+  state = defaultRowLimitValue,
+  action
+) => {
   switch (action.type) {
     case 'SET_ROW_LIMIT':
       return action.rowLimit;
@@ -18,8 +19,6 @@ export const rowLimit: Reducer<
   }
 };
 
-export const RowLimitBuilderReducers: ReducersMapObject<
-  RowLimitBuilderState
-> = {
-  rowLimit
+export const RowLimitBuilderReducers: ReducersMapObject<RowLimitBuilderState> = {
+  rowLimit,
 };

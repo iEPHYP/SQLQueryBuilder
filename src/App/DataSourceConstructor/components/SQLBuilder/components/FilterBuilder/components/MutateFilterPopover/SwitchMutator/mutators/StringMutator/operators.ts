@@ -6,7 +6,7 @@ enum StringOperatorEnum {
   'Starts with',
   'Ends with',
   'Is empty',
-  'Is not empty'
+  'Is not empty',
 }
 
 export type StringOperator = keyof typeof StringOperatorEnum;
@@ -19,5 +19,5 @@ export const stringOperators: StringOperator[] = [
   'Starts with',
   'Ends with',
   'Is empty',
-  'Is not empty'
+  'Is not empty',
 ];

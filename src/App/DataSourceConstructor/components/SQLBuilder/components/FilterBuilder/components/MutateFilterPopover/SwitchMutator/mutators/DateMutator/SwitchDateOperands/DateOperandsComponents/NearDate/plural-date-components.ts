@@ -5,7 +5,7 @@ enum PluralDateComponentEnum {
   'Days',
   'Weeks',
   'Months',
-  'Years'
+  'Years',
 }
 
 export type PluralDateComponent = keyof typeof PluralDateComponentEnum;
@@ -16,5 +16,5 @@ export const pluralDateComponents: PluralDateComponent[] = [
   'Days',
   'Weeks',
   'Months',
-  'Years'
+  'Years',
 ];

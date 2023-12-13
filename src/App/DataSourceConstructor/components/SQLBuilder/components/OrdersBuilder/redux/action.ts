@@ -1,4 +1,5 @@
 import { Action } from 'store/models/action-types';
+
 import { Grouping } from '../../GroupingsBuilder/components/GroupingItem/model';
 import { Order } from '../components/OrderItem/model';
 
@@ -10,9 +11,12 @@ export type RemoveOrderAction = Action<'REMOVE_ORDER', { id: Order['id'] }>;
 
 export type ClearOrdersAction = Action<'CLEAR_ORDERS'>;
 
-export type MatchToGroupingsAction = Action<'MATCH_TO_GROUPINGS', {
-  groupings: Grouping[];
-}>;
+export type MatchToGroupingsAction = Action<
+  'MATCH_TO_GROUPINGS',
+  {
+    groupings: Grouping[];
+  }
+>;
 
 export type OrderActions =
   | AddOrderAction
@@ -26,31 +30,31 @@ export const orderActionTypes: OrderActions['type'][] = [
   'UPDATE_ORDER',
   'REMOVE_ORDER',
   'CLEAR_ORDERS',
-  'MATCH_TO_GROUPINGS'
+  'MATCH_TO_GROUPINGS',
 ];
 
 export const addOrder = (order: Order): AddOrderAction => ({
   type: 'ADD_ORDER',
-  order
+  order,
 });
 
 export const updateOrder = (order: Order): UpdateOrderAction => ({
   type: 'UPDATE_ORDER',
-  order
+  order,
 });
 
 export const removeOrder = (id: Order['id']): RemoveOrderAction => ({
   type: 'REMOVE_ORDER',
-  id
+  id,
 });
 
 export const clearOrders = (): ClearOrdersAction => ({
-  type: 'CLEAR_ORDERS'
+  type: 'CLEAR_ORDERS',
 });
 
 export const matchToGroupings = (groupings: Grouping[]): MatchToGroupingsAction => ({
   type: 'MATCH_TO_GROUPINGS',
-  groupings
+  groupings,
 });
 
 export const OrdersBuilderActionCreators = {
@@ -58,5 +62,5 @@ export const OrdersBuilderActionCreators = {
   updateOrder,
   removeOrder,
   clearOrders,
-  matchToGroupings
+  matchToGroupings,
 };

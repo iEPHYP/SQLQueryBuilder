@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+
 import { SetPickedVariablesAction } from './action';
 import { PickedVariablesState } from './state';
 

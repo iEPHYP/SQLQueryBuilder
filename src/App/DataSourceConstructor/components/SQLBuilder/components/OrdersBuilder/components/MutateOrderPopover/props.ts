@@ -1,4 +1,5 @@
 import { PickStates } from 'store/models/State';
+
 import { ColumnBranch } from '../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { ColumnSelectorProps } from '../../../common/ColumnSelector/props';
 import { PopoverPaperProps } from '../../../common/PopoverPaper';
@@ -14,8 +15,7 @@ export type MutateOrderPopoverCommonProps = {
 
 export type MutateOrderPopoverStateProps = PickStates<'groupings' | 'orders'>;
 
-export type MutateOrderPopoverProps = MutateOrderPopoverOwnProps &
-  MutateOrderPopoverStateProps;
+export type MutateOrderPopoverProps = MutateOrderPopoverOwnProps & MutateOrderPopoverStateProps;
 
 export type MutateOrderPopoverViewProps = {
   column?: ColumnBranch;
@@ -25,7 +25,4 @@ export type MutateOrderPopoverViewProps = {
   MutateOrderPopoverCommonProps &
   MutateOrderPopoverStateProps;
 
-export type MutateOrderPopoverState = Pick<
-  ColumnSelectorProps,
-  'popoverPositionUpdater'
->;
+export type MutateOrderPopoverState = Pick<ColumnSelectorProps, 'popoverPositionUpdater'>;

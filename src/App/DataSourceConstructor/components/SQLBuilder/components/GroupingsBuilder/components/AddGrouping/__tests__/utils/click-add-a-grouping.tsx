@@ -1,4 +1,5 @@
 import { fireEvent, getByText } from 'react-testing-library';
+
 import { groupingsBuilderLabel } from '../../../../../../labels';
 import { addGroupingText } from '../../view';
 

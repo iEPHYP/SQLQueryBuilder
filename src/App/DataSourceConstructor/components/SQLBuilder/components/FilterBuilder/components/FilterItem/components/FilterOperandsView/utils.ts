@@ -1,11 +1,12 @@
 import { Operation } from '../../../MutateFilterPopover/Operation';
 import { DateOperation } from '../../../MutateFilterPopover/SwitchMutator/mutators/DateMutator/DateOperation';
+
 import { CoupleOperandsViewProps } from './components/CoupleOperandsView';
 import { SingleOperandViewProps } from './components/SingleOperandView';
 import {
   formatCoupleDateOperands,
   formatNearDateOperands,
-  formatSingleDateOperands
+  formatSingleDateOperands,
 } from './date-formatter';
 
 export const hasOperands = (operator: Operation['operator']): boolean => {
@@ -39,10 +40,7 @@ export const getFormattedCoupleOperands = (
 ): CoupleOperandsViewProps['operands'] => {
   if (operation.type === 'Date' && operation.operands instanceof Array) {
     return formatCoupleDateOperands(operation.operands);
-  } else if (
-    operation.type === 'Number' &&
-    operation.operands instanceof Array
-  ) {
+  } else if (operation.type === 'Number' && operation.operands instanceof Array) {
     return operation.operands;
   } else {
     throw new Error('expected between operands');
@@ -68,7 +66,7 @@ export const getFormattedSingleOperand = (
       case 'Number':
       case 'String':
       default:
-        return <number | string>operation.operands;
+        return operation.operands as number | string;
     }
   } else {
     throw new Error('expected singular operand');

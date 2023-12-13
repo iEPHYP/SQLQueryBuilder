@@ -1,39 +1,40 @@
+import * as React from 'react';
+import {
+  expandLessIconPlaceholder,
+  expandMoreIconPlaceholder,
+} from '__tests__/utils/mock-placeholders';
 import { Collapse, ListItem, ListItemText } from '@material-ui/core';
 import { ListItemProps } from '@material-ui/core/ListItem';
 import { ListItemTextProps } from '@material-ui/core/ListItemText';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import * as casual from 'casual';
-import * as React from 'react';
-import {
-  expandLessIconPlaceholder,
-  expandMoreIconPlaceholder
-} from '__tests__/utils/mock-placeholders';
 import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
 import { Column } from 'App/DataSourceConstructor/schemas';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
 import {
   getCertainCalledProps,
-  getFirstCalledProps
+  getFirstCalledProps,
 } from 'App/DataSourceConstructor/test-utils/react-utils';
-import { ColumnItem } from '../';
+import * as casual from 'casual';
+
 import { TableColumns } from '../../view';
 import { ColumnItemProps } from '../props';
 import { ColumnBranch } from '../SelectedColumn.models';
 import { TypeIcon, TypeIconProps } from '../TypeIcon';
 import { calcPaddingAccordingTo } from '../utils';
+import { ColumnItem } from '../';
 
 jest.mock('../../view', () => ({
-  TableColumns: jest.fn(() => 'TableColumns')
+  TableColumns: jest.fn(() => 'TableColumns'),
 }));
 
 jest.mock('../TypeIcon', () => ({
-  TypeIcon: jest.fn(() => 'TypeIcon')
+  TypeIcon: jest.fn(() => 'TypeIcon'),
 }));
 
 jest.mock('../utils', () => ({
   calcPaddingAccordingTo: jest.fn(),
-  getNewTableBranch: jest.fn()
+  getNewTableBranch: jest.fn(),
 }));
 
 const onColumnSelected = jest.fn();
@@ -45,7 +46,7 @@ const props: ColumnItemProps = {
   onColumnSelected,
   columnBranch: new ColumnBranch(),
   tables: tablesMock,
-  popoverPositionUpdater: undefined
+  popoverPositionUpdater: undefined,
 };
 
 const render = getConfiguredRender<ColumnItemProps>(
@@ -81,7 +82,7 @@ describe('ColumnItem', () => {
   it(`should expand and show Expand Less icon on Expand more click
       and do return to the previous state on Expand less click`, () => {
     const { container, queryByText } = render({
-      foreignTableName: 'users'
+      foreignTableName: 'users',
     });
 
     expect(container).toHaveTextContent(expandMoreIconPlaceholder);
@@ -140,9 +141,7 @@ describe('ColumnItem', () => {
   it('should pass type prop properly for TypeIcon component', () => {
     render({ type: 'string' });
 
-    const { type } = getCertainCalledProps<TypeIconProps>(TypeIconMock, [
-      'type'
-    ]);
+    const { type } = getCertainCalledProps<TypeIconProps>(TypeIconMock, ['type']);
 
     expect(type).toBe('string');
   });
@@ -151,9 +150,7 @@ describe('ColumnItem', () => {
       component when column is foregn column`, () => {
     render({ type: 'number', foreignTableName: 'users' });
 
-    const { type } = getCertainCalledProps<TypeIconProps>(TypeIconMock, [
-      'type'
-    ]);
+    const { type } = getCertainCalledProps<TypeIconProps>(TypeIconMock, ['type']);
 
     expect(type).toBe('foreign-column');
   });
@@ -162,10 +159,7 @@ describe('ColumnItem', () => {
     const name = casual.title;
     render({ ...new Column({ name }) });
 
-    const { primary } = getCertainCalledProps<ListItemTextProps>(
-      ListItemTextMock,
-      ['primary']
-    );
+    const { primary } = getCertainCalledProps<ListItemTextProps>(ListItemTextMock, ['primary']);
 
     expect(primary).toBe(name);
   });

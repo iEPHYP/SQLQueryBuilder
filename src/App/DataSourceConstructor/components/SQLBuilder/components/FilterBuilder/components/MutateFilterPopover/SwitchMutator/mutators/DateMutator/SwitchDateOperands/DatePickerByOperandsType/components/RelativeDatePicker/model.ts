@@ -1,4 +1,5 @@
 import { ISingleDateOperands } from '../../../DateOperandsComponents/SingleDate/model';
+
 import { RelativeDate } from './singular-date-components';
 
 export class RelativeDateOperands implements ISingleDateOperands {

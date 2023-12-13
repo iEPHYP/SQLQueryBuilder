@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { State } from 'store/models/State';
+
 import { ContextProviderApplicator } from '../configured-render';
 
 export const WithReduxProvider: <TState = State>(

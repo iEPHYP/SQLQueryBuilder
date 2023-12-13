@@ -1,16 +1,18 @@
-import { MenuItem, Select, Typography } from '@material-ui/core';
-import { SelectProps } from '@material-ui/core/Select';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { MenuItem, Select, Typography } from '@material-ui/core';
+import { SelectProps } from '@material-ui/core/Select';
 import { State } from 'store/models/State';
 import { VariableType } from 'types';
+
 import { VariableItem } from '../../../../../../VariableItem';
+
 import {
   VariableDatePickerDispatchProps,
   VariableDatePickerOwnProps,
   VariableDatePickerProps,
   VariableDatePickerStateProps,
-  VDPMapDispatchToProps
+  VDPMapDispatchToProps,
 } from './props';
 
 export const variablePlaceholder = 'Select a variable';
@@ -23,7 +25,7 @@ export const VariableDatePicker = connect<
   State
 >(
   ({ variables }) => ({
-    variables: variables.filter(v => v.type === VariableType.Date)
+    variables: variables.filter((v) => v.type === VariableType.Date),
   }),
   VDPMapDispatchToProps
 )(
@@ -37,24 +39,16 @@ export const VariableDatePicker = connect<
       this.props.changeCanSaveFilterState(true);
     }
 
-    public handleVariablePick: SelectProps['onChange'] = event => {
-      const {
-        variables,
-        variable,
-        onVariablePicked,
-        changeCanSaveFilterState
-      } = this.props;
+    public handleVariablePick: SelectProps['onChange'] = (event) => {
+      const { variables, variable, onVariablePicked, changeCanSaveFilterState } = this.props;
 
-      const pickedVariable = variables.find(v => v.name === event.target.value);
+      const pickedVariable = variables.find((v) => v.name === event.target.value);
 
-      if (
-        pickedVariable &&
-        ((variable && variable.name !== pickedVariable.name) || !variable)
-      ) {
+      if (pickedVariable && ((variable && variable.name !== pickedVariable.name) || !variable)) {
         onVariablePicked(pickedVariable);
         changeCanSaveFilterState(true);
       }
-    }
+    };
 
     public render() {
       const { variables, variable } = this.props;
@@ -68,24 +62,18 @@ export const VariableDatePicker = connect<
               onChange={this.handleVariablePick}
             >
               {!variable && (
-                <MenuItem
-                  key={variablePlaceholder}
-                  value={variablePlaceholder}
-                  disabled
-                >
-                  <Typography variant='subtitle1'>
-                    {variablePlaceholder}
-                  </Typography>
+                <MenuItem key={variablePlaceholder} value={variablePlaceholder} disabled>
+                  <Typography variant="subtitle1">{variablePlaceholder}</Typography>
                 </MenuItem>
               )}
-              {variables.map(v => (
+              {variables.map((v) => (
                 <MenuItem key={v.name} value={v.name}>
                   <VariableItem variable={v} />
                 </MenuItem>
               ))}
             </Select>
           ) : (
-            <Typography variant='subtitle1'>{noVariablesText}</Typography>
+            <Typography variant="subtitle1">{noVariablesText}</Typography>
           )}
         </div>
       );

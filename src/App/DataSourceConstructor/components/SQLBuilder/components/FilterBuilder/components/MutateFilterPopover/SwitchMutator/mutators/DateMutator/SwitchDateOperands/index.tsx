@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import { DateOperator } from '../operators';
+
 import { CoupleDate } from './DateOperandsComponents/CoupleDates';
 import { EmptyDate } from './DateOperandsComponents/EmptyDates';
 import { NearDate } from './DateOperandsComponents/NearDate';
@@ -18,21 +20,14 @@ export type SwitchDateOperandsProps = {
 } & OperatorViewProp &
   RenderBottomSectionProp;
 
-export const SwitchDateOperands = class extends React.Component<
-  SwitchDateOperandsProps
-> {
+export const SwitchDateOperands = class extends React.Component<SwitchDateOperandsProps> {
   public getDateOperandsComponents() {
     const { operator, operatorView, renderBottomSection } = this.props;
 
     switch (operator) {
       case 'Previous':
       case 'Next':
-        return (
-          <NearDate
-            renderBottomSection={renderBottomSection}
-            operatorView={operatorView}
-          />
-        );
+        return <NearDate renderBottomSection={renderBottomSection} operatorView={operatorView} />;
       case 'Before':
       case 'After':
       case 'On':
@@ -53,8 +48,7 @@ export const SwitchDateOperands = class extends React.Component<
     return (
       <>
         {this.getDateOperandsComponents()}
-        {!(operator === 'Previous' || operator === 'Next') &&
-          renderBottomSection(null)}
+        {!(operator === 'Previous' || operator === 'Next') && renderBottomSection(null)}
       </>
     );
   }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { GetExcludedFieldsOf } from 'App/utils/type-filters';
+
 import { PopoverPaperProps } from '../PopoverPaper';
 
 export interface PopoverManagerState {
@@ -23,23 +24,23 @@ export function WithPopoverManagement<TProps extends PopoverManagerProps>(
     PopoverManagerState
   > {
     public state: PopoverManagerState = {
-      isOpen: false
+      isOpen: false,
     };
 
     public handleClose: PopoverManagerProps['handleClose'] = (event) => {
       event && event.stopPropagation();
       this.setState({ isOpen: false });
-    }
+    };
 
     public handleOpen: PopoverManagerProps['handleOpen'] = () => {
       this.setState({ isOpen: true });
-    }
+    };
 
     public render() {
       const popoverProps: PopoverManagerProps = {
         isOpen: this.state.isOpen,
         handleOpen: this.handleOpen,
-        handleClose: this.handleClose
+        handleClose: this.handleClose,
       };
 
       /**
@@ -54,16 +55,10 @@ export function WithPopoverManagement<TProps extends PopoverManagerProps>(
        * PopoverManagementProps & WrappedComponentProps,
        * where WrappedComponentProps is UnexpectedType partition.
        */
-      const PopoverManagementUserWithExpectedPropsType = (PopoverManagementUser as unknown) as React.FC<
-        PopoverManagerProps
-      >;
+      const PopoverManagementUserWithExpectedPropsType =
+        PopoverManagementUser as unknown as React.FC<PopoverManagerProps>;
 
-      return (
-        <PopoverManagementUserWithExpectedPropsType
-          {...popoverProps}
-          {...this.props}
-        />
-      );
+      return <PopoverManagementUserWithExpectedPropsType {...popoverProps} {...this.props} />;
     }
   };
 }

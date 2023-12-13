@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import { AddEntity } from '../../../common/AddEntity';
 import { MutateOrderPopover } from '../MutateOrderPopover';
+
 import { AddOrderViewProps } from './props';
 
 export const addOrderText = 'Pick a field to sort by';
@@ -16,13 +18,7 @@ export class AddOrder extends React.Component<AddOrderViewProps, any> {
   }
 
   public render() {
-    const {
-      orders,
-      addOrder,
-      isOpen,
-      handleClose,
-      handleOpen
-    } = this.props;
+    const { orders, addOrder, isOpen, handleClose, handleOpen } = this.props;
 
     return (
       <>
@@ -33,14 +29,14 @@ export class AddOrder extends React.Component<AddOrderViewProps, any> {
         >
           {addOrderText}
         </AddEntity>
-        { isOpen && (// TODO: resolve this problem another way
+        {isOpen && ( // TODO: resolve this problem another way
           <MutateOrderPopover
             action={addOrder}
             isOpen={isOpen}
             anchorEl={this.popoverLauncher.current}
             onClose={handleClose}
           />
-        ) }
+        )}
       </>
     );
   }

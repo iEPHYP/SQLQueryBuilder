@@ -1,4 +1,3 @@
-
 export interface SqlDateOperator {
   dateOperand2: (operand2Expr: string) => string;
 }
@@ -10,10 +9,7 @@ export interface SqlDateOperatorsList {
   beforeInclusive: SqlDateOperator;
 }
 
-export function dateOperand1(
-  operand1Expr: string,
-  timeEnabled: boolean = false
-): SqlDateOperatorsList {
+export function dateOperand1(operand1Expr: string, timeEnabled = false): SqlDateOperatorsList {
   return {
     after: {
       dateOperand2(operand2Expr: string): string {
@@ -26,7 +22,7 @@ export function dateOperand1(
             >=
           (${operand2Expr} + INTERVAL '1 day')::date`;
         }
-      }
+      },
     },
     afterInclusive: {
       dateOperand2(operand2Expr: string): string {
@@ -39,7 +35,7 @@ export function dateOperand1(
             >=
           (${operand2Expr})::date`;
         }
-      }
+      },
     },
     before: {
       dateOperand2(operand2Expr: string): string {
@@ -52,7 +48,7 @@ export function dateOperand1(
             <
           (${operand2Expr})::date`;
         }
-      }
+      },
     },
     beforeInclusive: {
       dateOperand2(operand2Expr: string): string {
@@ -65,7 +61,7 @@ export function dateOperand1(
             <
           (${operand2Expr})::date + INTERVAL '1 day'`;
         }
-      }
-    }
+      },
+    },
   };
 }

@@ -1,9 +1,11 @@
-import { clone } from 'ramda';
 import { Aggregation } from 'App/DataSourceConstructor/components/SQLBuilder/components/AggregationsBuilder/components/AggregationItem/model';
 import { Filter } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/FilterItem/model';
 import { Grouping } from 'App/DataSourceConstructor/components/SQLBuilder/components/GroupingsBuilder/components/GroupingItem/model';
 import { Order } from 'App/DataSourceConstructor/components/SQLBuilder/components/OrdersBuilder/components/OrderItem/model';
+import { clone } from 'ramda';
+
 import { CustomColumn } from '../../../../SQLBuilder/components/CustomColumnsBuilder/components/CustomColumnItem/model';
+
 import {
   AggregationAliased,
   ColumnBranchAliased,
@@ -12,18 +14,15 @@ import {
   GroupingAliased,
   IAliased,
   IHasColumn,
-  OrderAliased
+  OrderAliased,
 } from './models/ColumnAliased';
 
-export const getAliasedEntities = <
-  TEntity extends IHasColumn,
-  TEntityAliased extends IAliased
->(
+export const getAliasedEntities = <TEntity extends IHasColumn, TEntityAliased extends IAliased>(
   entities: TEntity[],
   reducer: (column: ColumnBranchAliased, entity: TEntity) => TEntityAliased,
   hasNoColumnAction?: (entity: TEntity) => TEntityAliased
 ): TEntityAliased[] => {
-  return clone(entities).map(entity => {
+  return clone(entities).map((entity) => {
     if (hasNoColumnAction) {
       return hasNoColumnAction(entity);
     }
@@ -50,7 +49,7 @@ export const getAllColumnBranches = (
     filters,
     (column, filter) =>
       new FilterAliased(filter, {
-        column
+        column,
       })
   );
 
@@ -58,16 +57,16 @@ export const getAllColumnBranches = (
     aggregations,
     (column, aggregation) =>
       new AggregationAliased(aggregation, {
-        column
+        column,
       }),
-    aggregation => new AggregationAliased(aggregation)
+    (aggregation) => new AggregationAliased(aggregation)
   );
 
   const groupingsAliased = getAliasedEntities(
     groupings,
     (column, grouping) =>
       new GroupingAliased(grouping, {
-        column
+        column,
       })
   );
 
@@ -75,32 +74,25 @@ export const getAllColumnBranches = (
     orders,
     (column, order) =>
       new OrderAliased(order, {
-        column
+        column,
       })
   );
 
-  const groupingAliasedColumns = groupingsAliased.map(
-    grouping => grouping.column
-  );
+  const groupingAliasedColumns = groupingsAliased.map((grouping) => grouping.column);
 
-  let ordersAliasedColumns = ordersAliased.map(order => order.column);
-  ordersAliasedColumns = getOnlyGroupedOrdersColumns(
-    ordersAliasedColumns,
-    groupingAliasedColumns
-  );
+  let ordersAliasedColumns = ordersAliased.map((order) => order.column);
+  ordersAliasedColumns = getOnlyGroupedOrdersColumns(ordersAliasedColumns, groupingAliasedColumns);
 
   const allColumnBranches: ColumnBranchAliased[] = [
     ...(aggregationsAliased.length || groupingAliasedColumns.length
       ? []
-      : customColumnsAliased.map(customColumn => customColumn.column)),
-    ...filtersAliased.map(filter => filter.column),
+      : customColumnsAliased.map((customColumn) => customColumn.column)),
+    ...filtersAliased.map((filter) => filter.column),
     ...aggregationsAliased
-      .filter(aggregation => !!aggregation.column)
-      .map<ColumnBranchAliased>(
-        aggregation => aggregation.column as ColumnBranchAliased
-      ),
+      .filter((aggregation) => !!aggregation.column)
+      .map<ColumnBranchAliased>((aggregation) => aggregation.column as ColumnBranchAliased),
     ...groupingAliasedColumns,
-    ...ordersAliasedColumns
+    ...ordersAliasedColumns,
   ];
 
   return {
@@ -109,7 +101,7 @@ export const getAllColumnBranches = (
     filtersAliased,
     aggregationsAliased,
     groupingsAliased,
-    ordersAliased
+    ordersAliased,
   };
 };
 
@@ -120,8 +112,8 @@ export const getOnlyGroupedOrdersColumns = (
   let columns: ColumnBranchAliased[] = ordersColumns;
 
   if (groupingColumns.length) {
-    columns = columns.filter(orderColumn =>
-      groupingColumns.find(groupingColumn => groupingColumn.equals(orderColumn))
+    columns = columns.filter((orderColumn) =>
+      groupingColumns.find((groupingColumn) => groupingColumn.equals(orderColumn))
     );
   }
 

@@ -1,6 +1,8 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
+
 import { DatePickerByOperandsType } from '../../DatePickerByOperandsType';
+
 import { SingleDateViewProps } from './props';
 import { singleDateStyles } from './styles';
 
@@ -11,7 +13,7 @@ export const SingleDate = withStyles(singleDateStyles)((({
   classes,
   pickedVariables,
   handleVariablePicked,
-  handleOperandsChange
+  handleOperandsChange,
 }) => (
   <div className={classes.root}>
     {operatorView}

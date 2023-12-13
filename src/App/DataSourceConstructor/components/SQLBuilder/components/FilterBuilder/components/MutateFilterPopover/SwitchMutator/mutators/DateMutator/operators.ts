@@ -6,7 +6,7 @@ enum DateOperatorEnum {
   'On',
   'Between',
   'Is empty',
-  'Is not empty'
+  'Is not empty',
 }
 
 export type DateOperator = keyof typeof DateOperatorEnum;
@@ -19,5 +19,5 @@ export const dateOperators: DateOperator[] = [
   'On',
   'Between',
   'Is empty',
-  'Is not empty'
+  'Is not empty',
 ];

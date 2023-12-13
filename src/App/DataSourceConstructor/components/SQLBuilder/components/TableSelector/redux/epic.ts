@@ -3,6 +3,7 @@ import { of } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { actionCreators } from 'store/action-creators';
 import { Epic } from 'store/models/Epic';
+
 import { SelectTableAction } from './action';
 const {
   raiseGlobalError,
@@ -11,7 +12,7 @@ const {
   clearGroupings,
   clearOrders,
   clearCustomColumns,
-  resetRowLimit
+  resetRowLimit,
 } = actionCreators;
 
 export const resetEntitiesEpic: Epic<SelectTableAction> = (action$, state$) => {
@@ -23,7 +24,7 @@ export const resetEntitiesEpic: Epic<SelectTableAction> = (action$, state$) => {
       clearGroupings(),
       clearOrders(),
       clearCustomColumns(),
-      resetRowLimit()
+      resetRowLimit(),
     ]),
     catchError((err) => {
       console.error(err && err.xhr && err.xhr.response);

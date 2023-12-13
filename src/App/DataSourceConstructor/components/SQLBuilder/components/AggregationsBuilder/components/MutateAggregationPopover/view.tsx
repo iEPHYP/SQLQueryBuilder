@@ -1,17 +1,17 @@
-import { List, ListItem, ListItemText, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { List, ListItem, ListItemText, withStyles } from '@material-ui/core';
 import { ColumnSelector } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/ColumnSelector';
 import { BackButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/BackButton';
 import { PopoverPaper } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/PopoverPaper';
+
 import { aggregationOperators } from '../../aggregations';
 import { Aggregation } from '../AggregationItem/model';
+
 import { AggregationTips } from './AggregationTips';
 import { MutateAggregationPopoverViewProps } from './props';
 import { mutateAggregationPopoverStyles } from './styles';
 
-export const MutateAggregationPopover = withStyles(
-  mutateAggregationPopoverStyles
-)((props => {
+export const MutateAggregationPopover = withStyles(mutateAggregationPopoverStyles)(((props) => {
   const {
     column,
     operator,
@@ -21,29 +21,24 @@ export const MutateAggregationPopover = withStyles(
     onColumnSelected,
     onOperatorSelected,
     onBackClicked,
-    canShowColumnBranch
+    canShowColumnBranch,
   } = props;
 
   return (
     <PopoverPaper {...props}>
       <div className={classes.root}>
-        {((aggregation &&
-          Aggregation.hasNoColumn(operator || aggregation.operator)) ||
+        {((aggregation && Aggregation.hasNoColumn(operator || aggregation.operator)) ||
           !operator) && (
           <div className={classes['select-operator']}>
-            <List component='nav' disablePadding={true}>
-              {aggregationOperators.map(aggregationOperator => (
+            <List component="nav" disablePadding>
+              {aggregationOperators.map((aggregationOperator) => (
                 <ListItem
                   key={aggregationOperator}
-                  button={true}
+                  button
                   selected={aggregationOperator === operator}
                   onClick={onOperatorSelected(aggregationOperator)}
                 >
-                  <ListItemText
-                    inset={true}
-                    primary={aggregationOperator}
-                    style={{ padding: 0 }}
-                  />
+                  <ListItemText inset primary={aggregationOperator} style={{ padding: 0 }} />
                   <AggregationTips operator={aggregationOperator} />
                 </ListItem>
               ))}

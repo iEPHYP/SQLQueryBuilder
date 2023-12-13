@@ -4,12 +4,12 @@ import { getColumnString } from '../utils';
 export const generateForeignColumnOperation = ({
   column: { lastColumn },
   operation,
-  variables
+  variables,
 }: FilterAliased): string => {
   const variable = !(variables instanceof Array) ? variables : null;
   const record = operation.type === 'Foreign' ? operation.operands : null;
 
-  let operand: string = '';
+  let operand = '';
   if (variable) {
     operand = `$${variable.order}::uuid`;
   } else if (record) {

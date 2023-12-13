@@ -1,6 +1,7 @@
-import * as casual from 'casual';
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+import * as casual from 'casual';
+
 import { FeaturedField, FeaturedFieldProps } from '.';
 
 const render = getConfiguredRender<FeaturedFieldProps>(<FeaturedField />);
@@ -14,7 +15,7 @@ describe('FeaturedField', () => {
         should not be disabled,
         should not render label`, () => {
     const { componentNode, queryByTestId } = render({
-      children
+      children,
     });
 
     expect(componentNode).toHaveTextContent(text);
@@ -32,7 +33,7 @@ describe('FeaturedField', () => {
     const label = casual.text;
 
     const { componentNode } = render({
-      label
+      label,
     });
 
     expect(componentNode).toHaveTextContent(label);
@@ -40,10 +41,9 @@ describe('FeaturedField', () => {
 
   it('should be disabled if disabled prop is set', () => {
     const { queryByTestId } = render({
-      disabled: true
+      disabled: true,
     });
 
     expect(queryByTestId('disabled-layer')).not.toBeNull();
   });
-
 });

@@ -1,8 +1,10 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
 import { RemoveButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
 import { SequentialColumnView } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/SequentialColumnView';
+
 import { CustomColumnMutator } from '../CustomColumnMutator';
+
 import { CustomColumnItemViewProps } from './props';
 import { customColumnItemStyles } from './styles';
 
@@ -24,7 +26,7 @@ export const CustomColumnItem = withStyles(customColumnItemStyles)(
         isOpen,
         handleOpen,
         handleClose,
-        handleCustomColumnRemoval
+        handleCustomColumnRemoval,
       } = this.props;
 
       const { id, column } = customColumn;
@@ -36,14 +38,11 @@ export const CustomColumnItem = withStyles(customColumnItemStyles)(
               ref={this.popoverLauncher}
               onClick={handleOpen}
               className={classes['customColumn-view']}
-              data-testid='customColumn-view'
+              data-testid="customColumn-view"
             >
               <SequentialColumnView {...column} />
             </div>
-            <RemoveButton
-              onClick={handleCustomColumnRemoval(id)}
-              data-testid='remove'
-            />
+            <RemoveButton onClick={handleCustomColumnRemoval(id)} data-testid="remove" />
           </div>
           {isOpen && (
             <CustomColumnMutator

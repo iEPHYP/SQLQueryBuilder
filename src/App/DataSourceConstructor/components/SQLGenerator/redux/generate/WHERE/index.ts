@@ -1,4 +1,5 @@
 import { FilterAliased } from '../JOIN/models/ColumnAliased';
+
 import { generateBooleanOperation } from './boolean';
 import { generateDateOperation } from './date';
 import { generateDrillDownOperation } from './drill-down';
@@ -14,11 +15,10 @@ export const generateWhere = (filters: FilterAliased[]): string => {
     WHERE `;
 
     filters.forEach((filter, index) => {
-      whereClause += `${
-        index !== 0 ? ` ${filter.logicOperator}` : ''
-      } ${getBrackets(filter.openingBracketsCount, true)}${generateOperation(
-        filter
-      )}${getBrackets(filter.closingBracketsCount, false)}`;
+      whereClause += `${index !== 0 ? ` ${filter.logicOperator}` : ''} ${getBrackets(
+        filter.openingBracketsCount,
+        true
+      )}${generateOperation(filter)}${getBrackets(filter.closingBracketsCount, false)}`;
     });
   }
 

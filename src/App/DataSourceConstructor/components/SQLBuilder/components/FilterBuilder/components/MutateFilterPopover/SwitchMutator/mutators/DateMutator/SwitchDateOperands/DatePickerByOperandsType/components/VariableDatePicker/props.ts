@@ -1,9 +1,7 @@
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
 import { PickStates } from 'store/models/State';
 import { Variable } from 'types';
+
 import { NullableVariable } from '../../../../../../../../FilterItem/model';
 
 export interface VariableDatePickerOwnProps {
@@ -13,12 +11,10 @@ export interface VariableDatePickerOwnProps {
 
 export type VariableDatePickerStateProps = PickStates<'variables'>;
 
-export type VariableDatePickerDispatchProps = PickActionCreators<
-  'changeCanSaveFilterState'
->;
+export type VariableDatePickerDispatchProps = PickActionCreators<'changeCanSaveFilterState'>;
 
 export const VDPMapDispatchToProps: VariableDatePickerDispatchProps = {
-  changeCanSaveFilterState: actionCreators.changeCanSaveFilterState
+  changeCanSaveFilterState: actionCreators.changeCanSaveFilterState,
 };
 
 export type VariableDatePickerProps = VariableDatePickerStateProps &

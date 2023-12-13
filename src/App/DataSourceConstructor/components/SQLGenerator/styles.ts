@@ -2,9 +2,7 @@ import { StyleRulesCallback } from '@material-ui/core';
 
 export type SQLGeneratorClassKeys = 'root' | 'title' | 'query';
 
-export const sqlGeneratorStyles: StyleRulesCallback<
-  SQLGeneratorClassKeys
-> = (theme) => ({
+export const sqlGeneratorStyles: StyleRulesCallback<SQLGeneratorClassKeys> = (theme) => ({
   root: {
     display: 'flex',
     flexBasis: '50%',
@@ -15,7 +13,7 @@ export const sqlGeneratorStyles: StyleRulesCallback<
     fontWeight: 'bold',
     fontSize: '15px',
     color: '#33383E',
-    padding: '5px'
+    padding: '5px',
   },
   query: {
     whiteSpace: 'pre-wrap',
@@ -25,6 +23,6 @@ export const sqlGeneratorStyles: StyleRulesCallback<
     color: '#44484C',
     fontSize: '11px',
     fontFamily: 'monospace',
-    background: '#F9FBFC'
-  }
+    background: '#F9FBFC',
+  },
 });

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
 import { Column, Table } from 'App/DataSourceConstructor/schemas';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+
 import { ColumnItem } from '../ColumnItem';
 import { ColumnBranch } from '../ColumnItem/SelectedColumn.models';
 import { TableColumnsProps } from '../props';
@@ -9,12 +10,12 @@ import { filterColumns, sortInOrderForeignColumnsBelow } from '../utils';
 import { TableColumns } from '../view';
 
 jest.mock('../ColumnItem', () => ({
-  ColumnItem: jest.fn(() => null)
+  ColumnItem: jest.fn(() => null),
 }));
 jest.mock('../utils', () => ({
   filterColumns: jest.fn((columns) => columns),
   sortInOrderForeignColumnsBelow: jest.fn((columns) => columns),
-  getNewColumnBranch: jest.fn()
+  getNewColumnBranch: jest.fn(),
 }));
 
 const render = getConfiguredRender<TableColumnsProps>(
@@ -23,7 +24,7 @@ const render = getConfiguredRender<TableColumnsProps>(
     onColumnSelected={jest.fn()}
     tableBranch={new ColumnBranch()}
     tables={tablesMock}
-    tableName='Users'
+    tableName="Users"
     popoverPositionUpdater={undefined}
   />
 );
@@ -32,7 +33,7 @@ describe('TableColumns', () => {
   it(`should call filterColumns if filter callback supplied
     and should call sortInOrderForeignColumnsBelow`, () => {
     render({
-      canShowColumnBranch: () => true
+      canShowColumnBranch: () => true,
     });
 
     expect(filterColumns).toHaveBeenCalled();
@@ -56,10 +57,10 @@ describe('TableColumns', () => {
           columns: [
             new Column({ name: '1' }),
             new Column({ name: '2' }),
-            new Column({ name: '3' })
-          ]
-        })
-      ]
+            new Column({ name: '3' }),
+          ],
+        }),
+      ],
     });
 
     expect(ColumnItem).toHaveBeenCalledTimes(columnsCount);

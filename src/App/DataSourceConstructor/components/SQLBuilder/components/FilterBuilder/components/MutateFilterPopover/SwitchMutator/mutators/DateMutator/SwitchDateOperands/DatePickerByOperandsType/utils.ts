@@ -1,4 +1,5 @@
 import { SingleDateOperands } from '../DateOperandsComponents/SingleDate/model';
+
 import { FixedDateOperands } from './components/FixedDatePicker/model';
 import { RelativeDateOperands } from './components/RelativeDatePicker/model';
 import { VariableDateOperands } from './components/VariableDatePicker/model';

@@ -1,4 +1,5 @@
 import { combineEpics } from 'redux-observable';
+
 import { SQLBCommonComponentsEpics } from '../components/common/epics';
 import { FilterBuilderEpics } from '../components/FilterBuilder/redux/epics';
 import { OrdersBuilderEpic } from '../components/OrdersBuilder/redux/epic';

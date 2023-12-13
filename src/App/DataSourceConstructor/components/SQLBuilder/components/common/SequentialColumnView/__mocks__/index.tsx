@@ -1,3 +1,3 @@
 module.exports = {
-  SequentialColumnView: jest.fn(() => null)
+  SequentialColumnView: jest.fn(() => null),
 };

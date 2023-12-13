@@ -1,5 +1,6 @@
-import { Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { Typography, withStyles } from '@material-ui/core';
+
 import { AddOrder } from './components/AddOrder';
 import { OrderItem } from './components/OrderItem';
 import { OrdersBuilderViewProps } from './props';
@@ -11,14 +12,14 @@ export const OrdersBuilder = withStyles(ordersBuilderStyles)((({
   orders,
   aggregations,
   groupings,
-  classes
+  classes,
 }) => (
   <>
     {!(aggregations.length && !groupings.length) ? (
       <div className={classes.root}>
         {orders && orders.length ? (
           <div className={classes.orders}>
-            {orders.map(order => (
+            {orders.map((order) => (
               <OrderItem key={order.id} order={order} />
             ))}
           </div>
@@ -26,9 +27,7 @@ export const OrdersBuilder = withStyles(ordersBuilderStyles)((({
         <AddOrder />
       </div>
     ) : (
-      <Typography className={classes['no-column']}>
-        {noColumnsAvailableText}
-      </Typography>
+      <Typography className={classes['no-column']}>{noColumnsAvailableText}</Typography>
     )}
   </>
 )) as React.FC<OrdersBuilderViewProps>);

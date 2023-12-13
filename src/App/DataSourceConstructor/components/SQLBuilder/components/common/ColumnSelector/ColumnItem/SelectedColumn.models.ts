@@ -19,9 +19,9 @@ export class ColumnBranch {
   public set lastColumn(value: ColumnBranch) {
     this._lastColumn = value === this ? undefined : value;
   }
-  public tableName: string = '';
-  public modelName: string = '';
-  public columnName: string = '';
+  public tableName = '';
+  public modelName = '';
+  public columnName = '';
   public type: Column['type'];
 
   public foreignColumn: ColumnBranch | undefined;
@@ -50,7 +50,7 @@ export class ColumnBranch {
     }
 
     return column;
-  }
+  };
 
   public normalize() {
     this.normalizeColumn();
@@ -61,15 +61,11 @@ export class ColumnBranch {
 
   public normalizeColumn = (columnBranch: ColumnBranch = this) => {
     if (columnBranch.foreignColumn) {
-      columnBranch.foreignColumn = this.normalizeColumn(
-        columnBranch.foreignColumn
-      );
+      columnBranch.foreignColumn = this.normalizeColumn(columnBranch.foreignColumn);
     }
 
-    return !(columnBranch instanceof ColumnBranch)
-      ? new ColumnBranch(columnBranch)
-      : columnBranch;
-  }
+    return !(columnBranch instanceof ColumnBranch) ? new ColumnBranch(columnBranch) : columnBranch;
+  };
 
   public equals(column: ColumnBranch): boolean {
     if (
@@ -91,10 +87,7 @@ export class ColumnBranch {
     return true;
   }
 
-  public areFieldsMatch(
-    fieldName: keyof ColumnBranch,
-    column: ColumnBranch
-  ): boolean {
+  public areFieldsMatch(fieldName: keyof ColumnBranch, column: ColumnBranch): boolean {
     return this[fieldName] === column[fieldName];
   }
 
@@ -108,7 +101,7 @@ export class ColumnBranch {
       foreignModelName: this.foreignModelName,
       foreignTableName: this.foreignTableName,
       _foreignTableName: this._foreignTableName,
-      _lastColumn: this._lastColumn
+      _lastColumn: this._lastColumn,
     };
   }
 }

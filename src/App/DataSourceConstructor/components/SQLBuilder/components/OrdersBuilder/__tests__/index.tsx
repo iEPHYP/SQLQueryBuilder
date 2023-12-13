@@ -2,19 +2,20 @@ import {
   fireEvent,
   getAllByText as getAllByTextOn,
   getByText as getByTextOn,
-  queryByText as queryByTextOn
+  queryByText as queryByTextOn,
 } from 'react-testing-library';
 import { regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { getGeneratedQuery, render } from '../../../__tests__/render.utils';
 import { ordersBuilderLabel } from '../../../labels';
 import { selectAColumn } from '../../common/ColumnSelector/__tests__/utils/select-a-column';
 import {
   clickAddAGrouping,
-  clickAddMoreGrouping
+  clickAddMoreGrouping,
 } from '../../GroupingsBuilder/components/AddGrouping/__tests__/utils/click-add-a-grouping';
 import {
   clickAddAnOrder,
-  clickAddMoreOrder
+  clickAddMoreOrder,
 } from '../../OrdersBuilder/components/AddOrder/__tests__/utils/click-add-an-order';
 import { selectATable } from '../../TableSelector/__tests__/utils/select-table';
 import { addOrderText } from '../components/AddOrder/view';
@@ -25,10 +26,7 @@ describe('Orders Builder', () => {
 
   const columns = selectATable();
 
-  const ordersBuilderPanel = getByTextOn(
-    document.body,
-    regex(ordersBuilderLabel)
-  );
+  const ordersBuilderPanel = getByTextOn(document.body, regex(ordersBuilderLabel));
 
   const clickOnOrder = (columnName: string) => {
     fireEvent.click(getByTextOn(ordersBuilderPanel, regex(columnName)));
@@ -44,15 +42,11 @@ describe('Orders Builder', () => {
   const checkWhiteList = (whiteList: string[]) => {
     const columnSelectorPanel = getByTestId('column-selector');
 
-    columns.forEach(column => {
+    columns.forEach((column) => {
       if (whiteList.includes(column.name) || column.foreignTableName) {
-        expect(
-          getByTextOn(columnSelectorPanel, column.name)
-        ).toBeInTheDocument();
+        expect(getByTextOn(columnSelectorPanel, column.name)).toBeInTheDocument();
       } else {
-        expect(
-          queryByTextOn(columnSelectorPanel, column.name)
-        ).not.toBeInTheDocument();
+        expect(queryByTextOn(columnSelectorPanel, column.name)).not.toBeInTheDocument();
       }
     });
   };
@@ -87,11 +81,9 @@ describe('Orders Builder', () => {
 
     // hide already added column
     const columnSelector = getByTestId('column-selector');
-    columns.forEach(column => {
+    columns.forEach((column) => {
       if (column.name === createdAtColumn.name) {
-        expect(
-          queryByTextOn(columnSelector, createdAtColumn.name)
-        ).not.toBeInTheDocument();
+        expect(queryByTextOn(columnSelector, createdAtColumn.name)).not.toBeInTheDocument();
       } else {
         expect(queryByTextOn(columnSelector, column.name)).toBeInTheDocument();
       }
@@ -100,16 +92,13 @@ describe('Orders Builder', () => {
     const productColumn = columns[5];
     const {
       foreignColumns: foreignProductColumns,
-      foreignColumnsPanel: foreignProductColumnsPanel
+      foreignColumnsPanel: foreignProductColumnsPanel,
     } = selectAColumn(productColumn, { expand: true });
     const currencyColumn = foreignProductColumns[4];
-    const { foreignColumns: foreignCurrencyColumns } = selectAColumn(
-      currencyColumn,
-      {
-        expand: true,
-        container: foreignProductColumnsPanel
-      }
-    );
+    const { foreignColumns: foreignCurrencyColumns } = selectAColumn(currencyColumn, {
+      expand: true,
+      container: foreignProductColumnsPanel,
+    });
     const currencyName = foreignCurrencyColumns[1];
     selectAColumn(currencyName);
 
@@ -127,15 +116,11 @@ describe('Orders Builder', () => {
 
     const columnSelectorPanel = getByTestId('column-selector');
 
-    columns.forEach(column => {
+    columns.forEach((column) => {
       if (column.name === detailsColumn.name || column.foreignTableName) {
-        expect(
-          getByTextOn(columnSelectorPanel, column.name)
-        ).toBeInTheDocument();
+        expect(getByTextOn(columnSelectorPanel, column.name)).toBeInTheDocument();
       } else {
-        expect(
-          queryByTextOn(columnSelectorPanel, column.name)
-        ).not.toBeInTheDocument();
+        expect(queryByTextOn(columnSelectorPanel, column.name)).not.toBeInTheDocument();
       }
     });
 

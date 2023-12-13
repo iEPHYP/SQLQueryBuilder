@@ -1,10 +1,7 @@
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
-import {
-  SQLGeneratorDispatchProps,
-  SQLGeneratorOwnProps,
-  SQLGeneratorStateProps
-} from './props';
+
+import { SQLGeneratorDispatchProps, SQLGeneratorOwnProps, SQLGeneratorStateProps } from './props';
 import { SQLGenerator as View } from './view';
 
 export const SQLGenerator = connect<
@@ -13,5 +10,5 @@ export const SQLGenerator = connect<
   SQLGeneratorOwnProps,
   State
 >(({ sqlQuery }) => ({
-  sqlQuery
+  sqlQuery,
 }))(View);

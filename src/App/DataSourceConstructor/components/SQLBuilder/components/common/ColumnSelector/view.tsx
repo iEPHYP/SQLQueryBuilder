@@ -1,12 +1,13 @@
-import { List, Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
-import { ColumnItem } from './ColumnItem';
+import { List, Typography, withStyles } from '@material-ui/core';
+
 import { ColumnItemDelegatedProp } from './ColumnItem/props';
+import { ColumnItem } from './ColumnItem';
 import { TableColumnsDelegatedProps, TableColumnsProps } from './props';
 import { tableColumnsStyles } from './styles';
 import { filterColumns, getNewColumnBranch, sortInOrderForeignColumnsBelow } from './utils';
 
-export const TableColumns = withStyles(tableColumnsStyles)((props => {
+export const TableColumns = withStyles(tableColumnsStyles)(((props) => {
   const {
     tableName,
     tables,
@@ -15,10 +16,10 @@ export const TableColumns = withStyles(tableColumnsStyles)((props => {
     popoverPositionUpdater,
     classes,
     onColumnSelected,
-    canShowColumnBranch
+    canShowColumnBranch,
   } = props;
 
-  const table = tables.find(t => !!tableName && t.name === tableName.toLowerCase());
+  const table = tables.find((t) => !!tableName && t.name === tableName.toLowerCase());
   let columns = table && table.columns;
 
   columns &&
@@ -32,14 +33,14 @@ export const TableColumns = withStyles(tableColumnsStyles)((props => {
     tables,
     popoverPositionUpdater,
     onColumnSelected,
-    canShowColumnBranch
+    canShowColumnBranch,
   };
 
   return (
     <div className={classes.root}>
       {columns && columns.length ? (
-        <List component='nav' disablePadding={true}>
-          {columns.map(column => (
+        <List component="nav" disablePadding>
+          {columns.map((column) => (
             <ColumnItem
               key={column.name}
               {...column}
@@ -50,7 +51,7 @@ export const TableColumns = withStyles(tableColumnsStyles)((props => {
           ))}
         </List>
       ) : (
-        <Typography className={classes.noColumns} data-testid='no-columns'>
+        <Typography className={classes.noColumns} data-testid="no-columns">
           No columns available...
         </Typography>
       )}

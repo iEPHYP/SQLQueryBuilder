@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import { AddEntity } from '../../../common/AddEntity';
 import { MutateFilterPopover } from '../MutateFilterPopover';
+
 import { AddFilterViewProps } from './props';
 
 export const addFilterPlaceholder = 'Add filters to narrow your answer';
@@ -27,14 +29,14 @@ export class AddFilter extends React.Component<AddFilterViewProps, any> {
         >
           {addFilterPlaceholder}
         </AddEntity>
-        { isOpen && (// TODO: resolve this problem another way
+        {isOpen && ( // TODO: resolve this problem another way
           <MutateFilterPopover
             action={addFilter}
             isOpen={isOpen}
             anchorEl={this.popoverLauncher.current}
             onClose={handleClose}
           />
-        ) }
+        )}
       </>
     );
   }

@@ -1,6 +1,8 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { PopoverManagerProps } from '../../../common/WithPopoverManagement';
+
 import { Aggregation } from './model';
 import { AggregationItemClassKeys } from './styles';
 
@@ -14,11 +16,10 @@ export type AggregationItemDispatchProps = PickActionCreators<
 
 export const AIMapDispatchToProps: AggregationItemDispatchProps = {
   removeAggregation: actionCreators.removeAggregation,
-  updateAggregation: actionCreators.updateAggregation
+  updateAggregation: actionCreators.updateAggregation,
 };
 
-export type AggregationItemProps = AggregationItemOwnProps &
-  AggregationItemDispatchProps;
+export type AggregationItemProps = AggregationItemOwnProps & AggregationItemDispatchProps;
 
 export type AggregationItemViewProps = {
   handleAggregationRemoval: (id: Aggregation['id']) => () => void;

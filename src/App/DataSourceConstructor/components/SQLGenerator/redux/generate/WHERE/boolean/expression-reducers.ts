@@ -4,15 +4,15 @@ import { ExpressionReducer } from '../expression-reducer.model';
 
 export type BooleanExpressionReducer = ExpressionReducer;
 
-export const reduceNonNullExpression = (
-  value: string
-): BooleanExpressionReducer => (column) =>
-  `${column} = ${value}`;
+export const reduceNonNullExpression =
+  (value: string): BooleanExpressionReducer =>
+  (column) =>
+    `${column} = ${value}`;
 
 export const expressionReducersByOperator: {
-  [K in BooleanOperator]: BooleanExpressionReducer
+  [K in BooleanOperator]: BooleanExpressionReducer;
 } = {
   'Is true': reduceNonNullExpression('true'),
   'Is false': reduceNonNullExpression('false'),
-  ...emptyExpressionReducers
+  ...emptyExpressionReducers,
 };

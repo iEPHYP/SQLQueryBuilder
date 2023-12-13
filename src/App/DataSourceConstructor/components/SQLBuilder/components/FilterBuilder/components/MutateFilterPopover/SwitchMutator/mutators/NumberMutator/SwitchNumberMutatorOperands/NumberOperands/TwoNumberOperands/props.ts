@@ -1,4 +1,5 @@
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { NumberOperation } from '../../../NumberOperation';
 import { NumberFieldProps } from '../NumberField';
 
@@ -15,11 +16,10 @@ export type TwoNumberOperandsStateProps = OperandsProp & {
 export type TwoNumberOperandsDispatchProps = PickActionCreators<'setOperation'>;
 
 export const TNOMapDispatchToProps: TwoNumberOperandsDispatchProps = {
-  setOperation: actionCreators.setOperation
+  setOperation: actionCreators.setOperation,
 };
 
-export type TwoNumberOperandsProps = TwoNumberOperandsStateProps &
-  TwoNumberOperandsDispatchProps;
+export type TwoNumberOperandsProps = TwoNumberOperandsStateProps & TwoNumberOperandsDispatchProps;
 
 export type TwoNumberOperandsViewProps = {
   handleOperandChange: (index: number) => NumberFieldProps['onValueChange'];

@@ -1,5 +1,6 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { PickStates } from 'store/models/State';
+
 import { ColumnItemDelegatedProp } from './ColumnItem/props';
 import { ColumnBranch } from './ColumnItem/SelectedColumn.models';
 import { TableColumnsClassKeys } from './styles';
@@ -15,8 +16,7 @@ export type ColumnSelectorStateProps = PickStates<'tables'> & {
   modelName: string | null;
 };
 
-export type ColumnSelectorProps = ColumnSelectorStateProps &
-  ColumnSelectorOwnProps;
+export type ColumnSelectorProps = ColumnSelectorStateProps & ColumnSelectorOwnProps;
 
 export type TableColumnsDelegatedProps = ColumnSelectorOwnProps &
   Pick<ColumnSelectorStateProps, 'tables'>;

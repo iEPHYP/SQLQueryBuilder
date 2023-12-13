@@ -1,10 +1,12 @@
 import { SelectProps } from '@material-ui/core/Select';
 import { ClassesProp } from 'App/utils/classes-prop';
 import { Variable } from 'types';
+
 import { ColumnBranch } from '../../../../../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { NullableVariable } from '../../../../../FilterItem/model';
 import { VariableItemProps } from '../../../VariableItem';
 import { VariablesPickerProps } from '../../../VariablesPicker/props';
+
 import { EnumsPickerClassKeys } from './styles';
 
 export type EnumsPickerState = {

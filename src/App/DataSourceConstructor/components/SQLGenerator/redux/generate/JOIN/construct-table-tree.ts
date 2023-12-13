@@ -1,4 +1,5 @@
 import { Table } from 'App/DataSourceConstructor/schemas';
+
 import { ColumnBranchAliased } from './models/ColumnAliased';
 import { TreeTable } from './models/TreeTable';
 
@@ -13,7 +14,7 @@ export const constructTreeTable = (
 
   const rootTreeTable = new TreeTable();
 
-  columnBranches.forEach(columnBranch => {
+  columnBranches.forEach((columnBranch) => {
     constructTreeTableItem(rootTreeTable, columnBranch, originalTables);
   });
 
@@ -37,13 +38,12 @@ export const constructTreeTableItem = (
   if (columnBranch.foreignColumn) {
     const foreignColumnBranch = columnBranch.foreignColumn;
     let foreignTreeTable = treeTable.foreignTreeTables.find(
-      ft =>
-        ft.name === foreignColumnBranch.tableName &&
-        columnBranch.columnName === ft.parentColumnName
+      (ft) =>
+        ft.name === foreignColumnBranch.tableName && columnBranch.columnName === ft.parentColumnName
     );
     if (!foreignTreeTable) {
       foreignTreeTable = new TreeTable({
-        parentColumnName: columnBranch.columnName
+        parentColumnName: columnBranch.columnName,
       });
       treeTable.addForeignColumn(columnBranch.columnName);
       treeTable.addForeignTable(foreignTreeTable);

@@ -1,4 +1,5 @@
 import * as moment from 'moment';
+
 import { DateOperator } from '../../../MutateFilterPopover/SwitchMutator/mutators/DateMutator/operators';
 import { CoupleDateOperands } from '../../../MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DateOperandsComponents/CoupleDates/model';
 import { NearDateOperands } from '../../../MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DateOperandsComponents/NearDate/model';
@@ -14,14 +15,10 @@ export const formatNearDateOperands = (
 
   const { shiftAmount, dateComponentType } = operands;
 
-  return `${
-    operator === 'Previous' ? 'Past' : 'Next'
-  } ${shiftAmount} ${dateComponentType}`;
+  return `${operator === 'Previous' ? 'Past' : 'Next'} ${shiftAmount} ${dateComponentType}`;
 };
 
-export const formatSingleDateOperands = (
-  operands: SingleDateOperands
-): string => {
+export const formatSingleDateOperands = (operands: SingleDateOperands): string => {
   switch (operands.dateType) {
     case 'Fixed date':
       return moment(operands.date).format(
@@ -34,9 +31,7 @@ export const formatSingleDateOperands = (
   }
 };
 
-export const formatCoupleDateOperands = (
-  operands: CoupleDateOperands
-): [string, string] => [
+export const formatCoupleDateOperands = (operands: CoupleDateOperands): [string, string] => [
   formatSingleDateOperands(operands[0]),
-  formatSingleDateOperands(operands[1])
+  formatSingleDateOperands(operands[1]),
 ];

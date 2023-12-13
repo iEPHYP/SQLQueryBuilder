@@ -1,12 +1,11 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { Filter } from '../../../../model';
 import { SingleOperandView } from '../SingleOperandView';
-import {
-  CoupleOperandsViewClassKeys,
-  coupleOperandsViewStyles
-} from './styles';
+
+import { CoupleOperandsViewClassKeys, coupleOperandsViewStyles } from './styles';
 
 export type CoupleOperandsViewProps = {
   operands: [string, string] | [number, number];
@@ -16,7 +15,7 @@ export type CoupleOperandsViewProps = {
 export const CoupleOperandsView = withStyles(coupleOperandsViewStyles)((({
   operands,
   variables,
-  classes
+  classes,
 }) => {
   return (
     <>

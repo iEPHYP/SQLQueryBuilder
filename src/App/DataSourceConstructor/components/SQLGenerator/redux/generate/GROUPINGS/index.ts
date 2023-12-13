@@ -18,22 +18,18 @@ export const generateGroupings = (
 
   groupings.forEach(({ column }, index) => {
     const {
-      lastColumn: { columnName, tableAlias }
+      lastColumn: { columnName, tableAlias },
     } = column;
     const comma = groupings.length - 1 === index ? '' : ',';
     const columnExpression = `${formatColumn(columnName, tableAlias)}`;
     const order = orders.find(
-      o =>
-        formatColumn(
-          o.column.lastColumn.columnName,
-          o.column.lastColumn.tableAlias
-        ) === columnExpression
+      (o) =>
+        formatColumn(o.column.lastColumn.columnName, o.column.lastColumn.tableAlias) ===
+        columnExpression
     );
     const sortOrder = order ? order.sortOrderCode : 'ASC';
 
-    groupBySelections += `${columnExpression} ${getColumnAlias(
-      column
-    )}${comma}`;
+    groupBySelections += `${columnExpression} ${getColumnAlias(column)}${comma}`;
     groupBy += `${columnExpression}${comma}`;
     orderBy += `${columnExpression} ${sortOrder}${comma}`;
   });
@@ -41,6 +37,6 @@ export const generateGroupings = (
   return {
     groupBySelections,
     groupBy,
-    groupingsOrderBy: orderBy
+    groupingsOrderBy: orderBy,
   };
 };

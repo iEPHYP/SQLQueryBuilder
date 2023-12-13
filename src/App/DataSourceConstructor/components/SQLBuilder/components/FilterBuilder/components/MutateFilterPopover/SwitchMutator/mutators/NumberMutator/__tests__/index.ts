@@ -1,22 +1,19 @@
 import {
   fireEvent,
   getAllByDisplayValue as getAllByDisplayValueOn,
-  getByDisplayValue as getByDisplayValueOn
+  getByDisplayValue as getByDisplayValueOn,
 } from 'react-testing-library';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
-import {
-  fireChangeEvent,
-  getByText$,
-  regex
-} from 'App/DataSourceConstructor/test-utils/utils';
+import { fireChangeEvent, getByText$, regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { mutatorPanelId } from '../../../../view';
 import { NumberOperator, numberOperators } from '../operators';
@@ -29,7 +26,7 @@ describe(`Number operations`, () => {
       - with certain operand's value,
       should not allow non-number operands,
       should allow non-integer operands
-  `, async () => {
+`, async () => {
     const { getByText, getByTestId, debug, componentNode } = render();
 
     const columns = selectATable();
@@ -39,13 +36,9 @@ describe(`Number operations`, () => {
       fireEvent.click(getByText(regex(columnName)));
     };
 
-    const checkFilterDescription = (
-      operator: NumberOperator,
-      additionalDescription: string = ''
-    ) => {
+    const checkFilterDescription = (operator: NumberOperator, additionalDescription = '') => {
       expect(
-        getByText$(componentNode, new RegExp(`^${columnName}.+$`, 'i'))
-          .textContent
+        getByText$(componentNode, new RegExp(`^${columnName}.+$`, 'i')).textContent
       ).toMatchSnapshot(
         `filter description for '${operator}' number operator${
           additionalDescription ? ` ${additionalDescription}` : ''
@@ -57,13 +50,11 @@ describe(`Number operations`, () => {
       nextOperator: NumberOperator,
       prevOperator?: NumberOperator,
       doBeforeSave?: () => void,
-      additionalDescription: string = ''
+      additionalDescription = ''
     ) => {
       clickOnFilter();
-      prevOperator &&
-        fireEvent.click(getByText(new RegExp(`^${prevOperator}.*$`)));
-      prevOperator &&
-        fireEvent.click(getByText(new RegExp(`^.*${nextOperator}$`)));
+      prevOperator && fireEvent.click(getByText(new RegExp(`^${prevOperator}.*$`)));
+      prevOperator && fireEvent.click(getByText(new RegExp(`^.*${nextOperator}$`)));
       doBeforeSave && doBeforeSave();
       clickUpdateTheFilter();
 
@@ -87,22 +78,13 @@ describe(`Number operations`, () => {
 
     // Set certain operand's value
     clickOnFilter();
-    fireChangeEvent(
-      getByDisplayValueOn(getByTestId(mutatorPanelId), '0'),
-      '123'
-    );
+    fireChangeEvent(getByDisplayValueOn(getByTestId(mutatorPanelId), '0'), '123');
 
     // should not allow non-number operands
-    fireChangeEvent(
-      getByDisplayValueOn(getByTestId(mutatorPanelId), '123'),
-      'FTFR'
-    );
+    fireChangeEvent(getByDisplayValueOn(getByTestId(mutatorPanelId), '123'), 'FTFR');
 
     // should allow non-integer operands
-    fireChangeEvent(
-      getByDisplayValueOn(getByTestId(mutatorPanelId), '123'),
-      '123.123'
-    );
+    fireChangeEvent(getByDisplayValueOn(getByTestId(mutatorPanelId), '123'), '123.123');
 
     clickUpdateTheFilter();
 
@@ -118,21 +100,14 @@ describe(`Number operations`, () => {
     }
 
     // Check `Between` operator with certain values
-    const setBetweenOperands = (
-      operandValue1?: string,
-      operandValue2?: string
-    ) => {
-      const [operand1, operand2] = getAllByDisplayValueOn(
-        getByTestId(mutatorPanelId),
-        '0'
-      );
+    const setBetweenOperands = (operandValue1?: string, operandValue2?: string) => {
+      const [operand1, operand2] = getAllByDisplayValueOn(getByTestId(mutatorPanelId), '0');
 
       operandValue1 && fireChangeEvent(operand1, operandValue1);
       operandValue2 && fireChangeEvent(operand2, operandValue2);
     };
 
-    const lastOperator: NumberOperator =
-      numberOperators[numberOperators.length - 1];
+    const lastOperator: NumberOperator = numberOperators[numberOperators.length - 1];
 
     checkOperation(
       'Between',

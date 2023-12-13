@@ -1,6 +1,7 @@
-import * as casual from 'casual';
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+import * as casual from 'casual';
+
 import { defaultRowLimitValue } from '../redux/reducer';
 import { RowLimit, RowLimitProps } from '../RowLimit';
 

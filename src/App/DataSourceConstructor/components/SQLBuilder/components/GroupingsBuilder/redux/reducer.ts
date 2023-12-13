@@ -1,17 +1,17 @@
 import { Reducer, ReducersMapObject } from 'redux';
+
 import { Grouping } from '../components/GroupingItem/model';
+
 import {
   AddGroupingAction,
   GroupingActions,
   RemoveGroupingAction,
-  UpdateGroupingAction
+  UpdateGroupingAction,
 } from './action';
 import { GroupingsBuilderState } from './state';
 
-export const addGrouping: Reducer<Grouping[], AddGroupingAction> = (
-  state = [],
-  { grouping }
-) => state.concat(new Grouping({ ...grouping }));
+export const addGrouping: Reducer<Grouping[], AddGroupingAction> = (state = [], { grouping }) =>
+  state.concat(new Grouping({ ...grouping }));
 
 export const updateGrouping: Reducer<Grouping[], UpdateGroupingAction> = (
   state = [],
@@ -25,15 +25,10 @@ export const updateGrouping: Reducer<Grouping[], UpdateGroupingAction> = (
     return new Grouping(a, grouping);
   });
 
-export const removeGrouping: Reducer<Grouping[], RemoveGroupingAction> = (
-  state = [],
-  { id }
-) => state.filter((grouping) => grouping.id !== id);
+export const removeGrouping: Reducer<Grouping[], RemoveGroupingAction> = (state = [], { id }) =>
+  state.filter((grouping) => grouping.id !== id);
 
-export const groupings: Reducer<
-  Grouping[],
-  GroupingActions
-> = (state = [], action) => {
+export const groupings: Reducer<Grouping[], GroupingActions> = (state = [], action) => {
   switch (action.type) {
     case 'ADD_GROUPING':
       return addGrouping(state, action);
@@ -48,8 +43,6 @@ export const groupings: Reducer<
   }
 };
 
-export const GroupingsBuilderReducers: ReducersMapObject<
-  GroupingsBuilderState
-> = {
-  groupings
+export const GroupingsBuilderReducers: ReducersMapObject<GroupingsBuilderState> = {
+  groupings,
 };

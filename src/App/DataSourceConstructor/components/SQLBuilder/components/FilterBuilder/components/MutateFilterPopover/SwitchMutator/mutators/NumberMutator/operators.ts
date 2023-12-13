@@ -7,7 +7,7 @@ enum NumberOperatorEnum {
   'Less than or equal to',
   'Between',
   'Is empty',
-  'Is not empty'
+  'Is not empty',
 }
 
 export type NumberOperator = keyof typeof NumberOperatorEnum;
@@ -21,5 +21,5 @@ export const numberOperators: NumberOperator[] = [
   'Less than or equal to',
   'Between',
   'Is empty',
-  'Is not empty'
+  'Is not empty',
 ];

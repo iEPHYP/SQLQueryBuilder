@@ -9,15 +9,15 @@ export const singleBracketsFilter = [
       tableAlias: 'orders1',
       columnName: 'Details',
       tableName: 'orders',
-      type: 'string'
+      type: 'string',
     }),
     operation: {
       operator: 'Is',
       operands: 'Detail1',
       caseSensitive: false,
-      type: 'String'
+      type: 'String',
     },
     variables: null,
-    id: '4db81547-a987-4e61-a90e-8f4a7d748962'
-  })
+    id: '4db81547-a987-4e61-a90e-8f4a7d748962',
+  }),
 ];

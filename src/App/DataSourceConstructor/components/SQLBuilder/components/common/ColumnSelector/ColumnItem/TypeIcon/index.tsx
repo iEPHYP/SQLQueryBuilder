@@ -1,11 +1,13 @@
+import * as React from 'react';
 import { withStyles } from '@material-ui/core';
 import CalendarIcon from '@material-ui/icons/CalendarToday';
 import CheckIcon from '@material-ui/icons/CheckCircleOutline';
 import ShareIcon from '@material-ui/icons/Share';
 import KeyIcon from '@material-ui/icons/VpnKey';
-import * as React from 'react';
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { ColumnItemViewProps } from '../props';
+
 import { TypeIconClassKeys, typeIconStyles } from './styles';
 
 export type TypeIconProps = {

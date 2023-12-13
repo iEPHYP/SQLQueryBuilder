@@ -1,6 +1,8 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
+
 import { DatePickerByOperandsType } from '../../DatePickerByOperandsType';
+
 import { CoupleDateViewProps } from './props';
 import { coupleDateStyles } from './styles';
 
@@ -10,14 +12,14 @@ export const CoupleDate = withStyles(coupleDateStyles)((({
   pickedVariables,
   classes,
   handleVariablePick,
-  handleOperandsChange
+  handleOperandsChange,
 }) => {
   return (
     <>
       <div className={classes.root}>
         {operatorView}
         <div className={classes.dates}>
-          <div className={classes.date} data-testid='between-operand-1'>
+          <div className={classes.date} data-testid="between-operand-1">
             <DatePickerByOperandsType
               operands={operands[0]}
               onOperandsChange={handleOperandsChange(0)}
@@ -28,13 +30,13 @@ export const CoupleDate = withStyles(coupleDateStyles)((({
                   ? {
                       maxDate: operands[1].date,
                       maxDateMessage:
-                        'Couldn\'t set time, because selected date is later than second date'
+                        "Couldn't set time, because selected date is later than second date",
                     }
                   : undefined
               }
             />
           </div>
-          <div className={classes.date} data-testid='between-operand-2'>
+          <div className={classes.date} data-testid="between-operand-2">
             <DatePickerByOperandsType
               operands={operands[1]}
               onOperandsChange={handleOperandsChange(1)}
@@ -45,7 +47,7 @@ export const CoupleDate = withStyles(coupleDateStyles)((({
                   ? {
                       minDate: operands[0].date,
                       minDateMessage:
-                        'Couldn\'t set time, because selected date is earlier than first date'
+                        "Couldn't set time, because selected date is earlier than first date",
                     }
                   : undefined
               }

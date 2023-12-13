@@ -7,7 +7,7 @@ export enum AggregationOperatorEnum {
   'Cumulative count of rows',
   'Standard deviation of',
   'Minimum of',
-  'Maximum of'
+  'Maximum of',
 }
 
 export type AggregationOperator = keyof typeof AggregationOperatorEnum;
@@ -21,5 +21,5 @@ export const aggregationOperators: AggregationOperator[] = [
   'Cumulative count of rows',
   'Standard deviation of',
   'Minimum of',
-  'Maximum of'
+  'Maximum of',
 ];

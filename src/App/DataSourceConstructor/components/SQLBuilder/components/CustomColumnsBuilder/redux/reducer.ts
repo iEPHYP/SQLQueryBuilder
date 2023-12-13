@@ -1,10 +1,12 @@
 import { Reducer, ReducersMapObject } from 'redux';
+
 import { CustomColumn } from '../components/CustomColumnItem/model';
+
 import {
   AddCustomColumnAction,
   CustomColumnActions,
   RemoveCustomColumnAction,
-  UpdateCustomColumnAction
+  UpdateCustomColumnAction,
 } from './action';
 import { CustomColumnsBuilderState } from './state';
 
@@ -13,11 +15,11 @@ export const addCustomColumn: Reducer<CustomColumn[], AddCustomColumnAction> = (
   { customColumn }
 ) => state.concat(new CustomColumn({ ...customColumn }));
 
-export const updateCustomColumn: Reducer<
-  CustomColumn[],
-  UpdateCustomColumnAction
-> = (state = [], { customColumn }) =>
-  state.map(a => {
+export const updateCustomColumn: Reducer<CustomColumn[], UpdateCustomColumnAction> = (
+  state = [],
+  { customColumn }
+) =>
+  state.map((a) => {
     if (a.id !== customColumn.id) {
       return a;
     }
@@ -25,16 +27,12 @@ export const updateCustomColumn: Reducer<
     return new CustomColumn(a, customColumn);
   });
 
-export const removeCustomColumn: Reducer<
-  CustomColumn[],
-  RemoveCustomColumnAction
-> = (state = [], { id }) =>
-  state.filter(customColumn => customColumn.id !== id);
-
-export const customColumns: Reducer<CustomColumn[], CustomColumnActions> = (
+export const removeCustomColumn: Reducer<CustomColumn[], RemoveCustomColumnAction> = (
   state = [],
-  action
-) => {
+  { id }
+) => state.filter((customColumn) => customColumn.id !== id);
+
+export const customColumns: Reducer<CustomColumn[], CustomColumnActions> = (state = [], action) => {
   switch (action.type) {
     case 'ADD_CUSTOM_COLUMN':
       return addCustomColumn(state, action);
@@ -49,8 +47,6 @@ export const customColumns: Reducer<CustomColumn[], CustomColumnActions> = (
   }
 };
 
-export const CustomColumnsBuilderReducers: ReducersMapObject<
-  CustomColumnsBuilderState
-> = {
-  customColumns
+export const CustomColumnsBuilderReducers: ReducersMapObject<CustomColumnsBuilderState> = {
+  customColumns,
 };

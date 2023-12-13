@@ -1,5 +1,6 @@
 import { Table } from 'App/DataSourceConstructor/schemas';
 import { testInitialAndCurrentState } from 'App/DataSourceConstructor/test-utils/store/reducers';
+
 import { selectTable } from '../action';
 import { selectedTable as reducer } from '../reducer';
 

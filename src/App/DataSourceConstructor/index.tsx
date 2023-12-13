@@ -7,9 +7,7 @@ import { State } from 'store/models/State';
 import { DataSourceConstructor as Controller } from './controller';
 import { DataSourceConstructorOwnProps } from './props';
 
-export class DataSourceConstructor extends React.Component<
-  DataSourceConstructorOwnProps
-> {
+export class DataSourceConstructor extends React.Component<DataSourceConstructorOwnProps> {
   public store: Store<State, Action> = getConfiguredStore();
 
   public render() {

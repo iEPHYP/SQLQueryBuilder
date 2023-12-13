@@ -1,4 +1,5 @@
 import { CustomColumnAliased } from '../JOIN/models/ColumnAliased';
+
 import { generateCustomColumnsSelection } from './custom-columns';
 
 export const generateSelection = (
@@ -7,21 +8,19 @@ export const generateSelection = (
   customColumns: CustomColumnAliased[],
   rootTableAlias: string
 ): string => {
-  const generatedCustomSelections = generateCustomColumnsSelection(
-    customColumns
-  );
+  const generatedCustomSelections = generateCustomColumnsSelection(customColumns);
 
   return `
     SELECT
       ${groupBySelections}${
-    generatedAggregations && groupBySelections ? ', ' : ''
-  }${generatedAggregations}${
-    !(generatedAggregations || groupBySelections)
-      ? `${rootTableAlias ? `${rootTableAlias}.` : ''}*`
-      : ''
-  }${
-    !(groupBySelections || generatedAggregations) && generatedCustomSelections
-      ? `, ${generatedCustomSelections}`
-      : ''
-  }`;
+        generatedAggregations && groupBySelections ? ', ' : ''
+      }${generatedAggregations}${
+        !(generatedAggregations || groupBySelections)
+          ? `${rootTableAlias ? `${rootTableAlias}.` : ''}*`
+          : ''
+      }${
+        !(groupBySelections || generatedAggregations) && generatedCustomSelections
+          ? `, ${generatedCustomSelections}`
+          : ''
+      }`;
 };

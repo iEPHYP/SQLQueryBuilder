@@ -1,8 +1,10 @@
-import { Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { Typography, withStyles } from '@material-ui/core';
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { VariableItem } from '../../../../../MutateFilterPopover/SwitchMutator/VariableItem';
 import { Filter } from '../../../../model';
+
 import { SingleOperandViewClassKeys, singleOperandViewStyles } from './styles';
 
 export type SingleOperandViewProps = {
@@ -13,7 +15,7 @@ export type SingleOperandViewProps = {
 export const SingleOperandView = withStyles(singleOperandViewStyles)((({
   operand,
   variable,
-  classes
+  classes,
 }) => {
   const operandStringified = String(operand);
 

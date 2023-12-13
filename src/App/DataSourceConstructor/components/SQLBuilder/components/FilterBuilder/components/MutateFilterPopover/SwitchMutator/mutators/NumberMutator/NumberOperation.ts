@@ -1,4 +1,5 @@
 import { IOperation, Operation } from '../../../Operation';
+
 import { NumberOperator } from './operators';
 
 export class NumberOperation implements IOperation<'Number', NumberOperands> {

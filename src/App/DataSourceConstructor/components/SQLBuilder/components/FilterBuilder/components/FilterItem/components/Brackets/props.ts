@@ -1,4 +1,5 @@
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { BracketsClassKeys } from './styles';
 
 export type BracketsProps = {

@@ -1,12 +1,10 @@
-import { DateOperation } from './DateOperation';
 import { CoupleDateOperation } from './SwitchDateOperands/DateOperandsComponents/CoupleDates/model';
 import { EmptyDateOperation } from './SwitchDateOperands/DateOperandsComponents/EmptyDates/model';
 import { NearDateOperation } from './SwitchDateOperands/DateOperandsComponents/NearDate/model';
 import { SingleDateOperation } from './SwitchDateOperands/DateOperandsComponents/SingleDate/model';
+import { DateOperation } from './DateOperation';
 
-export const getDateOperationVia = (
-  operator: DateOperation['operator']
-): DateOperation => {
+export const getDateOperationVia = (operator: DateOperation['operator']): DateOperation => {
   switch (operator) {
     case 'Previous':
     case 'Next':

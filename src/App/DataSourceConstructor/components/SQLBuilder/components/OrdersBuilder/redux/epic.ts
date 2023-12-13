@@ -3,26 +3,13 @@ import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { actionCreators } from 'store/action-creators';
 import { Epic } from 'store/models/Epic';
-import {
-  AggregationActions,
-  aggregationActionTypes
-} from '../../AggregationsBuilder/redux/action';
-import {
-  GroupingActions,
-  groupingActionTypes
-} from '../../GroupingsBuilder/redux/action';
 
-const {
-  raiseGlobalError,
-  clearOrders,
-  matchToGroupings,
-  emitEmptyAction
-} = actionCreators;
+import { AggregationActions, aggregationActionTypes } from '../../AggregationsBuilder/redux/action';
+import { GroupingActions, groupingActionTypes } from '../../GroupingsBuilder/redux/action';
 
-export const adjustOrdersEpic: Epic<GroupingActions | AggregationActions> = (
-  action$,
-  state$
-) => {
+const { raiseGlobalError, clearOrders, matchToGroupings, emitEmptyAction } = actionCreators;
+
+export const adjustOrdersEpic: Epic<GroupingActions | AggregationActions> = (action$, state$) => {
   return action$.pipe(
     ofType(...groupingActionTypes, ...aggregationActionTypes),
     map((action) => {

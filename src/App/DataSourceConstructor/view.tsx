@@ -1,5 +1,6 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
+
 import { SQLBuilder } from './components/SQLBuilder';
 import { SQLGenerator } from './components/SQLGenerator';
 import { DataSourceConstructorViewProps } from './props';
@@ -7,7 +8,7 @@ import { queryBuilderStyles } from './styles';
 
 export const DataSourceConstructor = withStyles(queryBuilderStyles)((({
   showQuery,
-  classes: { root }
+  classes: { root },
 }) => {
   return (
     <div className={root}>

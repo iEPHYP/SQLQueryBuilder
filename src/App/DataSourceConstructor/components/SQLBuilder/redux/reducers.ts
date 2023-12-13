@@ -1,4 +1,5 @@
 import { ReducersMapObject } from 'redux';
+
 import { AggregationsBuilderReducers } from '../components/AggregationsBuilder/redux/reducer';
 import { SQLBCommonComponentsReducers } from '../components/common/reducers';
 import { CustomColumnsBuilderReducers } from '../components/CustomColumnsBuilder/redux/reducer';
@@ -7,6 +8,7 @@ import { GroupingsBuilderReducers } from '../components/GroupingsBuilder/redux/r
 import { OrdersBuilderReducers } from '../components/OrdersBuilder/redux/reducer';
 import { RowLimitBuilderReducers } from '../components/RowLimit/redux/reducer';
 import { selectedTable } from '../components/TableSelector/redux/reducer';
+
 import { SQLBuilderState } from './state';
 
 export const SQLBuilderReducers: ReducersMapObject<SQLBuilderState, any> = {
@@ -17,5 +19,5 @@ export const SQLBuilderReducers: ReducersMapObject<SQLBuilderState, any> = {
   ...AggregationsBuilderReducers,
   ...GroupingsBuilderReducers,
   ...OrdersBuilderReducers,
-  ...RowLimitBuilderReducers
+  ...RowLimitBuilderReducers,
 };

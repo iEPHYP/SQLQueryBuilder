@@ -1,11 +1,10 @@
 import { ClassesProp } from 'App/utils/classes-prop';
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
 import { Variable } from 'types';
+
 import { OperatorViewProp } from '../..';
 import { DatePickerByOperandsTypeProps } from '../../DatePickerByOperandsType/props';
+
 import { CoupleDateOperands, CoupleDateOperation } from './model';
 import { CoupleDateClassKeys } from './styles';
 
@@ -20,27 +19,19 @@ export type CoupleDateStateProps = OperandsProp & {
   pickedVariables: [Variable | null, Variable | null];
 };
 
-export type CoupleDateDispatchProps = PickActionCreators<
-  'setOperation' | 'setPickedVariables'
->;
+export type CoupleDateDispatchProps = PickActionCreators<'setOperation' | 'setPickedVariables'>;
 
 const { setOperation, setPickedVariables } = actionCreators;
 export const CDMapDispatchToProps: CoupleDateDispatchProps = {
   setOperation,
-  setPickedVariables
+  setPickedVariables,
 };
 
-export type CoupleDateProps = CoupleDateStateProps &
-  CoupleDateDispatchProps &
-  CoupleDateOwnProps;
+export type CoupleDateProps = CoupleDateStateProps & CoupleDateDispatchProps & CoupleDateOwnProps;
 
 export interface ICoupleDateHandlers {
-  handleOperandsChange: (
-    index: number
-  ) => DatePickerByOperandsTypeProps['onOperandsChange'];
-  handleVariablePick: (
-    index: number
-  ) => DatePickerByOperandsTypeProps['onVariablePicked'];
+  handleOperandsChange: (index: number) => DatePickerByOperandsTypeProps['onOperandsChange'];
+  handleVariablePick: (index: number) => DatePickerByOperandsTypeProps['onVariablePicked'];
 }
 
 export type CoupleDateViewProps = ICoupleDateHandlers &

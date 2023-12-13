@@ -2,7 +2,7 @@ import { IOperation } from '../../../../../SQLBuilder/components/FilterBuilder/c
 
 export class DrillDownOperation implements IOperation<'DrillDown', number> {
   public operator: 'DrillDownOperator' = 'DrillDownOperator';
-  public operands: number = 1;
+  public operands = 1;
   public type: 'DrillDown' = 'DrillDown';
 
   constructor(...inits: Partial<DrillDownOperation>[]) {

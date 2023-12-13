@@ -2,25 +2,19 @@ import { fireEvent, getByText as getByTextOn } from 'react-testing-library';
 import { variableIconPlaceholder } from '__tests__/utils/mock-placeholders';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
-import {
-  fireChangeEvent,
-  getByText$,
-  regex
-} from 'App/DataSourceConstructor/test-utils/utils';
+import { fireChangeEvent, getByText$, regex } from 'App/DataSourceConstructor/test-utils/utils';
 import { foreignFieldPlaceholder } from 'process/startnew/ForeignField';
+
 import { clickAddAFilter } from '../../../../../AddFilter/__tests__/utils/click-add-a-filter';
-import {
-  addFilterText,
-  mutatorPanelId,
-  updateFilterText
-} from '../../../../view';
+import { addFilterText, mutatorPanelId, updateFilterText } from '../../../../view';
+
 import { foreignFieldDataMock } from './utils/foreign-field-data.mock';
 import { foreignFieldVariablesMock } from './utils/foreign-field-variables.mock';
 
@@ -28,21 +22,21 @@ jest.mock('utils');
 
 jest.mock('react-apollo', () => {
   const {
-    foreignFieldDataMock: dataMock
+    foreignFieldDataMock: dataMock,
     // tslint:disable-next-line: no-require-imports
   } = require('./utils/foreign-field-data.mock');
   const {
     getConfiguredQuery,
-    getResult
-  // tslint:disable-next-line: no-require-imports
+    getResult,
+    // tslint:disable-next-line: no-require-imports
   } = require('__dynamic_mocks__/react-apollo.Query.mock');
 
   return {
     Query: getConfiguredQuery(() =>
       getResult({
-        data: dataMock
+        data: dataMock,
       })
-    )
+    ),
   };
 });
 
@@ -52,13 +46,7 @@ describe(`Foreign field operations`, () => {
       - a variable selected after an item
       - an item selected after variable,
       should not allow save filter on empty selection`, async () => {
-    const {
-      getByText,
-      getByTestId,
-      getByPlaceholderText,
-      rerender,
-      componentNode
-    } = render();
+    const { getByText, getByTestId, getByPlaceholderText, rerender, componentNode } = render();
 
     const recordsMock = foreignFieldDataMock.navigation.search.records;
 
@@ -70,15 +58,12 @@ describe(`Foreign field operations`, () => {
     };
 
     const clickForeignColumn = () => {
-      fireEvent.click(
-        getByTextOn(getByTestId(mutatorPanelId), foreignColumnName)
-      );
+      fireEvent.click(getByTextOn(getByTestId(mutatorPanelId), foreignColumnName));
     };
 
     const checkFilterDescription = (snapName: string) => {
       expect(
-        getByText$(componentNode, new RegExp(`^${foreignColumnName}.+$`, 'i'))
-          .textContent
+        getByText$(componentNode, new RegExp(`^${foreignColumnName}.+$`, 'i')).textContent
       ).toMatchSnapshot(`${snapName} filter description`);
     };
 
@@ -113,9 +98,7 @@ describe(`Foreign field operations`, () => {
 
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      `a variable selected after an item`
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot(`a variable selected after an item`);
 
     checkFilterDescription('a variable selected after an item');
 
@@ -131,9 +114,7 @@ describe(`Foreign field operations`, () => {
 
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      `an item selected after variable`
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot(`an item selected after variable`);
 
     checkFilterDescription('an item selected after variable');
   });
@@ -147,7 +128,7 @@ describe(`Foreign field operations`, () => {
       'polyenum' field should have enums list
       'primary' type field should have 'key' icon
       'primary' type field in the foreign table should work the same way as selected table's 'primary' type field
-  `, () => {
+`, () => {
     // empty block
   });
 });

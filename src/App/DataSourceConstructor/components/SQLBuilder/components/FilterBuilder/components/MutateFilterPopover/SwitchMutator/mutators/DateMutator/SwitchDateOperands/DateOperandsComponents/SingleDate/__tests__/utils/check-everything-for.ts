@@ -1,32 +1,30 @@
-import {
-  cleanup,
-  fireEvent,
-  getByText as getByTextOn
-} from 'react-testing-library';
+import { cleanup, fireEvent, getByText as getByTextOn } from 'react-testing-library';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
 import { regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { updateFilterText } from '../../../../../../../../view';
 import { DateOperator, dateOperators } from '../../../../../operators';
 import {
   getDateSetter,
-  getTimeSetter
+  getTimeSetter,
 } from '../../../../DatePickerByOperandsType/components/FixedDatePicker/__tests__/utils/date-time-setters';
 import { addATimeText } from '../../../../DatePickerByOperandsType/components/FixedDatePicker/view';
 import { relativeDates } from '../../../../DatePickerByOperandsType/components/RelativeDatePicker/singular-date-components';
 import {
   noVariablesText,
-  variablePlaceholder
+  variablePlaceholder,
 } from '../../../../DatePickerByOperandsType/components/VariableDatePicker';
 import { dateOperandTypes } from '../../../../DatePickerByOperandsType/date-operand-types';
+
 import { dateVariablesMock } from './date-variables';
 
 export const checkEverythingFor = (operator: DateOperator) => {
@@ -101,7 +99,7 @@ export const checkEverythingFor = (operator: DateOperator) => {
 
     // When there are variables should show placeholder and can't save
     rerender({
-      variables: dateVariablesMock
+      variables: dateVariablesMock,
     });
     expect(getByText(variablePlaceholder)).toBeInTheDocument();
     expect(getByText(updateFilterText)).toBeDisabled();
@@ -123,10 +121,7 @@ export const checkEverythingFor = (operator: DateOperator) => {
     ) => {
       fireEvent.click(getByText(regex(columns[2].name)));
       fireEvent.click(
-        getByTextOn(
-          getByTestId('mutate-filter'),
-          regex(relativeDates[prevRelativeDateIndex])
-        )
+        getByTextOn(getByTestId('mutate-filter'), regex(relativeDates[prevRelativeDateIndex]))
       );
       fireEvent.click(getByText(regex(relativeDates[nextRelativeDateIndex])));
       clickUpdateTheFilter();

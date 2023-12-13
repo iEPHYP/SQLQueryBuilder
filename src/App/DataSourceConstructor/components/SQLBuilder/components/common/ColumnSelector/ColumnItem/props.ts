@@ -1,13 +1,15 @@
 import { CollapseProps } from '@material-ui/core/Collapse';
 import { Column } from 'App/DataSourceConstructor/schemas';
+
 import { TableColumnsDelegatedProps } from '../props';
+
 import { ColumnBranch } from './SelectedColumn.models';
 
 export type ColumnItemProps = Column &
-TableColumnsDelegatedProps &
-ColumnItemDelegatedProp & {
-  columnBranch: ColumnBranch;
-};
+  TableColumnsDelegatedProps &
+  ColumnItemDelegatedProp & {
+    columnBranch: ColumnBranch;
+  };
 
 export interface IColumnItemHandlers {
   handleColumnClick: () => void;

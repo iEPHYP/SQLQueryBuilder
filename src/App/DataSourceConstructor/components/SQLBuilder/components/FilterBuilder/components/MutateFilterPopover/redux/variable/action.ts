@@ -1,4 +1,5 @@
 import { Action } from 'store/models/action-types';
+
 import { PickedVariablesState } from './state';
 
 type PickedVariables = PickedVariablesState['pickedVariables'];
@@ -8,9 +9,7 @@ export type SetPickedVariablesAction = Action<
   { pickedVariables: PickedVariables }
 >;
 
-export const setPickedVariables = (
-  pickedVariables: PickedVariables
-): SetPickedVariablesAction => ({
+export const setPickedVariables = (pickedVariables: PickedVariables): SetPickedVariablesAction => ({
   type: 'SET_PICKED_VARIABLES',
-  pickedVariables
+  pickedVariables,
 });

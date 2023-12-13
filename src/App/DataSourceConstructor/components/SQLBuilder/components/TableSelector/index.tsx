@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import {
   ITableSelectorHandlers,
   TableSelectorDispatchProps,
   TableSelectorProps,
   TableSelectorStateProps,
   TableSelectorViewProps as ViewProps,
-  TSMapDispatchToProps
+  TSMapDispatchToProps,
 } from './props';
 import { TableSelector as View } from './view';
 
@@ -19,31 +20,24 @@ export const TableSelector = connect<
 >(
   ({ tables, selectedTable }) => ({
     selectedTable,
-    tables
+    tables,
   }),
   TSMapDispatchToProps
 )(
-  class extends React.Component<TableSelectorProps>
-    implements ITableSelectorHandlers {
-
-    public handleTableSelection: ViewProps['handleTableSelection'] = event => {
+  class extends React.Component<TableSelectorProps> implements ITableSelectorHandlers {
+    public handleTableSelection: ViewProps['handleTableSelection'] = (event) => {
       const { tables, selectedTable, selectTable } = this.props;
 
       const modelName = event.target.value;
 
       if (!(selectedTable && modelName === selectedTable.name)) {
-        const table = tables.find(t => t.modelName === modelName);
+        const table = tables.find((t) => t.modelName === modelName);
         table && selectTable(table);
       }
-    }
+    };
 
     public render() {
-      return (
-        <View
-          handleTableSelection={this.handleTableSelection}
-          {...this.props}
-        />
-      );
+      return <View handleTableSelection={this.handleTableSelection} {...this.props} />;
     }
   }
 );

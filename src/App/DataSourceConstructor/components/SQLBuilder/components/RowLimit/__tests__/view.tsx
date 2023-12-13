@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+
 import { rowLimits } from '../row-limits';
 import { RowLimit } from '../RowLimit';
 import { RowLimitBuilder } from '../view';
 
 jest.mock('../RowLimit', () => ({
-  RowLimit: jest.fn(() => null)
+  RowLimit: jest.fn(() => null),
 }));
 
 const render = getConfiguredRender(

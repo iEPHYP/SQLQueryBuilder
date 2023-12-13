@@ -1,7 +1,9 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { CheckedSelectProps } from '../../CheckedSelect/props';
 import { MutatorProps } from '../props';
+
 import { NumberOperation } from './NumberOperation';
 import { NumberOperator } from './operators';
 import { NumberMutatorClassKeys } from './styles';
@@ -13,11 +15,9 @@ export interface NumberMutatorStateProps {
   operation: NumberOperation;
 }
 
-export type NumberMutatorDispatchProps = PickActionCreators<
-  'setOperation'
->;
+export type NumberMutatorDispatchProps = PickActionCreators<'setOperation'>;
 export const NMMapDispatchToProps: NumberMutatorDispatchProps = {
-  setOperation: actionCreators.setOperation
+  setOperation: actionCreators.setOperation,
 };
 
 export type NumberMutatorProps = NumberMutatorOwnProps &

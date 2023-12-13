@@ -1,7 +1,8 @@
+import * as React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import * as React from 'react';
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { AddEntityClassKeys, addEntityStyles } from './styles';
 
 export type AddEntityProps = {
@@ -15,12 +16,12 @@ export const AddEntity = withStyles(addEntityStyles)((({
   showText = true,
   onClick,
   reference,
-  classes
+  classes,
 }) => {
   return (
     <div className={classes.root} onClick={onClick} ref={reference}>
       {showText && (
-        <Typography variant='subtitle1' className={classes.text}>
+        <Typography variant="subtitle1" className={classes.text}>
           {children}
         </Typography>
       )}

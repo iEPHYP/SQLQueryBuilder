@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { Popover } from '@material-ui/core';
 import { PopoverProps } from '@material-ui/core/Popover';
-import * as React from 'react';
 
 export interface PopoverPaperProps {
   isOpen: boolean;
@@ -10,11 +10,11 @@ export interface PopoverPaperProps {
 }
 
 export class PopoverPaper extends React.Component<PopoverPaperProps> {
-  public handlePopoverAction: PopoverProps['action'] = action => {
+  public handlePopoverAction: PopoverProps['action'] = (action) => {
     const { positionUpdaterCallback } = this.props;
 
     positionUpdaterCallback && positionUpdaterCallback(action.updatePosition);
-  }
+  };
 
   public render() {
     const { isOpen = false, anchorEl, onClose, children } = this.props;
@@ -26,11 +26,11 @@ export class PopoverPaper extends React.Component<PopoverPaperProps> {
         onClose={onClose}
         anchorOrigin={{
           vertical: 'top',
-          horizontal: 'left'
+          horizontal: 'left',
         }}
         transformOrigin={{
           vertical: 'top',
-          horizontal: 'right'
+          horizontal: 'right',
         }}
         action={this.handlePopoverAction}
       >

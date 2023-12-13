@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { InputAdornment, Typography, withStyles } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import { DatePicker, TimePicker } from 'material-ui-pickers';
-import * as React from 'react';
 import { RemoveButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
+import { DatePicker, TimePicker } from 'material-ui-pickers';
+
 import { FixedDatePickerViewProps } from './props';
 import { fixedDatePickerStyles } from './styles';
 
@@ -18,7 +19,7 @@ export const FixedDatePicker = withStyles(fixedDatePickerStyles)(
         classes,
         handleDateChange,
         handleAddTimeClick,
-        handleRemoveTimeClick
+        handleRemoveTimeClick,
       } = this.props;
 
       return (
@@ -26,14 +27,14 @@ export const FixedDatePicker = withStyles(fixedDatePickerStyles)(
           <DatePicker
             value={date}
             onChange={handleDateChange}
-            format='DD/MM/YYYY'
-            margin='none'
-            variant='outlined'
+            format="DD/MM/YYYY"
+            margin="none"
+            variant="outlined"
             style={{ width: '100%', marginTop: '10px' }}
             InputProps={{
               inputProps: {
-                style: { padding: '7px 14px', fontSize: '13px' }
-              }
+                style: { padding: '7px 14px', fontSize: '13px' },
+              },
             }}
             {...(limits ? limits : {})}
           />
@@ -43,28 +44,28 @@ export const FixedDatePicker = withStyles(fixedDatePickerStyles)(
                 style={{
                   marginRight: '5px',
                   fontSize: '16px',
-                  fontWeight: 'bold'
+                  fontWeight: 'bold',
                 }}
               />
-              <Typography color='inherit'>{addATimeText}</Typography>
+              <Typography color="inherit">{addATimeText}</Typography>
             </label>
           )}
           {timeEnabled && (
             <TimePicker
               value={date}
               onChange={handleDateChange}
-              margin='none'
-              variant='outlined'
+              margin="none"
+              variant="outlined"
               style={{ width: '100%', marginTop: '10px' }}
               InputProps={{
                 inputProps: {
-                  style: { padding: '7px 14px', fontSize: '13px' }
+                  style: { padding: '7px 14px', fontSize: '13px' },
                 },
                 endAdornment: (
-                  <InputAdornment position='end'>
+                  <InputAdornment position="end">
                     <RemoveButton onClick={handleRemoveTimeClick} />
                   </InputAdornment>
-                )
+                ),
               }}
             />
           )}

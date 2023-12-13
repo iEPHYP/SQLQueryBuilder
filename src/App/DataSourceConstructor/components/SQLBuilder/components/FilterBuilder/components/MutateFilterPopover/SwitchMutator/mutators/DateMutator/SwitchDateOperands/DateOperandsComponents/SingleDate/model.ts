@@ -8,10 +8,7 @@ export interface ISingleDateOperands {
   dateType: DateType;
 }
 
-export type SingleDateOperands =
-  | FixedDateOperands
-  | RelativeDateOperands
-  | VariableDateOperands;
+export type SingleDateOperands = FixedDateOperands | RelativeDateOperands | VariableDateOperands;
 
 export class SingleDateOperation implements IDateOperation<SingleDateOperands> {
   public operator: 'Before' | 'After' | 'On' = 'Before';

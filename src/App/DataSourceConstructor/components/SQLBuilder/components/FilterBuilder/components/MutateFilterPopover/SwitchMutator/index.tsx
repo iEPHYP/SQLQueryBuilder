@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Column } from 'App/DataSourceConstructor/schemas';
+
 import { BooleanMutator } from './mutators/BooleanMutator';
 import { DateMutator } from './mutators/DateMutator';
 import { ForeignColumnMutator } from './mutators/ForeignColumnMutator';
@@ -16,8 +17,8 @@ export class SwitchMutator extends React.Component<SwitchMutatorProps> {
     const {
       type,
       column: {
-        lastColumn: { foreignTableName }
-      }
+        lastColumn: { foreignTableName },
+      },
     } = this.props;
 
     if (type === 'primary' || foreignTableName || type === 'uuid') {

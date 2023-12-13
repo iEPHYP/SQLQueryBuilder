@@ -1,9 +1,10 @@
 import { AggregationOperator } from 'App/DataSourceConstructor/components/SQLBuilder/components/AggregationsBuilder/aggregations';
+
 import { ColumnBranchAliased } from '../JOIN/models/ColumnAliased';
+
 import { getAlias } from './utils';
 
 export class AggregatioinsAliasCounter {
-
   private static counters: { [column: string]: number } = {};
   public static getCounter(
     columnBranch: ColumnBranchAliased | undefined,

@@ -1,24 +1,21 @@
 import { clone } from 'ramda';
 import { Reducer, ReducersMapObject } from 'redux';
+
 import { Order } from '../components/OrderItem/model';
+
 import {
   AddOrderAction,
   MatchToGroupingsAction,
   OrderActions,
   RemoveOrderAction,
-  UpdateOrderAction
+  UpdateOrderAction,
 } from './action';
 import { OrdersBuilderState } from './state';
 
-export const addOrder: Reducer<Order[], AddOrderAction> = (
-  state = [],
-  { order }
-) => state.concat(new Order({ ...order }));
+export const addOrder: Reducer<Order[], AddOrderAction> = (state = [], { order }) =>
+  state.concat(new Order({ ...order }));
 
-export const updateOrder: Reducer<Order[], UpdateOrderAction> = (
-  state = [],
-  { order }
-) =>
+export const updateOrder: Reducer<Order[], UpdateOrderAction> = (state = [], { order }) =>
   state.map((a) => {
     if (a.id !== order.id) {
       return a;
@@ -27,10 +24,8 @@ export const updateOrder: Reducer<Order[], UpdateOrderAction> = (
     return new Order(a, order);
   });
 
-export const removeOrder: Reducer<Order[], RemoveOrderAction> = (
-  state = [],
-  { id }
-) => state.filter((order) => order.id !== id);
+export const removeOrder: Reducer<Order[], RemoveOrderAction> = (state = [], { id }) =>
+  state.filter((order) => order.id !== id);
 
 export const matchToGroupings: Reducer<Order[], MatchToGroupingsAction> = (
   ordersState = [],
@@ -64,5 +59,5 @@ export const orders: Reducer<Order[], OrderActions> = (state = [], action) => {
 };
 
 export const OrdersBuilderReducers: ReducersMapObject<OrdersBuilderState> = {
-  orders
+  orders,
 };

@@ -1,9 +1,11 @@
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { ColumnBranch } from '../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { ColumnSelectorProps } from '../../../common/ColumnSelector/props';
 import { PopoverPaperProps } from '../../../common/PopoverPaper';
 import { AggregationOperator } from '../../aggregations';
 import { Aggregation } from '../AggregationItem/model';
+
 import { MutateAggregationPopoverClassKeys } from './styles';
 
 export type MutateAggregationPopoverProps = {

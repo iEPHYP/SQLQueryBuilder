@@ -1,3 +1,3 @@
 module.exports = {
-  RemoveButton: jest.fn(() => null)
+  RemoveButton: jest.fn(() => null),
 };

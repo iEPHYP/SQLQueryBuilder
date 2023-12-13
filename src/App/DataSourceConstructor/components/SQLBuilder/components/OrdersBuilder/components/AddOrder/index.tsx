@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { WithPopoverManagement } from '../../../common/WithPopoverManagement';
+
 import {
   AddOrderDispatchProps,
   AddOrderProps,
   AddOrderStateProps,
-  AGMapDispatchToProps
+  AGMapDispatchToProps,
 } from './props';
 import { AddOrder as View } from './view';
 

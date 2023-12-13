@@ -1,7 +1,5 @@
 import { ReducersMapObject } from 'redux';
+
 import { SQLBCommonComponentsState } from './state';
 
-export const SQLBCommonComponentsReducers: ReducersMapObject<
-  SQLBCommonComponentsState
-> = {
-};
+export const SQLBCommonComponentsReducers: ReducersMapObject<SQLBCommonComponentsState> = {};

@@ -1,4 +1,5 @@
 import * as uuid from 'uuid';
+
 import { ColumnBranch } from '../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 
 export class CustomColumn {

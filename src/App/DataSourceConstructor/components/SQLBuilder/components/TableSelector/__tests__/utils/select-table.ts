@@ -1,10 +1,8 @@
 import { fireEvent, getByText } from 'react-testing-library';
 import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
-import {
-  Column,
-  Table
-} from 'App/DataSourceConstructor/schemas';
+import { Column, Table } from 'App/DataSourceConstructor/schemas';
 import { regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { tablePickerPlaceholder } from '../../view';
 
 export interface TableSelectorParams {
@@ -12,9 +10,7 @@ export interface TableSelectorParams {
   selectedIndex?: number;
 }
 
-export const selectATable: (params?: TableSelectorParams) => Column[] = (
-  params = {}
-): Column[] => {
+export const selectATable: (params?: TableSelectorParams) => Column[] = (params = {}): Column[] => {
   const { tables = tablesMock, selectedIndex = 0 } = params;
   const table = tables[selectedIndex];
   // TODO: narrow the css selector search

@@ -1,5 +1,6 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { PickStates } from 'store/models/State';
+
 import { GroupingsBuilderClassKeys } from './styles';
 
 export type GroupingsBuilderStateProps = PickStates<'groupings'>;

@@ -14,12 +14,12 @@ export const mutateAggregationPopoverStyles: StyleRulesCallback<
   'title-component': {
     display: 'flex',
     alignItems: 'center',
-    padding: '10px'
+    padding: '10px',
   },
   hr: {
     margin: '0px',
     background: '#EBECED',
     height: '1px',
-    border: 'none'
-  }
+    border: 'none',
+  },
 });

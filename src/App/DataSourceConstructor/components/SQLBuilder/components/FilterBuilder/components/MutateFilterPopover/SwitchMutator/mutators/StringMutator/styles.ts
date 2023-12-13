@@ -14,23 +14,21 @@ export type StringMutatorClassKeys =
   | 'variable-item'
   | 'hr';
 
-export const stringMutatorStyles: StyleRulesCallback<
-  StringMutatorClassKeys
-> = theme => ({
+export const stringMutatorStyles: StyleRulesCallback<StringMutatorClassKeys> = (theme) => ({
   root: {
     border: '1px solid #EBECED',
-    borderRadius: '5px'
+    borderRadius: '5px',
   },
   'common-padding': {
-    padding: 10
+    padding: 10,
   },
   'title-and-operator': {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   title: {
-    marginRight: 20
+    marginRight: 20,
   },
   operator: {},
   operands: {},
@@ -38,25 +36,25 @@ export const stringMutatorStyles: StyleRulesCallback<
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '5px'
+    padding: '5px',
   },
   CheckBox: {
     padding: 0,
-    fontSize: 12
+    fontSize: 12,
   },
   FormControlLabel: {
-    marginLeft: '0px'
+    marginLeft: '0px',
   },
   label: {
-    fontSize: 12
+    fontSize: 12,
   },
   hr: {
     margin: '0px',
     background: '#EBECED',
     height: '1px',
-    border: 'none'
+    border: 'none',
   },
   'variable-item': {
-    position: 'absolute'
-  }
+    position: 'absolute',
+  },
 });

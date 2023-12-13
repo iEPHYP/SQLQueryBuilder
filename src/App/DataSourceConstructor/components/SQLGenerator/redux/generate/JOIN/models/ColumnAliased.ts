@@ -3,10 +3,11 @@ import { ColumnBranch } from 'App/DataSourceConstructor/components/SQLBuilder/co
 import { Filter } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/FilterItem/model';
 import { Grouping } from 'App/DataSourceConstructor/components/SQLBuilder/components/GroupingsBuilder/components/GroupingItem/model';
 import { Order } from 'App/DataSourceConstructor/components/SQLBuilder/components/OrdersBuilder/components/OrderItem/model';
+
 import { CustomColumn } from '../../../../../SQLBuilder/components/CustomColumnsBuilder/components/CustomColumnItem/model';
 
 export class ColumnBranchAliased extends ColumnBranch {
-  public tableAlias: string = '';
+  public tableAlias = '';
   public lastColumn: ColumnBranchAliased;
   public foreignColumn: ColumnBranchAliased;
 

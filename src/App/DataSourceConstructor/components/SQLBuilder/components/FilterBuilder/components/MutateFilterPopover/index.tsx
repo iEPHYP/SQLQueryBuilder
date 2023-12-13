@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { Filter } from '../FilterItem/model';
+
 import {
   IMutateFilterPopoverHandlers,
   MFPMapDispatchToProps,
@@ -10,12 +12,13 @@ import {
   MutateFilterPopoverProps,
   MutateFilterPopoverState,
   MutateFilterPopoverStateProps,
-  MutateFilterPopoverViewProps as ViewProps
+  MutateFilterPopoverViewProps as ViewProps,
 } from './props';
 import { getDefaultOperation } from './utils';
 import { MutateFilterPopover as View } from './view';
 
 type PropsType = MutateFilterPopoverProps;
+
 type StateType = MutateFilterPopoverState;
 
 export const MutateFilterPopover = connect<
@@ -27,12 +30,11 @@ export const MutateFilterPopover = connect<
   ({ operation, pickedVariables, canSaveFilter }) => ({
     operation,
     pickedVariables,
-    canSaveFilter
+    canSaveFilter,
   }),
   MFPMapDispatchToProps
 )(
-  class extends React.Component<PropsType, StateType>
-    implements IMutateFilterPopoverHandlers {
+  class extends React.Component<PropsType, StateType> implements IMutateFilterPopoverHandlers {
     constructor(props: PropsType) {
       super(props);
 
@@ -40,7 +42,7 @@ export const MutateFilterPopover = connect<
 
       this.state = {
         popoverPositionUpdater: undefined,
-        ...(filter && filter.column ? { column: filter.column } : {})
+        ...(filter && filter.column ? { column: filter.column } : {}),
       };
 
       filter && filter.operation && setOperation(filter.operation);
@@ -48,29 +50,25 @@ export const MutateFilterPopover = connect<
       setPickedVariables(filter && filter.variables ? filter.variables : null);
     }
 
-    public positionUpdaterCallback: ViewProps['positionUpdaterCallback'] = popoverPositionUpdater => {
+    public positionUpdaterCallback: ViewProps['positionUpdaterCallback'] = (
+      popoverPositionUpdater
+    ) => {
       if (!this.state.popoverPositionUpdater) {
         this.setState({ popoverPositionUpdater });
       }
-    }
+    };
 
-    public handleColumnSelection: ViewProps['handleColumnSelection'] = column => {
+    public handleColumnSelection: ViewProps['handleColumnSelection'] = (column) => {
       const { setOperation, setPickedVariables } = this.props;
 
       this.setState({ column });
 
       setPickedVariables(null);
       setOperation(getDefaultOperation(column.lastColumn));
-    }
+    };
 
     public handleMutateButtonClick: ViewProps['handleMutateButtonClick'] = () => {
-      const {
-        operation,
-        action,
-        filter,
-        pickedVariables,
-        onClose
-      } = this.props;
+      const { operation, action, filter, pickedVariables, onClose } = this.props;
 
       const { column } = this.state;
 
@@ -78,17 +76,17 @@ export const MutateFilterPopover = connect<
         new Filter(filter ? filter : {}, {
           column,
           operation,
-          variables: pickedVariables
+          variables: pickedVariables,
         })
       );
 
       onClose();
-    }
+    };
 
     public handleBackClick: ViewProps['handleBackClick'] = () => {
       this.state.popoverPositionUpdater && this.state.popoverPositionUpdater();
       this.setState({ column: undefined });
-    }
+    };
 
     public render() {
       return (

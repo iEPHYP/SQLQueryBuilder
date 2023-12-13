@@ -1,3 +1,3 @@
 module.exports = {
-  BackButton: jest.fn(() => 'BackButton')
+  BackButton: jest.fn(() => 'BackButton'),
 };

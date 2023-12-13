@@ -6,13 +6,13 @@ export const dateVariablesMock: Variable[] = [
     order: 1,
     name: 'First date variable',
     type: VariableType.Date,
-    widgets: []
+    widgets: [],
   },
   {
     id: '2',
     order: 2,
     name: 'Second date variable',
     type: VariableType.Date,
-    widgets: []
-  }
+    widgets: [],
+  },
 ];

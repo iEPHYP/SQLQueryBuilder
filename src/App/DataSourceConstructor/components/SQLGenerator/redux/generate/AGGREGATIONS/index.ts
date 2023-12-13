@@ -1,11 +1,10 @@
 import { formatColumn } from '../common-formatters';
 import { AggregationAliased } from '../JOIN/models/ColumnAliased';
+
 import { AggregatioinsAliasCounter } from './AliasCounter';
 import { operatorToSqlAggregatorMap } from './operator-to-sql-aggregator-map';
 
-export const generateAggregations = (
-  aggregations: AggregationAliased[]
-): string => {
+export const generateAggregations = (aggregations: AggregationAliased[]): string => {
   AggregatioinsAliasCounter.resetCounters();
   let generatedAggregations = '';
 
@@ -16,7 +15,7 @@ export const generateAggregations = (
     const counter = AggregatioinsAliasCounter.getCounter(columnBranch, operator);
     if (columnBranch) {
       const {
-        lastColumn: { tableAlias, columnName }
+        lastColumn: { tableAlias, columnName },
       } = columnBranch;
       column = formatColumn(columnName, tableAlias);
     }

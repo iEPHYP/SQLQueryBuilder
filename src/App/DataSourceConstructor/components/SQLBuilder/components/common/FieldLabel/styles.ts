@@ -2,13 +2,13 @@ import { StyleRulesCallback } from '@material-ui/core';
 
 export type FeaturedFieldClassKeys = 'root' | 'disabled-layer' | 'header';
 
-export const featuredFieldStyles: StyleRulesCallback<FeaturedFieldClassKeys> = theme => ({
+export const featuredFieldStyles: StyleRulesCallback<FeaturedFieldClassKeys> = (theme) => ({
   root: {
     position: 'relative',
     marginTop: theme.spacing.unit * 2,
     padding: '5px 10px',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   'disabled-layer': {
     position: 'absolute',
@@ -18,9 +18,9 @@ export const featuredFieldStyles: StyleRulesCallback<FeaturedFieldClassKeys> = t
     height: '100%',
     background: 'white',
     opacity: 0.5,
-    cursor: 'default'
+    cursor: 'default',
   },
   header: {
     fontSize: 14,
-  }
+  },
 });

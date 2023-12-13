@@ -4,6 +4,6 @@ export type RelativeDateOperandsPickerClassKeys = 'root';
 
 export const relativeDateOperandsPickerStyles: StyleRulesCallback<
   RelativeDateOperandsPickerClassKeys
-> = theme => ({
-  root: {}
+> = (theme) => ({
+  root: {},
 });

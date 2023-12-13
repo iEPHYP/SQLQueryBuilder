@@ -1,3 +1,3 @@
 module.exports = {
-  AddEntity: jest.fn(({ children }) => children)
+  AddEntity: jest.fn(({ children }) => children),
 };

@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { WithPopoverManagement } from '../../../common/WithPopoverManagement';
+
 import {
   AAMapDispatchToProps,
   AddAggregationDispatchProps,
   AddAggregationProps,
-  AddAggregationStateProps
+  AddAggregationStateProps,
 } from './props';
 import { AddAggregation as View } from './view';
 
@@ -17,7 +19,7 @@ export const AddAggregation = connect<
   State
 >(
   ({ aggregations }) => ({
-    aggregations
+    aggregations,
   }),
   AAMapDispatchToProps
 )(

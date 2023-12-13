@@ -18,15 +18,15 @@ export const threeLvlGroupings = [
           foreignColumn: new ColumnBranch({
             columnName: 'ID',
             tableName: 'addresses',
-            type: 'number'
+            type: 'number',
           }).normalize(),
-          foreignTableName: 'Addresses'
+          foreignTableName: 'Addresses',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Products'
+      foreignTableName: 'Products',
     }).normalize(),
-    id: 'bca5a20c-2e03-455d-bd4c-c4308cac4da9'
+    id: 'bca5a20c-2e03-455d-bd4c-c4308cac4da9',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -44,15 +44,15 @@ export const threeLvlGroupings = [
           foreignColumn: new ColumnBranch({
             columnName: 'Username',
             tableName: 'users',
-            type: 'string'
+            type: 'string',
           }).normalize(),
-          foreignTableName: 'Users'
+          foreignTableName: 'Users',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Products'
+      foreignTableName: 'Products',
     }).normalize(),
-    id: '23407ed9-b5ed-4dc7-906d-8ebc1791b4dc'
+    id: '23407ed9-b5ed-4dc7-906d-8ebc1791b4dc',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -70,14 +70,14 @@ export const threeLvlGroupings = [
           foreignColumn: new ColumnBranch({
             columnName: 'Street name',
             tableName: 'streets',
-            type: 'string'
+            type: 'string',
           }).normalize(),
-          foreignTableName: 'Streets'
+          foreignTableName: 'Streets',
         }).normalize(),
-        foreignTableName: 'Addresses'
+        foreignTableName: 'Addresses',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'd12623e5-3e89-46f2-b0e0-710a38a22686'
-  })
+    id: 'd12623e5-3e89-46f2-b0e0-710a38a22686',
+  }),
 ];

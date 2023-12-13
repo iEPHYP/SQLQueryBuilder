@@ -1,4 +1,5 @@
 import { IOperation } from '../../../Operation';
+
 import { BooleanOperator } from './operators';
 
 export class BooleanOperation implements IOperation<'Boolean', undefined> {

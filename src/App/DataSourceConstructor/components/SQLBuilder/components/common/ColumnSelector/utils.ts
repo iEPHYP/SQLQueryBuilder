@@ -1,5 +1,6 @@
-import { clone } from 'ramda';
 import { Column } from 'App/DataSourceConstructor/schemas';
+import { clone } from 'ramda';
+
 import { ColumnBranch } from './ColumnItem/SelectedColumn.models';
 import { ColumnSelectorOwnProps } from './props';
 
@@ -30,8 +31,7 @@ export const filterColumns = (
   tableBranch: ColumnBranch
 ): Column[] => {
   return columns.filter(
-    column =>
-      canShowColumnBranch(getNewColumnBranch(tableBranch, column)) ||
-      column.foreignTableName
+    (column) =>
+      canShowColumnBranch(getNewColumnBranch(tableBranch, column)) || column.foreignTableName
   );
 };

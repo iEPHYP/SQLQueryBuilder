@@ -1,10 +1,5 @@
 import { Grouping } from '../../components/GroupingItem/model';
-import {
-  addGrouping,
-  clearGroupings,
-  removeGrouping,
-  updateGrouping
-} from '../action';
+import { addGrouping, clearGroupings, removeGrouping, updateGrouping } from '../action';
 
 describe('GroupingsBuilder action creators should return appropriate actions', () => {
   it('addGrouping', () => {
@@ -15,9 +10,7 @@ describe('GroupingsBuilder action creators should return appropriate actions', (
 
   it('updateGrouping', () => {
     expect(
-      updateGrouping(
-        new Grouping({ id: 'c3c15257-27e4-49bb-8803-4c9d87e7cd77' })
-      )
+      updateGrouping(new Grouping({ id: 'c3c15257-27e4-49bb-8803-4c9d87e7cd77' }))
     ).toMatchSnapshot();
   });
 

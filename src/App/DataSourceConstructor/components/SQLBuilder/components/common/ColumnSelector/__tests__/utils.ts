@@ -1,11 +1,12 @@
-import * as casual from 'casual';
 import { Column } from 'App/DataSourceConstructor/schemas';
+import * as casual from 'casual';
+
 import { ColumnBranch } from '../ColumnItem/SelectedColumn.models';
 import {
   filterColumns,
   getNewColumnBranch,
   getRootTableBranch,
-  sortInOrderForeignColumnsBelow
+  sortInOrderForeignColumnsBelow,
 } from '../utils';
 
 const tableName = 'Users';
@@ -26,9 +27,9 @@ describe('getNewColumnBranch', () => {
       new ColumnBranch({
         foreignColumn: new ColumnBranch({
           foreignColumn: new ColumnBranch({
-            tableName
-          })
-        })
+            tableName,
+          }),
+        }),
       }).normalizeLastColumn(),
       new Column({ name, type })
     );
@@ -42,7 +43,7 @@ describe('sortInOrderForeignColumnsBelow', () => {
     const column1 = new Column({ name: 'ID', type: 'primary' });
     const column2 = new Column({
       name: 'ProductID',
-      foreignTableName: 'Products'
+      foreignTableName: 'Products',
     });
     const column3 = new Column({ name: 'name' });
     const column4 = new Column({ name: 'AddedBy', foreignTableName: 'Users' });
@@ -60,12 +61,12 @@ describe('filterColumns', () => {
   const column3 = new Column({
     name: 'UserID',
     type: 'number',
-    foreignTableName: 'Users'
+    foreignTableName: 'Users',
   });
   const column4 = new Column({ name: 'number of name', type: 'number' });
   const columns: Column[] = [column1, column2, column3, column4];
   const tableBranch = new ColumnBranch({
-    tableName
+    tableName,
   });
 
   it(`should filter by filter callback
@@ -73,8 +74,7 @@ describe('filterColumns', () => {
     const filteredColumns = filterColumns(
       columns,
       ({ columnName, type }) =>
-        (type === 'number' || type === 'string') &&
-        columnName.toLocaleLowerCase().endsWith('name'),
+        (type === 'number' || type === 'string') && columnName.toLocaleLowerCase().endsWith('name'),
       tableBranch
     );
 

@@ -1,6 +1,8 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { PopoverManagerProps } from '../../../common/WithPopoverManagement';
+
 import { BracketsProps } from './components/Brackets/props';
 import { LogicOperatorSwitchProps } from './components/LogicOperatorSwitch/props';
 import { Filter } from './model';
@@ -17,18 +19,14 @@ export interface FilterItemState {
   isMutatorOpen: boolean;
 }
 
-export type FilterItemDispatchProps = PickActionCreators<
-  'removeFilter' | 'updateFilter'
->;
+export type FilterItemDispatchProps = PickActionCreators<'removeFilter' | 'updateFilter'>;
 
 export const FIMapDispatchToProps: FilterItemDispatchProps = {
   removeFilter: actionCreators.removeFilter,
-  updateFilter: actionCreators.updateFilter
+  updateFilter: actionCreators.updateFilter,
 };
 
-export type FilterItemProps = FilterItemOwnProps &
-  FilterItemStateProps &
-  FilterItemDispatchProps;
+export type FilterItemProps = FilterItemOwnProps & FilterItemStateProps & FilterItemDispatchProps;
 
 export type FilterItemViewProps = {
   handleFilterRemoval: (id: Filter['id']) => () => void;

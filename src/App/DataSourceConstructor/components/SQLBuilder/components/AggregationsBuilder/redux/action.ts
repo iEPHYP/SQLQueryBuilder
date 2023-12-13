@@ -1,20 +1,12 @@
 import { Action } from 'store/models/action-types';
+
 import { Aggregation } from '../components/AggregationItem/model';
 
-export type AddAggregationAction = Action<
-  'ADD_AGGREGATION',
-  { aggregation: Aggregation }
->;
+export type AddAggregationAction = Action<'ADD_AGGREGATION', { aggregation: Aggregation }>;
 
-export type UpdateAggregationAction = Action<
-  'UPDATE_AGGREGATION',
-  { aggregation: Aggregation }
->;
+export type UpdateAggregationAction = Action<'UPDATE_AGGREGATION', { aggregation: Aggregation }>;
 
-export type RemoveAggregationAction = Action<
-  'REMOVE_AGGREGATION',
-  { id: Aggregation['id'] }
->;
+export type RemoveAggregationAction = Action<'REMOVE_AGGREGATION', { id: Aggregation['id'] }>;
 
 export type ClearAggregationsAction = Action<'CLEAR_AGGREGATIONS'>;
 
@@ -24,30 +16,26 @@ export type AggregationActions =
   | RemoveAggregationAction
   | ClearAggregationsAction;
 
-export const aggregationActionTypes: (AggregationActions['type'])[] = [
+export const aggregationActionTypes: AggregationActions['type'][] = [
   'ADD_AGGREGATION',
   'UPDATE_AGGREGATION',
   'REMOVE_AGGREGATION',
-  'CLEAR_AGGREGATIONS'
+  'CLEAR_AGGREGATIONS',
 ];
 
-export const addAggregation = (
-  aggregation: Aggregation
-): AddAggregationAction => ({
+export const addAggregation = (aggregation: Aggregation): AddAggregationAction => ({
   type: 'ADD_AGGREGATION',
-  aggregation
+  aggregation,
 });
 
-export const updateAggregation = (
-  aggregation: Aggregation
-): UpdateAggregationAction => ({
+export const updateAggregation = (aggregation: Aggregation): UpdateAggregationAction => ({
   type: 'UPDATE_AGGREGATION',
-  aggregation
+  aggregation,
 });
 
 export const removeAggregation = (id: Aggregation['id']): RemoveAggregationAction => ({
   type: 'REMOVE_AGGREGATION',
-  id
+  id,
 });
 
 export const clearAggregations = (): ClearAggregationsAction => ({
@@ -58,5 +46,5 @@ export const AggregationBuilderActionCreators = {
   addAggregation,
   updateAggregation,
   removeAggregation,
-  clearAggregations
+  clearAggregations,
 };

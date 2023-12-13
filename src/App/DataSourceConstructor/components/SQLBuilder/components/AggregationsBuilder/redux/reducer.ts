@@ -1,10 +1,12 @@
 import { Reducer, ReducersMapObject } from 'redux';
+
 import { Aggregation } from '../components/AggregationItem/model';
+
 import {
   AddAggregationAction,
   AggregationActions,
   RemoveAggregationAction,
-  UpdateAggregationAction
+  UpdateAggregationAction,
 } from './action';
 import { AggregationsBuilderState } from './state';
 
@@ -13,10 +15,10 @@ export const addAggregation: Reducer<Aggregation[], AddAggregationAction> = (
   { aggregation }
 ) => state.concat(new Aggregation({ ...aggregation }));
 
-export const updateAggregation: Reducer<
-  Aggregation[],
-  UpdateAggregationAction
-> = (state = [], { aggregation }) =>
+export const updateAggregation: Reducer<Aggregation[], UpdateAggregationAction> = (
+  state = [],
+  { aggregation }
+) =>
   state.map((a) => {
     if (a.id !== aggregation.id) {
       return a;
@@ -25,15 +27,12 @@ export const updateAggregation: Reducer<
     return new Aggregation(a, aggregation);
   });
 
-export const removeAggregation: Reducer<
-  Aggregation[],
-  RemoveAggregationAction
-> = (state = [], { id }) => state.filter((aggregation) => aggregation.id !== id);
+export const removeAggregation: Reducer<Aggregation[], RemoveAggregationAction> = (
+  state = [],
+  { id }
+) => state.filter((aggregation) => aggregation.id !== id);
 
-export const aggregations: Reducer<
-  Aggregation[],
-  AggregationActions
-> = (state = [], action) => {
+export const aggregations: Reducer<Aggregation[], AggregationActions> = (state = [], action) => {
   switch (action.type) {
     case 'ADD_AGGREGATION':
       return addAggregation(state, action);
@@ -48,8 +47,6 @@ export const aggregations: Reducer<
   }
 };
 
-export const AggregationsBuilderReducers: ReducersMapObject<
-  AggregationsBuilderState
-> = {
-  aggregations
+export const AggregationsBuilderReducers: ReducersMapObject<AggregationsBuilderState> = {
+  aggregations,
 };

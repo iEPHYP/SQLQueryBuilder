@@ -1,13 +1,11 @@
 import { QueryJSON } from 'App/DataSourceConstructor/components/SQLGenerator/redux/query-json.model';
-import {
-  PickStates,
-  State
-} from 'store/models/State';
+import { PickStates, State } from 'store/models/State';
+
+import { constructTreeTable } from './JOIN/construct-table-tree';
+import { getAllColumnBranches } from './JOIN/get-all-columns';
 import { generateAggregations } from './AGGREGATIONS';
 import { generateGroupings } from './GROUPINGS';
 import { generateJoins } from './JOIN';
-import { constructTreeTable } from './JOIN/construct-table-tree';
-import { getAllColumnBranches } from './JOIN/get-all-columns';
 import { generateOrderBy } from './ORDERBY';
 import { generateSelection } from './SELECT';
 import { generateWhere } from './WHERE';
@@ -31,7 +29,7 @@ export const generateSQLQuery = ({
   groupings,
   orders,
   rowLimit,
-  tables
+  tables,
 }: SQLGeneratorStateProps): string => {
   let query = '';
   const tableName = selectedTable && selectedTable.name;
@@ -42,14 +40,8 @@ export const generateSQLQuery = ({
     filtersAliased,
     aggregationsAliased,
     groupingsAliased,
-    ordersAliased
-  } = getAllColumnBranches(
-    filters,
-    aggregations,
-    groupings,
-    orders,
-    customColumns
-  );
+    ordersAliased,
+  } = getAllColumnBranches(filters, aggregations, groupings, orders, customColumns);
 
   const rootTreeTable = constructTreeTable(allColumnBranches, tables);
 
@@ -72,9 +64,7 @@ export const generateSQLQuery = ({
       customColumnsAliased,
       rootTreeTable.alias
     )}
-    FROM "${tableName}" ${
-      rootTreeTable.alias ? `"${rootTreeTable.alias}"` : ''
-    }` +
+    FROM "${tableName}" ${rootTreeTable.alias ? `"${rootTreeTable.alias}"` : ''}` +
     joins +
     where +
     groupBy +
@@ -96,7 +86,7 @@ export const generateSQLQueryJSON = ({
   groupings,
   orders,
   customColumns,
-  rowLimit
+  rowLimit,
 }: State): QueryJSON =>
   new QueryJSON({
     tableName: selectedTable ? selectedTable.name : '',
@@ -105,5 +95,5 @@ export const generateSQLQueryJSON = ({
     groupings,
     orders,
     customColumns,
-    rowLimit
+    rowLimit,
   });

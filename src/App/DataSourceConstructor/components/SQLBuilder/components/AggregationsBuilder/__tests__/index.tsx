@@ -1,16 +1,17 @@
 import {
   fireEvent,
   getByText as getByTextOn,
-  queryByText as queryByTextOn
+  queryByText as queryByTextOn,
 } from 'react-testing-library';
 import { backIconPlaceholder } from '__tests__/utils/mock-placeholders';
 import { regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { getGeneratedQuery, render } from '../../../__tests__/render.utils';
 import { aggregationsBuilderLabel } from '../../../labels';
 import { aggregationOperators } from '../../AggregationsBuilder/aggregations';
 import {
   clickAddAAggregation,
-  clickAddMoreAggregation
+  clickAddMoreAggregation,
 } from '../../AggregationsBuilder/components/AddAggregation/__tests__/utils/click-add-a-aggregation';
 import { selectAColumn } from '../../common/ColumnSelector/__tests__/utils/select-a-column';
 import { selectATable } from '../../TableSelector/__tests__/utils/select-table';
@@ -22,18 +23,13 @@ describe('Aggregations Builder', () => {
 
   const columns = selectATable();
 
-  const aggregationsBuilderPanel = getByTextOn(
-    document.body,
-    regex(aggregationsBuilderLabel)
-  );
+  const aggregationsBuilderPanel = getByTextOn(document.body, regex(aggregationsBuilderLabel));
 
   const clickOnAggregation = (columnName: string) => {
     fireEvent.click(getByTextOn(aggregationsBuilderPanel, regex(columnName)));
   };
 
-  const showsAppropriateLabel = (
-    aggregation: typeof aggregationOperators[0]
-  ) => {
+  const showsAppropriateLabel = (aggregation: (typeof aggregationOperators)[0]) => {
     const label = getByText(regex(aggregation));
 
     expect(label.textContent).toMatchSnapshot();
@@ -49,29 +45,23 @@ describe('Aggregations Builder', () => {
   const cumulitiveCountOfRowsAggregation = aggregationOperators[5];
   const aNumberColumn = columns[3];
 
-  const checkNumberTypeAggregation = (
-    aggregation: typeof aggregationOperators[0]
-  ) => {
+  const checkNumberTypeAggregation = (aggregation: (typeof aggregationOperators)[0]) => {
     clickAddMoreAggregation();
     fireEvent.click(getByText(aggregation));
 
     const columnSelectorPanel = getByTestId('column-selector');
 
     // shows only number columns
-    columns.forEach(column => {
+    columns.forEach((column) => {
       if (column.type === 'number' || column.foreignTableName) {
-        expect(
-          getByTextOn(columnSelectorPanel, column.name)
-        ).toBeInTheDocument();
+        expect(getByTextOn(columnSelectorPanel, column.name)).toBeInTheDocument();
       } else {
-        expect(
-          queryByTextOn(columnSelectorPanel, column.name)
-        ).not.toBeInTheDocument();
+        expect(queryByTextOn(columnSelectorPanel, column.name)).not.toBeInTheDocument();
       }
     });
 
     selectAColumn(aNumberColumn, {
-      container: getByTestId('column-selector')
+      container: getByTestId('column-selector'),
     });
 
     showsAppropriateLabel(aggregation);
@@ -87,7 +77,7 @@ describe('Aggregations Builder', () => {
   it('should show the tips messages', () => {
     clickAddAAggregation();
 
-    aggregationOperators.forEach(aggregation => {
+    aggregationOperators.forEach((aggregation) => {
       const tips = getTips(aggregation);
 
       expect(getByText(regex(tips))).toBeInTheDocument();
@@ -153,7 +143,7 @@ describe('Aggregations Builder', () => {
     fireEvent.click(getByText(numberOfDistinctValuesAggregation));
 
     // should show all column types for number of distinct values
-    columns.forEach(column => {
+    columns.forEach((column) => {
       expect(getByText(column.name)).toBeInTheDocument();
     });
 
@@ -197,7 +187,7 @@ describe('Aggregations Builder', () => {
 
     const productForeignColumn = columns[5];
     const { foreignColumns } = selectAColumn(productForeignColumn, {
-      expand: true
+      expand: true,
     });
 
     const availableAmountColumn = foreignColumns[2];

@@ -5,8 +5,8 @@ export class TreeTable {
 
   public name: string;
   public parentColumnName: string;
-  public alias: string = '';
-  public primaryKeyColumn: string = '';
+  public alias = '';
+  public primaryKeyColumn = '';
   public foreignColumns: string[] = [];
   public foreignTreeTables: TreeTable[] = [];
 
@@ -47,9 +47,7 @@ export class TreeTable {
   }
 
   public setPrimaryKeyColumn(originalTables: Table[]) {
-    const originalTable = originalTables.find(
-      table => table.name === this.name
-    );
+    const originalTable = originalTables.find((table) => table.name === this.name);
     originalTable && (this.primaryKeyColumn = originalTable.primaryKeyColumn);
   }
 }

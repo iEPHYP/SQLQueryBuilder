@@ -4,34 +4,31 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { raiseGlobalError } from 'store/global-error/action';
 import { Epic } from 'store/models/Epic';
 import { UpdateRootStateAction } from 'store/reducer';
+
 import {
   AggregationActions,
-  aggregationActionTypes
+  aggregationActionTypes,
 } from '../../SQLBuilder/components/AggregationsBuilder/redux/action';
 import {
   CustomColumnActions,
-  customColumnActionTypes
+  customColumnActionTypes,
 } from '../../SQLBuilder/components/CustomColumnsBuilder/redux/action';
 import {
   FilterActions,
-  filterActionTypes
+  filterActionTypes,
 } from '../../SQLBuilder/components/FilterBuilder/redux/action';
 import {
   GroupingActions,
-  groupingActionTypes
+  groupingActionTypes,
 } from '../../SQLBuilder/components/GroupingsBuilder/redux/action';
 import {
   OrderActions,
-  orderActionTypes
+  orderActionTypes,
 } from '../../SQLBuilder/components/OrdersBuilder/redux/action';
 import { SetRowLimitAction } from '../../SQLBuilder/components/RowLimit/redux/action';
 import { SelectTableAction } from '../../SQLBuilder/components/TableSelector/redux/action';
-import {
-  setDrillDownQueryJson,
-  setDrillDownSQLQuery,
-  setQueryJson,
-  setSQLQuery
-} from './action';
+
+import { setDrillDownQueryJson, setDrillDownSQLQuery, setQueryJson, setSQLQuery } from './action';
 import { generateSQLQuery, generateSQLQueryJSON } from './generate';
 import { getDrillDownState } from './generateDrillDown';
 import { QueryJSON } from './query-json.model';
@@ -57,23 +54,21 @@ export const generateSQLQueryEpic: Epic<
       'SET_ROW_LIMIT',
       'UPDATE_ROOT_STATE'
     ),
-    mergeMap(action => {
+    mergeMap((action) => {
       const state = state$.value;
       const drillDownState = getDrillDownState(
         state,
-        action.type === 'SELECT_TABLE'
-          ? new QueryJSON()
-          : state$.value.drillDownQueryJson
+        action.type === 'SELECT_TABLE' ? new QueryJSON() : state$.value.drillDownQueryJson
       );
 
       return [
         setSQLQuery(generateSQLQuery(state)),
         setQueryJson(generateSQLQueryJSON(state)),
         setDrillDownSQLQuery(generateSQLQuery(drillDownState)),
-        setDrillDownQueryJson(generateSQLQueryJSON(drillDownState))
+        setDrillDownQueryJson(generateSQLQueryJSON(drillDownState)),
       ];
     }),
-    catchError(err => {
+    catchError((err) => {
       console.error(err);
 
       return of(raiseGlobalError(`Couldn't generate sql query`));

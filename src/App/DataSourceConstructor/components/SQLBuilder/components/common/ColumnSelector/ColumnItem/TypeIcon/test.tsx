@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+
 import { TypeIcon, TypeIconProps } from '.';
 
-const render = getConfiguredRender<TypeIconProps>(<TypeIcon type='number'/>);
+const render = getConfiguredRender<TypeIconProps>(<TypeIcon type="number" />);
 
 describe('TypeIcon', () => {
-
   it('should render sharp symbol for number type', () => {
     const { componentNode } = render({ type: 'number' });
 

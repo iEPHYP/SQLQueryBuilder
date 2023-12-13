@@ -1,5 +1,6 @@
-import { Typography, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { Typography, withStyles } from '@material-ui/core';
+
 import { AddCustomColumn } from './components/AddCustomColumn';
 import { CustomColumnItem } from './components/CustomColumnItem';
 import { CustomColumnsBuilderViewProps } from './props';
@@ -11,30 +12,22 @@ export const CustomColumnsBuilder = withStyles(customColumnsBuilderStyles)((({
   customColumns,
   aggregations,
   groupings,
-  classes
+  classes,
 }) => (
   <>
-    {!(
-      (aggregations && aggregations.length) ||
-      (groupings && groupings.length)
-    ) ? (
+    {!((aggregations && aggregations.length) || (groupings && groupings.length)) ? (
       <div className={classes.root}>
         {customColumns && customColumns.length ? (
           <div className={classes.customColumns}>
-            {customColumns.map(customColumn => (
-              <CustomColumnItem
-                key={customColumn.id}
-                customColumn={customColumn}
-              />
+            {customColumns.map((customColumn) => (
+              <CustomColumnItem key={customColumn.id} customColumn={customColumn} />
             ))}
           </div>
         ) : null}
         <AddCustomColumn />
       </div>
     ) : (
-      <Typography className={classes['no-column']}>
-        {hiddenCustomColumnsText}
-      </Typography>
+      <Typography className={classes['no-column']}>{hiddenCustomColumnsText}</Typography>
     )}
   </>
 )) as React.FC<CustomColumnsBuilderViewProps>);

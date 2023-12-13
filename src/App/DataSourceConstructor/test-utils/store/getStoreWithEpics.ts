@@ -6,21 +6,14 @@ import { dependencies } from 'store/models/Dependencies';
 import { State } from 'store/models/State';
 import { rootReducer } from 'store/reducer';
 
-export const getStoreWithEpics = (
-  initialState: Partial<State> = {}
-): Store<State, Action> => {
-
+export const getStoreWithEpics = (initialState: Partial<State> = {}): Store<State, Action> => {
   const epicMiddleware = createEpicMiddleware({
-    dependencies
+    dependencies,
   });
 
   const enhancer = compose(applyMiddleware(epicMiddleware));
 
-  const store = createStore<State, Action, any, any>(
-    rootReducer,
-    initialState,
-    enhancer
-  );
+  const store = createStore<State, Action, any, any>(rootReducer, initialState, enhancer);
 
   epicMiddleware.run(epic);
 

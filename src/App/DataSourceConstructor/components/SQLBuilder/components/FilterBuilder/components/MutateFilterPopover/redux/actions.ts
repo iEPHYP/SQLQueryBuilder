@@ -5,5 +5,5 @@ import { setPickedVariables } from './variable/action';
 export const MutateFilterPopoverActionCreators = {
   setOperation,
   setPickedVariables,
-  changeCanSaveFilterState
+  changeCanSaveFilterState,
 };

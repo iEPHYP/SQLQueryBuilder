@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { NumberOperation } from '../../../NumberOperation';
 import { NumberField, NumberFieldProps } from '../NumberField';
+
 import {
   OneNumberOperandsDispatchProps,
   OneNumberOperandsProps,
   OneNumberOperandsStateProps,
-  ONOMapDispatchToProps
+  ONOMapDispatchToProps,
 } from './props';
 
 export const OneNumberOperands = connect<
@@ -15,22 +17,17 @@ export const OneNumberOperands = connect<
   OneNumberOperandsDispatchProps,
   {},
   State
->(
-  ({ operation }) => {
-    const { operands } = operation as NumberOperation;
+>(({ operation }) => {
+  const { operands } = operation as NumberOperation;
 
-    return { operands, operation: operation as NumberOperation };
-  },
-  ONOMapDispatchToProps
-)(
+  return { operands, operation: operation as NumberOperation };
+}, ONOMapDispatchToProps)(
   class extends React.Component<OneNumberOperandsProps> {
-    public handleOperandChange: NumberFieldProps['onValueChange'] = ({
-      floatValue = 0
-    }) => {
+    public handleOperandChange: NumberFieldProps['onValueChange'] = ({ floatValue = 0 }) => {
       const { setOperation, operation } = this.props;
 
       setOperation(new NumberOperation(operation, { operands: floatValue }));
-    }
+    };
 
     public render() {
       const { operands } = this.props;
@@ -38,10 +35,7 @@ export const OneNumberOperands = connect<
       return (
         <>
           <div style={{ padding: 10 }}>
-            <NumberField
-              value={operands}
-              onValueChange={this.handleOperandChange}
-            />
+            <NumberField value={operands} onValueChange={this.handleOperandChange} />
           </div>
         </>
       );

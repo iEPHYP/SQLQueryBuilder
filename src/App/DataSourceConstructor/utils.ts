@@ -1,10 +1,11 @@
 import { Table } from 'App/DataSourceConstructor/schemas';
 import { State } from 'store/models/State';
 import { Variable } from 'types';
+
 import { DataSourceConstructorProps } from './props';
 
 export const getTable = (tableName: string, tables: Table[]) =>
-  tables.find(table => table.name === tableName) || null;
+  tables.find((table) => table.name === tableName) || null;
 
 export const getNewState = (
   initialQuery: DataSourceConstructorProps['initialQuery'],
@@ -19,24 +20,22 @@ export const getNewState = (
 
     stateFromInitialQuery = {
       selectedTable,
-      ...queryStates
+      ...queryStates,
     };
   }
 
   return {
     ...state,
-    ...stateFromInitialQuery
+    ...stateFromInitialQuery,
   };
 };
 
-export const preprocessVariables = (
-  variables: Variable[] | undefined
-): Variable[] =>
+export const preprocessVariables = (variables: Variable[] | undefined): Variable[] =>
   variables
     ? variables.map((variable, index) => {
         return {
           ...variable,
-          order: index + 1
+          order: index + 1,
         };
       })
     : [];

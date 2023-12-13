@@ -1,11 +1,9 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core';
 import { ClassesProp } from 'App/utils/classes-prop';
-import {
-  PickStates,
-  State
-} from 'store/models/State';
+import { PickStates, State } from 'store/models/State';
+
 import { AggregationsBuilder } from './components/AggregationsBuilder';
 import { FeaturedField } from './components/common/FieldLabel';
 import { CustomColumnsBuilder } from './components/CustomColumnsBuilder';
@@ -21,18 +19,17 @@ import {
   groupingsBuilderLabel,
   ordersBuilderLabel,
   rowLimitBuilderLabel,
-  tableSelectorLabel
+  tableSelectorLabel,
 } from './labels';
 import { SQLBuilderClassKeys, sqlBuilderStyles } from './styles';
 
 export type SQLBuilderStateProps = PickStates<'selectedTable'>;
 
-export type SQLBuilderProps = SQLBuilderStateProps &
-  ClassesProp<SQLBuilderClassKeys>;
+export type SQLBuilderProps = SQLBuilderStateProps & ClassesProp<SQLBuilderClassKeys>;
 
-export const SQLBuilder = connect<SQLBuilderStateProps, {}, {}, State>(
-  ({ selectedTable }) => ({ selectedTable })
-)(
+export const SQLBuilder = connect<SQLBuilderStateProps, {}, {}, State>(({ selectedTable }) => ({
+  selectedTable,
+}))(
   withStyles(sqlBuilderStyles)((({ selectedTable, classes: { root } }) => {
     return (
       <div className={root}>
@@ -42,19 +39,13 @@ export const SQLBuilder = connect<SQLBuilderStateProps, {}, {}, State>(
         <FeaturedField label={filtersBuilderLabel} disabled={!selectedTable}>
           <FilterBuilder />
         </FeaturedField>
-        <FeaturedField
-          label={aggregationsBuilderLabel}
-          disabled={!selectedTable}
-        >
+        <FeaturedField label={aggregationsBuilderLabel} disabled={!selectedTable}>
           <AggregationsBuilder />
         </FeaturedField>
         <FeaturedField label={groupingsBuilderLabel} disabled={!selectedTable}>
           <GroupingsBuilder />
         </FeaturedField>
-        <FeaturedField
-          label={customColumnsBuilderLabel}
-          disabled={!selectedTable}
-        >
+        <FeaturedField label={customColumnsBuilderLabel} disabled={!selectedTable}>
           <CustomColumnsBuilder />
         </FeaturedField>
         <FeaturedField label={ordersBuilderLabel} disabled={!selectedTable}>

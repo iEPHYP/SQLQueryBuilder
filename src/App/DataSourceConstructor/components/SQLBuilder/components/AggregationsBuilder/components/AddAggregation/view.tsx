@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import { AddEntity } from '../../../common/AddEntity';
 import { MutateAggregationPopover } from '../MutateAggregationPopover';
+
 import { AddAggregationViewProps } from './props';
 
 export const addAggregationText = 'Add an aggregation';
@@ -16,13 +18,7 @@ export class AddAggregation extends React.Component<AddAggregationViewProps, any
   }
 
   public render() {
-    const {
-      aggregations,
-      addAggregation,
-      isOpen,
-      handleClose,
-      handleOpen
-    } = this.props;
+    const { aggregations, addAggregation, isOpen, handleClose, handleOpen } = this.props;
 
     return (
       <>
@@ -33,14 +29,14 @@ export class AddAggregation extends React.Component<AddAggregationViewProps, any
         >
           {addAggregationText}
         </AddEntity>
-        { isOpen && (// TODO: resolve this problem another way
+        {isOpen && ( // TODO: resolve this problem another way
           <MutateAggregationPopover
             action={addAggregation}
             isOpen={isOpen}
             anchorEl={this.popoverLauncher.current}
             onClose={handleClose}
           />
-        ) }
+        )}
       </>
     );
   }

@@ -1,5 +1,6 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
+
 import { Bracket, BracketProps } from './Bracket';
 import { BracketsProps } from './props';
 import { bracketsStyles } from './styles';
@@ -10,16 +11,11 @@ export const Brackets = withStyles(bracketsStyles)(
       const { bracketsCount, openBracket, onChange } = this.props;
 
       onChange(dashed ? bracketsCount - 1 : bracketsCount + 1, openBracket);
-    }
+    };
 
     public getDefaultDashedBracket = () => (
-      <Bracket
-        key={0}
-        dashed={true}
-        openBracket={this.props.openBracket}
-        onClick={this.onClickHandler}
-      />
-    )
+      <Bracket key={0} dashed openBracket={this.props.openBracket} onClick={this.onClickHandler} />
+    );
 
     public getSolidBrackets = () => {
       const { bracketsCount, openBracket } = this.props;
@@ -38,10 +34,13 @@ export const Brackets = withStyles(bracketsStyles)(
       }
 
       return solidBrackets;
-    }
+    };
 
     public render() {
-      const { openBracket, classes: { root } } = this.props;
+      const {
+        openBracket,
+        classes: { root },
+      } = this.props;
 
       const bracketElements: JSX.Element[] = [];
 

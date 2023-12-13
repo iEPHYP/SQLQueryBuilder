@@ -1,14 +1,16 @@
 import { fireEvent, getByText as getByTextOn } from 'react-testing-library';
 import { backIconPlaceholder } from '__tests__/utils/mock-placeholders';
 import { regexWord } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { getGeneratedQuery, render } from '../../../__tests__/render.utils';
 import { selectAColumn } from '../../common/ColumnSelector/__tests__/utils/select-a-column';
 import { selectATable } from '../../TableSelector/__tests__/utils/select-table';
 import {
   clickAddAFilter,
-  clickAddMoreFilter
+  clickAddMoreFilter,
 } from '../components/AddFilter/__tests__/utils/click-add-a-filter';
 import { addFilterPlaceholder } from '../components/AddFilter/view';
+
 import { clickAddTheFilter, clickUpdateTheFilter } from './utils/filter-utils';
 
 describe('Filters Builder', () => {
@@ -21,7 +23,6 @@ describe('Filters Builder', () => {
         hide logic operator before first operation,
         change logic operator's value,
         remove that filter`, () => {
-
     const { getByText, queryByText, queryAllByText, getAllByText } = render();
 
     const columns = selectATable();

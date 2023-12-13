@@ -1,5 +1,6 @@
-import * as casual from 'casual';
 import { testInitialAndCurrentState } from 'App/DataSourceConstructor/test-utils/store/reducers';
+import * as casual from 'casual';
+
 import { resetRowLimit, RowLimitActions, setRowLimit } from '../action';
 import { defaultRowLimitValue, rowLimit as reducer } from '../reducer';
 

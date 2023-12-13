@@ -6,7 +6,7 @@ export const dependencies = {
   getJSON,
   post,
   put,
-  delete: ajax.delete
+  delete: ajax.delete,
 };
 
 export type Dependencies = typeof dependencies;

@@ -1,13 +1,9 @@
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
-import {
-  PickStates,
-  State
-} from 'store/models/State';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
+import { PickStates, State } from 'store/models/State';
 import { Variable } from 'types';
+
 import { ClassesProp } from '../utils/classes-prop';
+
 import { QueryJSON } from './components/SQLGenerator/redux/query-json.model';
 import { DatabaseSchema } from './schemas';
 import { QueryBuilderClassKeys } from './styles';
@@ -36,21 +32,15 @@ export type DataSourceConstructorDispatchProps = PickActionCreators<
   'setDatabaseSchema' | 'updateRootState'
 >;
 
-const {
-  setDatabaseSchema,
-  updateRootState
-}: DataSourceConstructorDispatchProps = actionCreators;
+const { setDatabaseSchema, updateRootState }: DataSourceConstructorDispatchProps = actionCreators;
 export const DSCMapDispatchToProps: DataSourceConstructorDispatchProps = {
   setDatabaseSchema,
-  updateRootState
+  updateRootState,
 };
 
 export type DataSourceConstructorProps = DataSourceConstructorOwnProps &
   DataSourceConstructorDispatchProps &
   DataSourceConstructorStateProps;
 
-export type DataSourceConstructorViewProps = Pick<
-  DataSourceConstructorOwnProps,
-  'showQuery'
-> &
+export type DataSourceConstructorViewProps = Pick<DataSourceConstructorOwnProps, 'showQuery'> &
   ClassesProp<QueryBuilderClassKeys>;

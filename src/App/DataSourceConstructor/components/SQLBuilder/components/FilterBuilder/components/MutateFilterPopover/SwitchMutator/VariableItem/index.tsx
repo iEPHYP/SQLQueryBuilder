@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { Chip } from '@material-ui/core';
 import { ChipProps } from '@material-ui/core/Chip';
 import VariableIcon from '@material-ui/icons/Code';
-import * as React from 'react';
 import { Variable } from 'types';
 
 export interface VariableItemProps {
@@ -13,15 +13,15 @@ export interface VariableItemProps {
 export const VariableItem: React.FC<VariableItemProps> = ({
   variable,
   className,
-  onVariableClick
+  onVariableClick,
 }) => {
   return (
     <Chip
       className={className}
       style={{ height: 20, cursor: 'pointer', marginRight: 5 }}
-      icon={<VariableIcon fontSize='small' />}
+      icon={<VariableIcon fontSize="small" />}
       label={variable.name}
-      color='primary'
+      color="primary"
       {...(onVariableClick ? { onClick: onVariableClick(variable) } : {})}
     />
   );

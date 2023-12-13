@@ -1,21 +1,19 @@
 import {
   fireEvent,
   getAllByDisplayValue as getAllByDisplayValueOn,
-  getByDisplayValue as getByDisplayValueOn
+  getByDisplayValue as getByDisplayValueOn,
 } from 'react-testing-library';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
-import {
-  getByText$,
-  regex
-} from 'App/DataSourceConstructor/test-utils/utils';
+import { getByText$, regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { mutatorPanelId } from '../../../../view';
 import { BooleanOperator, booleanOperators } from '../operators';
@@ -26,7 +24,7 @@ describe(`boolean operations`, () => {
       - with certain operand's value,
       should not allow non-boolean operands,
       should allow non-integer operands
-  `, async () => {
+`, async () => {
     const { getByText, getByTestId, debug, componentNode } = render();
 
     const columns = selectATable();
@@ -38,29 +36,19 @@ describe(`boolean operations`, () => {
 
     const checkFilterDescription = (operator: BooleanOperator) => {
       expect(
-        getByText$(componentNode, new RegExp(`^${columnName}.+$`, 'i'))
-          .textContent
-      ).toMatchSnapshot(
-        `filter description for '${operator}' boolean operator`
-      );
+        getByText$(componentNode, new RegExp(`^${columnName}.+$`, 'i')).textContent
+      ).toMatchSnapshot(`filter description for '${operator}' boolean operator`);
     };
 
-    const checkOperation = (
-      nextOperator: BooleanOperator,
-      prevOperator?: BooleanOperator
-    ) => {
+    const checkOperation = (nextOperator: BooleanOperator, prevOperator?: BooleanOperator) => {
       clickOnFilter();
-      prevOperator &&
-        fireEvent.click(getByText(new RegExp(`^${prevOperator}.*$`)));
-      prevOperator &&
-        fireEvent.click(getByText(new RegExp(`^.*${nextOperator}$`)));
+      prevOperator && fireEvent.click(getByText(new RegExp(`^${prevOperator}.*$`)));
+      prevOperator && fireEvent.click(getByText(new RegExp(`^.*${nextOperator}$`)));
       clickUpdateTheFilter();
 
       checkFilterDescription(nextOperator);
 
-      expect(getGeneratedQuery()).toMatchSnapshot(
-        `'${nextOperator}' boolean operator`
-      );
+      expect(getGeneratedQuery()).toMatchSnapshot(`'${nextOperator}' boolean operator`);
     };
 
     // default boolean filter

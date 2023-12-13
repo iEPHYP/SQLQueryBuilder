@@ -1,14 +1,14 @@
+import * as React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import * as React from 'react';
+
 import { PopoverPaper } from '../../../../../common/PopoverPaper';
+
 import { CheckedSelectViewProps } from './props';
 import { checkedSelectStyles } from './styles';
 
-class View<TItem extends string = string> extends React.Component<
-  CheckedSelectViewProps<TItem>
-> {
+class View<TItem extends string = string> extends React.Component<CheckedSelectViewProps<TItem>> {
   private readonly popoverLauncher: React.RefObject<HTMLDivElement>;
 
   constructor(props: CheckedSelectViewProps<TItem>) {
@@ -26,7 +26,7 @@ class View<TItem extends string = string> extends React.Component<
       handleItemSelect,
       showItems,
       handlePopoverClose,
-      hasBorder = true
+      hasBorder = true,
     } = this.props;
 
     return (
@@ -41,7 +41,7 @@ class View<TItem extends string = string> extends React.Component<
           <Typography className={classes && classes['selected-item-value']}>
             {selectedItem}
           </Typography>
-          {hasBorder && <ExpandMore fontSize='small' />}
+          {hasBorder && <ExpandMore fontSize="small" />}
         </div>
         <PopoverPaper
           isOpen={isOpen}
@@ -50,7 +50,7 @@ class View<TItem extends string = string> extends React.Component<
         >
           <div className={classes && classes['select-items']}>
             {items &&
-              items.map(item => {
+              items.map((item) => {
                 const selected = item === selectedItem;
 
                 return (
@@ -62,15 +62,13 @@ class View<TItem extends string = string> extends React.Component<
                     onClick={handleItemSelect(item)}
                   >
                     <CheckIcon
-                      fontSize='small'
+                      fontSize="small"
                       className={classes && classes['check-icon']}
                       style={{
-                        ...(!selected ? { color: 'transparent' } : {})
+                        ...(!selected ? { color: 'transparent' } : {}),
                       }}
                     />
-                    <Typography className={classes && classes['item-text']}>
-                      {item}
-                    </Typography>
+                    <Typography className={classes && classes['item-text']}>{item}</Typography>
                   </div>
                 );
               })}
@@ -86,6 +84,4 @@ class View<TItem extends string = string> extends React.Component<
  * cuz wrapping generic component to HOC
  * eliminates generic part as an outcome
  */
-export const CheckedSelect: typeof View = withStyles(checkedSelectStyles)(
-  View
-) as any;
+export const CheckedSelect: typeof View = withStyles(checkedSelectStyles)(View) as any;

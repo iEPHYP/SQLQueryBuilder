@@ -8,7 +8,7 @@ export const foreignFieldDataMock = {
           through: false,
           glyph: 'user',
           title: 'David',
-          type: 'user'
+          type: 'user',
         },
         {
           id: '2',
@@ -16,7 +16,7 @@ export const foreignFieldDataMock = {
           through: false,
           glyph: 'user',
           title: 'Kevin',
-          type: 'user'
+          type: 'user',
         },
         {
           id: '3',
@@ -24,10 +24,10 @@ export const foreignFieldDataMock = {
           through: false,
           glyph: 'user',
           title: 'Elvis',
-          type: 'user'
-        }
+          type: 'user',
+        },
       ],
-      total: 3
-    }
-  }
+      total: 3,
+    },
+  },
 };

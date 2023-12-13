@@ -1,16 +1,15 @@
 import { CustomColumnAliased } from '../JOIN/models/ColumnAliased';
+
 import { getColumnAlias } from './utils';
 
-export const generateCustomColumnsSelection = (
-  customColumns: CustomColumnAliased[]
-): string => {
+export const generateCustomColumnsSelection = (customColumns: CustomColumnAliased[]): string => {
   let selection = '';
 
   customColumns
     .filter(({ column }) => column !== column.lastColumn)
     .forEach(({ column }, index, filteredCustomColumns) => {
       const {
-        lastColumn: { tableAlias, columnName }
+        lastColumn: { tableAlias, columnName },
       } = column;
 
       const columnAlias = getColumnAlias(column);

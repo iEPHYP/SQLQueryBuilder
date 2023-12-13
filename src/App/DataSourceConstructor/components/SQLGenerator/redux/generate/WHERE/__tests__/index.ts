@@ -1,4 +1,5 @@
 import { generateWhere } from '..';
+
 import { complexBracketsFilters } from './utils/complex-brackets-filters';
 import { doubleBracketsFilter } from './utils/double-brackets-filter';
 import { singleBracketsFilter } from './utils/single-brackets-filter';

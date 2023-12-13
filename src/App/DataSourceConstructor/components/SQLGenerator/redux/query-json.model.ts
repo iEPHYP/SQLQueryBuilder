@@ -4,6 +4,7 @@ import { Grouping } from 'App/DataSourceConstructor/components/SQLBuilder/compon
 import { Order } from 'App/DataSourceConstructor/components/SQLBuilder/components/OrdersBuilder/components/OrderItem/model';
 import { SQLBuilderState } from 'App/DataSourceConstructor/components/SQLBuilder/redux/state';
 import { GetExcludedFieldsOf } from 'App/utils/type-filters';
+
 import { ColumnBranch } from '../../SQLBuilder/components/common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { CustomColumn } from '../../SQLBuilder/components/CustomColumnsBuilder/components/CustomColumnItem/model';
 import { RowLimitBuilderState } from '../../SQLBuilder/components/RowLimit/redux/state';
@@ -11,19 +12,17 @@ import { RowLimitBuilderState } from '../../SQLBuilder/components/RowLimit/redux
 export class QueryJSON
   implements
     GetExcludedFieldsOf<
-      Pick<
-        SQLBuilderState,
-        'selectedTable' | 'operation' | 'canSaveFilter' | 'pickedVariables'
-      >,
+      Pick<SQLBuilderState, 'selectedTable' | 'operation' | 'canSaveFilter' | 'pickedVariables'>,
       SQLBuilderState
-    > {
+    >
+{
   public customColumns: CustomColumn[] = [];
   public filters: Filter[] = [];
   public aggregations: Aggregation[] = [];
   public groupings: Grouping[] = [];
   public orders: Order[] = [];
   public rowLimit: RowLimitBuilderState['rowLimit'] = 2000;
-  public tableName: string = '';
+  public tableName = '';
 
   constructor(...inits: Partial<QueryJSON>[]) {
     Object.assign(this, ...inits);
@@ -33,39 +32,39 @@ export class QueryJSON
 
   public wrapIntoClasses() {
     this.filters = this.filters.map(
-      filter =>
+      (filter) =>
         new Filter(filter, {
-          column: new ColumnBranch(filter.column).normalize()
+          column: new ColumnBranch(filter.column).normalize(),
         })
     );
 
     this.aggregations = this.aggregations.map(
-      aggregation =>
+      (aggregation) =>
         new Aggregation(aggregation, {
           column: aggregation.column
             ? new ColumnBranch(aggregation.column).normalize()
-            : aggregation.column
+            : aggregation.column,
         })
     );
 
     this.groupings = this.groupings.map(
-      grouping =>
+      (grouping) =>
         new Grouping(grouping, {
-          column: new ColumnBranch(grouping.column).normalize()
+          column: new ColumnBranch(grouping.column).normalize(),
         })
     );
 
     this.orders = this.orders.map(
-      order =>
+      (order) =>
         new Order(order, {
-          column: new ColumnBranch(order.column).normalize()
+          column: new ColumnBranch(order.column).normalize(),
         })
     );
 
     this.customColumns = this.customColumns.map(
-      customColumn =>
+      (customColumn) =>
         new CustomColumn(customColumn, {
-          column: new ColumnBranch(customColumn.column).normalize()
+          column: new ColumnBranch(customColumn.column).normalize(),
         })
     );
   }

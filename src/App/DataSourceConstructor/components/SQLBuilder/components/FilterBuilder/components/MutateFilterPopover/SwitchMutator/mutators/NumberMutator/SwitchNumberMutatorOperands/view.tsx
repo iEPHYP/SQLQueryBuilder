@@ -1,12 +1,12 @@
 import * as React from 'react';
+
 import { OneNumberOperands } from './NumberOperands/OneNumberOperands';
 import { TwoNumberOperands } from './NumberOperands/TwoNumberOperands';
 import { SwitchNumberMutatorOperandsViewProps } from './props';
 
-export const SwitchNumberMutatorOperands: React.FC<
-  SwitchNumberMutatorOperandsViewProps
-> = ({ operator }) => {
-
+export const SwitchNumberMutatorOperands: React.FC<SwitchNumberMutatorOperandsViewProps> = ({
+  operator,
+}) => {
   switch (operator) {
     case 'Equal to':
     case 'Not equal to':

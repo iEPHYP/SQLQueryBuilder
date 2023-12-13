@@ -1,7 +1,9 @@
-import { FormControl, MenuItem, Select, withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { FormControl, MenuItem, Select, withStyles } from '@material-ui/core';
+
 import { VariableItem } from '../../../VariableItem';
 import { VariablesPicker } from '../../../VariablesPicker';
+
 import { EnumsPickerViewProps } from './props';
 import { enumsPickerStyles } from './styles';
 
@@ -16,7 +18,7 @@ export const EnumsPicker = withStyles(enumsPickerStyles)((({
   handleVariablePick,
   handleSelectOpen,
   handleSelectClose,
-  handleVariableItemClick
+  handleVariableItemClick,
 }) => {
   return (
     <FormControl className={classes['form-control']}>
@@ -28,10 +30,7 @@ export const EnumsPicker = withStyles(enumsPickerStyles)((({
         onClose={handleSelectClose}
         classes={{ select: classes.select }}
         endAdornment={
-          <VariablesPicker
-            onVariablePicked={handleVariablePick}
-            filter={filterVariables}
-          />
+          <VariablesPicker onVariablePicked={handleVariablePick} filter={filterVariables} />
         }
         startAdornment={
           <>
@@ -45,7 +44,7 @@ export const EnumsPicker = withStyles(enumsPickerStyles)((({
           </>
         }
       >
-        {enums.map(enumuration => (
+        {enums.map((enumuration) => (
           <MenuItem key={enumuration} value={enumuration}>
             {enumuration}
           </MenuItem>

@@ -1,5 +1,6 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
+
 // import { ForeignField } from 'process/startnew/ForeignField';
 // import { VariableType } from 'types';
 // import { VariableItem } from '../../VariableItem';
@@ -24,9 +25,7 @@ export const ForeignColumnMutator = withStyles(foreignColumnMutatorStyles)(
 
       return (
         <div className={classes.root}>
-          <div
-            className={`${classes['title-and-operator']} ${classes['common-padding']}`}
-          >
+          <div className={`${classes['title-and-operator']} ${classes['common-padding']}`}>
             <div className={classes.title}>{titleComponent}</div>
           </div>
           <hr className={classes.hr} />
@@ -57,9 +56,7 @@ export const ForeignColumnMutator = withStyles(foreignColumnMutatorStyles)(
             /> */}
           </div>
           <hr className={classes.hr} />
-          <div
-            className={`${classes['mutator-action']} ${classes['common-padding']}`}
-          >
+          <div className={`${classes['mutator-action']} ${classes['common-padding']}`}>
             {submitMutationComponent}
           </div>
         </div>

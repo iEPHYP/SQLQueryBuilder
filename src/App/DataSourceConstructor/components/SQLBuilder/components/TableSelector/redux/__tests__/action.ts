@@ -1,4 +1,5 @@
 import { Table } from 'App/DataSourceConstructor/schemas';
+
 import { selectTable, SelectTableAction } from '../action';
 
 describe('TableSelector selectTable action creator', () => {
@@ -6,7 +7,7 @@ describe('TableSelector selectTable action creator', () => {
     const table = new Table();
     const expectedAction: SelectTableAction = {
       type: 'SELECT_TABLE',
-      table
+      table,
     };
 
     expect(selectTable(table)).toEqual(expectedAction);

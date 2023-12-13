@@ -1,4 +1,5 @@
 import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
+
 import { generateSQLQuery, SQLGeneratorStateProps } from '..';
 
 const state: SQLGeneratorStateProps = {
@@ -9,7 +10,7 @@ const state: SQLGeneratorStateProps = {
   groupings: [],
   orders: [],
   rowLimit: null,
-  tables: tablesMock
+  tables: tablesMock,
 };
 
 describe('LIMIT clause', () => {

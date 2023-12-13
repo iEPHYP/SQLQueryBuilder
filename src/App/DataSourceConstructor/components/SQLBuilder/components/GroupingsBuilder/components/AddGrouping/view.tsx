@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import { AddEntity } from '../../../common/AddEntity';
 import { MutateGroupingPopover } from '../MutateGroupingPopover';
+
 import { AddGroupingViewProps } from './props';
 
 export const addGroupingText = 'Add a grouping';
@@ -16,13 +18,7 @@ export class AddGrouping extends React.Component<AddGroupingViewProps> {
   }
 
   public render() {
-    const {
-      groupings,
-      addGrouping,
-      isOpen,
-      handleClose,
-      handleOpen
-    } = this.props;
+    const { groupings, addGrouping, isOpen, handleClose, handleOpen } = this.props;
 
     return (
       <>
@@ -33,7 +29,7 @@ export class AddGrouping extends React.Component<AddGroupingViewProps> {
         >
           {addGroupingText}
         </AddEntity>
-        {isOpen && (// TODO: resolve this problem another way
+        {isOpen && ( // TODO: resolve this problem another way
           <MutateGroupingPopover
             action={addGrouping}
             isOpen={isOpen}

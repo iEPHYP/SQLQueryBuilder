@@ -1,18 +1,21 @@
+import { emitEmptyAction } from 'App/DataSourceConstructor/components/SQLBuilder/redux/action-creators';
 import { ofType } from 'redux-observable';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { emitEmptyAction } from 'App/DataSourceConstructor/components/SQLBuilder/redux/action-creators';
 import { raiseGlobalError } from 'store/global-error/action';
 import { Epic } from 'store/models/Epic';
+
 import {
   changeCanSaveFilterState,
-  ChangeCanSaveFilterStateAction
+  ChangeCanSaveFilterStateAction,
 } from '../../../../../../redux/can-save-filter/action';
+
 import { CoupleDateOperation } from './model';
 
-export const coupleDatesVariablesValidityWatcherEpic: Epic<
-  ChangeCanSaveFilterStateAction
-> = (action$, state$) =>
+export const coupleDatesVariablesValidityWatcherEpic: Epic<ChangeCanSaveFilterStateAction> = (
+  action$,
+  state$
+) =>
   action$.pipe(
     ofType<ChangeCanSaveFilterStateAction>('CHANGE_CAN_SAVE_FILTER_STATE'),
     map(() => {
@@ -34,13 +37,11 @@ export const coupleDatesVariablesValidityWatcherEpic: Epic<
 
       return emitEmptyAction();
     }),
-    catchError(err => {
+    catchError((err) => {
       console.error(err && err.xhr && err.xhr.response);
 
       return of(
-        raiseGlobalError(
-          'Couldn\'t resolve multiple variables validity on date between operator'
-        )
+        raiseGlobalError("Couldn't resolve multiple variables validity on date between operator")
       );
     })
   );

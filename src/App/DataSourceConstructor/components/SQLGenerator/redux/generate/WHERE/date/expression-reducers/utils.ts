@@ -1,11 +1,11 @@
-import * as moment from 'moment';
 import { PluralDateComponent } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DateOperandsComponents/NearDate/plural-date-components';
 import { RelativeDate } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DatePickerByOperandsType/components/RelativeDatePicker/singular-date-components';
+import * as moment from 'moment';
 
 export type Format = 'date' | 'timestamp';
 
 export const DateComponentToFormatMap: {
-  [K in PluralDateComponent]: string
+  [K in PluralDateComponent]: string;
 } = {
   Years: 'YYYY',
   Months: 'MM',
@@ -13,22 +13,17 @@ export const DateComponentToFormatMap: {
   Days: 'DD',
   Hours: 'HH24',
   Minutes: 'MI',
-  Seconds: 'SS'
+  Seconds: 'SS',
 };
 
-export const truncDate = (
-  dateComponent: PluralDateComponent,
-  date: Date | string
-): string => {
+export const truncDate = (dateComponent: PluralDateComponent, date: Date | string): string => {
   return `date_trunc('${dateComponent}', (${
     date instanceof Date ? toSqlDate(date) : date
   })::timestamp)`;
 };
 
 export const toSqlDate = (date: Date | string = 'now()') => {
-  return date instanceof Date
-    ? `'${moment(date).format('YYYY-MM-DD HH:mm:ss')}'`
-    : date;
+  return date instanceof Date ? `'${moment(date).format('YYYY-MM-DD HH:mm:ss')}'` : date;
 };
 
 export type DateParam = Parameters<typeof toSqlDate>[0];

@@ -10,11 +10,11 @@ export const similarForeignGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'name',
         tableName: 'currency',
-        type: 'string'
+        type: 'string',
       }).normalize(),
       foreignTableName: 'currency',
     }).normalize(),
-    id: 'a69c1573-8e32-466c-952f-c2987aa5952d'
+    id: 'a69c1573-8e32-466c-952f-c2987aa5952d',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -24,10 +24,10 @@ export const similarForeignGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'ID',
         tableName: 'currency',
-        type: 'number'
+        type: 'number',
       }).normalize(),
       foreignTableName: 'currency',
     }).normalize(),
-    id: '6cdd04cf-af5d-478f-a56d-d2ea7e3721b7'
-  })
+    id: '6cdd04cf-af5d-478f-a56d-d2ea7e3721b7',
+  }),
 ];

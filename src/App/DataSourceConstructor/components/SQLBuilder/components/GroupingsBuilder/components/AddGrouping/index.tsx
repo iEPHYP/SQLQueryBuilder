@@ -1,23 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { WithPopoverManagement } from '../../../common/WithPopoverManagement';
+
 import {
   AddGroupingDispatchProps,
   AddGroupingProps,
   AddGroupingStateProps,
-  AGMapDispatchToProps
+  AGMapDispatchToProps,
 } from './props';
 import { AddGrouping as View } from './view';
 
-export const AddGrouping = connect<
-  AddGroupingStateProps,
-  AddGroupingDispatchProps,
-  {},
-  State
->(
+export const AddGrouping = connect<AddGroupingStateProps, AddGroupingDispatchProps, {}, State>(
   ({ groupings }) => ({
-    groupings
+    groupings,
   }),
   AGMapDispatchToProps
 )(
@@ -25,11 +22,7 @@ export const AddGrouping = connect<
     public static ViewWithPopoverManagement = WithPopoverManagement(View);
 
     public render() {
-      return (
-        <AddGrouping.ViewWithPopoverManagement
-          {...this.props}
-        />
-      );
+      return <AddGrouping.ViewWithPopoverManagement {...this.props} />;
     }
   }
 );

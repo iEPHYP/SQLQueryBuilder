@@ -1,7 +1,8 @@
 import { formatColumn } from '../common-formatters';
-import { fillJoins } from './fill-joins';
+
 import { Join } from './models/Join';
 import { TreeTable } from './models/TreeTable';
+import { fillJoins } from './fill-joins';
 
 export const generateJoins = (treeTable: TreeTable): string => {
   const joins: Join[] = fillJoins(treeTable);
@@ -15,10 +16,7 @@ export const drawJoins = (joins: Join[]): string => {
   joins.forEach(({ primaryTable: pt, foreignTable: ft }) => {
     const joinString = `
     LEFT JOIN "${ft.name}" "${ft.alias}"
-    ON ${formatColumn(pt.keyColumn, pt.alias)} = ${formatColumn(
-      ft.keyColumn,
-      ft.alias
-    )}`;
+    ON ${formatColumn(pt.keyColumn, pt.alias)} = ${formatColumn(ft.keyColumn, ft.alias)}`;
 
     joinsString += joinString;
   });

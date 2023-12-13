@@ -1,4 +1,5 @@
 import { DrillDownOperation } from '../../../../../SQLGenerator/redux/generate/WHERE/drill-down/model';
+
 import { BooleanOperation } from './SwitchMutator/mutators/BooleanMutator/BooleanOperation';
 import { DateOperation } from './SwitchMutator/mutators/DateMutator/DateOperation';
 import { ForeignColumnOperation } from './SwitchMutator/mutators/ForeignColumnMutator/ForeignColumnOperation';
@@ -15,17 +16,11 @@ export type Operation =
 
 export interface IOperation<
   TOperationType extends OperationType,
-  TOperands extends Operation['operands']
+  TOperands extends Operation['operands'],
 > {
   operator: string;
   operands: TOperands;
   type: TOperationType;
 }
 
-export type OperationType =
-  | 'Number'
-  | 'String'
-  | 'Date'
-  | 'Boolean'
-  | 'Foreign'
-  | 'DrillDown';
+export type OperationType = 'Number' | 'String' | 'Date' | 'Boolean' | 'Foreign' | 'DrillDown';

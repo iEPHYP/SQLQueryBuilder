@@ -1,15 +1,16 @@
 import {
   fireEvent,
   getByText as getByTextOn,
-  queryByText as queryByTextOn
+  queryByText as queryByTextOn,
 } from 'react-testing-library';
 import { regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { getGeneratedQuery, render } from '../../../__tests__/render.utils';
 import { groupingsBuilderLabel } from '../../../labels';
 import { selectAColumn } from '../../common/ColumnSelector/__tests__/utils/select-a-column';
 import {
   clickAddAGrouping,
-  clickAddMoreGrouping
+  clickAddMoreGrouping,
 } from '../../GroupingsBuilder/components/AddGrouping/__tests__/utils/click-add-a-grouping';
 import { selectATable } from '../../TableSelector/__tests__/utils/select-table';
 import { addGroupingText } from '../components/AddGrouping/view';
@@ -19,10 +20,7 @@ describe('Groupings Builder', () => {
 
   const columns = selectATable();
 
-  const groupingsBuilderPanel = getByTextOn(
-    document.body,
-    regex(groupingsBuilderLabel)
-  );
+  const groupingsBuilderPanel = getByTextOn(document.body, regex(groupingsBuilderLabel));
 
   const clickOnGrouping = (columnName: string) => {
     fireEvent.click(getByTextOn(groupingsBuilderPanel, regex(columnName)));
@@ -65,11 +63,9 @@ describe('Groupings Builder', () => {
 
     // hide already added column
     const columnSelector = getByTestId('column-selector');
-    columns.forEach(column => {
+    columns.forEach((column) => {
       if (column.name === createdAtColumn.name) {
-        expect(
-          queryByTextOn(columnSelector, createdAtColumn.name)
-        ).not.toBeInTheDocument();
+        expect(queryByTextOn(columnSelector, createdAtColumn.name)).not.toBeInTheDocument();
       } else {
         expect(queryByTextOn(columnSelector, column.name)).toBeInTheDocument();
       }
@@ -78,16 +74,13 @@ describe('Groupings Builder', () => {
     const productColumn = columns[5];
     const {
       foreignColumns: foreignProductColumns,
-      foreignColumnsPanel: foreignProductColumnsPanel
+      foreignColumnsPanel: foreignProductColumnsPanel,
     } = selectAColumn(productColumn, { expand: true });
     const currencyColumn = foreignProductColumns[4];
-    const { foreignColumns: foreignCurrencyColumns } = selectAColumn(
-      currencyColumn,
-      {
-        expand: true,
-        container: foreignProductColumnsPanel
-      }
-    );
+    const { foreignColumns: foreignCurrencyColumns } = selectAColumn(currencyColumn, {
+      expand: true,
+      container: foreignProductColumnsPanel,
+    });
     const currencyName = foreignCurrencyColumns[1];
     selectAColumn(currencyName);
 

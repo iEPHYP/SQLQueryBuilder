@@ -1,7 +1,7 @@
 import { Operation } from '../MutateFilterPopover/Operation';
 
 export const operatorSuffixMap: {
-  [K in Operation['operator']]: string
+  [K in Operation['operator']]: string;
 } = {
   // Number operators
   'Equal to': 'is equal to',

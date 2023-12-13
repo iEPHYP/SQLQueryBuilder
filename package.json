@@ -52,11 +52,6 @@
     "ts-prune": "0.10.3",
     "typescript": "3.5.3"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

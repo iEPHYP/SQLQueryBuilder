@@ -2,7 +2,7 @@ import { ISingleDateOperands } from '../../../DateOperandsComponents/SingleDate/
 
 export class FixedDateOperands implements ISingleDateOperands {
   public date: Date = new Date(new Date().setHours(0, 0, 0, 0));
-  public timeEnabled: boolean = false;
+  public timeEnabled = false;
   public dateType: 'Fixed date' = 'Fixed date';
 
   constructor(...inits: Partial<FixedDateOperands>[]) {

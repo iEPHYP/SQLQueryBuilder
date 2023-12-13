@@ -1,10 +1,10 @@
 import { Column } from 'App/DataSourceConstructor/schemas';
 import * as uuid from 'uuid';
+
 import { ColumnBranch } from '../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { AggregationOperator } from '../../aggregations';
 
 export class Aggregation {
-
   public id: string;
   public operator: AggregationOperator;
   public column: ColumnBranch | undefined;
@@ -17,16 +17,12 @@ export class Aggregation {
       this.id = uuid();
     }
 
-    this.columnFilterTypes = Aggregation.getExpectedColumnsTypeFrom(
-      this.operator
-    );
+    this.columnFilterTypes = Aggregation.getExpectedColumnsTypeFrom(this.operator);
     !this.columnFilterTypes.length && (this.column = undefined);
   }
 
   public static hasNoColumn(operator: AggregationOperator): boolean {
-    return (
-      operator === 'Count of rows' || operator === 'Cumulative count of rows'
-    );
+    return operator === 'Count of rows' || operator === 'Cumulative count of rows';
   }
 
   public static getExpectedColumnsTypeFrom(

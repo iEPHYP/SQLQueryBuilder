@@ -1,4 +1,5 @@
 import { fireEvent, getByText } from 'react-testing-library';
+
 import { addFilterText, updateFilterText } from '../../components/MutateFilterPopover/view';
 
 export const clickAddTheFilter = () => {

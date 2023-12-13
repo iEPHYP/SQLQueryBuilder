@@ -4,19 +4,17 @@ import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/config
 import { WithReduxProvider } from 'App/DataSourceConstructor/test-utils/contexts-provider/with-ReduxProvider';
 import { getCertainCalledProps } from 'App/DataSourceConstructor/test-utils/react-utils';
 import { getStore } from 'App/DataSourceConstructor/test-utils/store/getStore';
-import { ColumnSelector } from '..';
+
 import { ColumnSelectorOwnProps, TableColumnsProps } from '../props';
 import { TableColumns } from '../view';
+import { ColumnSelector } from '..';
 
 jest.mock('../view', () => ({
-  TableColumns: jest.fn(() => null)
+  TableColumns: jest.fn(() => null),
 }));
 
 const render = getConfiguredRender<ColumnSelectorOwnProps>(
-  <ColumnSelector
-    onColumnSelected={jest.fn()}
-    popoverPositionUpdater={undefined}
-  />
+  <ColumnSelector onColumnSelected={jest.fn()} popoverPositionUpdater={undefined} />
 );
 
 describe('ColumnSelector', () => {
@@ -33,10 +31,10 @@ describe('ColumnSelector', () => {
         contextProviderApplicators: [
           WithReduxProvider(
             getStore({
-              selectedTable: null
+              selectedTable: null,
             })
-          )
-        ]
+          ),
+        ],
       }
     );
 
@@ -53,17 +51,17 @@ describe('ColumnSelector', () => {
         contextProviderApplicators: [
           WithReduxProvider(
             getStore({
-              selectedTable: new Table({ name: tableName })
+              selectedTable: new Table({ name: tableName }),
             })
-          )
-        ]
+          ),
+        ],
       }
     );
 
-    const certainProps = getCertainCalledProps<TableColumnsProps>(
-      TableColumnsMock,
-      ['level', 'tableBranch']
-    );
+    const certainProps = getCertainCalledProps<TableColumnsProps>(TableColumnsMock, [
+      'level',
+      'tableBranch',
+    ]);
 
     expect(certainProps).toMatchSnapshot();
   });

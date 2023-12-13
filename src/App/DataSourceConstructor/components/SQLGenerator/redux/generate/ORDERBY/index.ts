@@ -1,10 +1,7 @@
 import { formatColumn } from '../common-formatters';
 import { OrderAliased } from '../JOIN/models/ColumnAliased';
 
-export const generateOrderBy = (
-  orders: OrderAliased[] = [],
-  groupingsOrderBy: string
-): string => {
+export const generateOrderBy = (orders: OrderAliased[] = [], groupingsOrderBy: string): string => {
   if (groupingsOrderBy) {
     return groupingsOrderBy;
   }
@@ -18,9 +15,9 @@ export const generateOrderBy = (
     (
       {
         column: {
-          lastColumn: { columnName, tableAlias }
+          lastColumn: { columnName, tableAlias },
         },
-        sortOrderCode
+        sortOrderCode,
       },
       index
     ) => {

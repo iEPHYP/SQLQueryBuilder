@@ -1,4 +1,5 @@
 import { fireEvent, getByText } from 'react-testing-library';
+
 import { ordersBuilderLabel } from '../../../../../../labels';
 import { addOrderText } from '../../view';
 

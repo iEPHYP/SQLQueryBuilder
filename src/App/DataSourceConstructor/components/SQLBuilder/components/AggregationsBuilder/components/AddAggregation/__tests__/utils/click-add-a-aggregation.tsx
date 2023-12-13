@@ -1,4 +1,5 @@
 import { fireEvent, getByText } from 'react-testing-library';
+
 import { aggregationsBuilderLabel } from '../../../../../../labels';
 import { addAggregationText } from '../../view';
 

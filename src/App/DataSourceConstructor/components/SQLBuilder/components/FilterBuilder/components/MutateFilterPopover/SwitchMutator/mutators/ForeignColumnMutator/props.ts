@@ -1,12 +1,11 @@
 import { ClassesProp } from 'App/utils/classes-prop';
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
-import { PickStates } from 'store/models/State';
 import { ForeignFieldProps } from 'process/startnew/ForeignField';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
+import { PickStates } from 'store/models/State';
+
 import { VariablesPickerProps } from '../../VariablesPicker/props';
 import { MutatorProps } from '../props';
+
 import { ForeignColumnOperation } from './ForeignColumnOperation';
 import { ForeignColumnMutatorClassKeys } from './styles';
 
@@ -25,7 +24,7 @@ const { setOperation, setPickedVariables, changeCanSaveFilterState } = actionCre
 export const FCMMapDispatchToProps: ForeignColumnMutatorDispatchProps = {
   setOperation,
   setPickedVariables,
-  changeCanSaveFilterState
+  changeCanSaveFilterState,
 };
 
 export type ForeignColumnMutatorProps = ForeignColumnMutatorOwnProps &

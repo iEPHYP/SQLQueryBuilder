@@ -1,8 +1,10 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
 import { RemoveButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
+
 import { SequentialColumnItem } from '../../../common/SequentialColumnView';
 import { MutateFilterPopover } from '../MutateFilterPopover';
+
 import { Brackets } from './components/Brackets';
 import { FilterOperandsView } from './components/FilterOperandsView';
 import { LogicOperatorSwitch } from './components/LogicOperatorSwitch';
@@ -31,7 +33,7 @@ export const FilterItem = withStyles(filterItemStyles)(
         handleClose,
         handleFilterRemoval,
         handleLogicOperatorSwitch,
-        handleBracketsCountChange
+        handleBracketsCountChange,
       } = this.props;
 
       const {
@@ -41,7 +43,7 @@ export const FilterItem = withStyles(filterItemStyles)(
         variables,
         logicOperator,
         openingBracketsCount,
-        closingBracketsCount
+        closingBracketsCount,
       } = filter;
 
       return (
@@ -57,21 +59,11 @@ export const FilterItem = withStyles(filterItemStyles)(
               <Brackets
                 bracketsCount={openingBracketsCount}
                 onChange={handleBracketsCountChange}
-                openBracket={true}
+                openBracket
               />
-              <div
-                className={classes.operation}
-                onClick={handleOpen}
-                ref={this.popoverLauncher}
-              >
-                <SequentialColumnItem
-                  {...column}
-                  suffix={operatorSuffixMap[operation.operator]}
-                />
-                <FilterOperandsView
-                  operation={operation}
-                  variables={variables}
-                />
+              <div className={classes.operation} onClick={handleOpen} ref={this.popoverLauncher}>
+                <SequentialColumnItem {...column} suffix={operatorSuffixMap[operation.operator]} />
+                <FilterOperandsView operation={operation} variables={variables} />
               </div>
               <RemoveButton onClick={handleFilterRemoval(id)} />
               <Brackets

@@ -1,9 +1,11 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
 import { RemoveButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
+
 import { SequentialColumnView } from '../../../common/SequentialColumnView';
 import { CheckedSelect } from '../../../FilterBuilder/components/MutateFilterPopover/SwitchMutator/CheckedSelect';
 import { MutateOrderPopover } from '../MutateOrderPopover';
+
 import { SortOrder, sortOrders } from './orders';
 import { OrderItemViewProps } from './props';
 import { orderItemStyles } from './styles';
@@ -27,7 +29,7 @@ export const OrderItem = withStyles(orderItemStyles)(
         handleOpen,
         handleClose,
         handleOrderRemoval,
-        handleSortOrderChange
+        handleSortOrderChange,
       } = this.props;
 
       const { id, column, sortOrder } = order;
@@ -35,11 +37,7 @@ export const OrderItem = withStyles(orderItemStyles)(
       return (
         <>
           <div className={classes.root}>
-            <div
-              ref={this.popoverLauncher}
-              onClick={handleOpen}
-              className={classes['column-view']}
-            >
+            <div ref={this.popoverLauncher} onClick={handleOpen} className={classes['column-view']}>
               <SequentialColumnView {...column} />
             </div>
             <CheckedSelect<SortOrder>
@@ -50,7 +48,7 @@ export const OrderItem = withStyles(orderItemStyles)(
             />
             <RemoveButton onClick={handleOrderRemoval(id)} />
           </div>
-          { isOpen && (
+          {isOpen && (
             <MutateOrderPopover
               isOpen={isOpen}
               anchorEl={this.popoverLauncher.current}
@@ -58,7 +56,7 @@ export const OrderItem = withStyles(orderItemStyles)(
               onClose={handleClose}
               order={order}
             />
-          ) }
+          )}
         </>
       );
     }

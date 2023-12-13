@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { WithPopoverManagement } from '../../../common/WithPopoverManagement';
+
 import {
   CustomColumnItemDispatchProps,
   CustomColumnItemOwnProps,
   CustomColumnItemProps,
   CustomColumnItemViewProps as ViewProps,
-  GIMapDispatchToProps
+  GIMapDispatchToProps,
 } from './props';
 import { CustomColumnItem as View } from './view';
 
@@ -24,7 +26,7 @@ export const CustomColumnItem = connect<
     public static ViewWithPopoverManagement = WithPopoverManagement(View);
 
     public handleCustomColumnRemoval: ViewProps['handleCustomColumnRemoval'] = (id) => () =>
-      this.props.removeCustomColumn(id)
+      this.props.removeCustomColumn(id);
 
     public render() {
       return (

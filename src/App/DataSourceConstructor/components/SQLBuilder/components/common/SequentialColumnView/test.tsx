@@ -1,12 +1,11 @@
-import * as casual from 'casual';
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
-import { SequentialColumnView } from '.';
+import * as casual from 'casual';
+
 import { ColumnBranch } from '../ColumnSelector/ColumnItem/SelectedColumn.models';
-import {
-  SequentialColumnViewConfigProps,
-  SequentialColumnViewProps
-} from './props';
+
+import { SequentialColumnViewConfigProps, SequentialColumnViewProps } from './props';
+import { SequentialColumnView } from '.';
 
 const render = getConfiguredRender<SequentialColumnViewProps>(
   <SequentialColumnView {...new ColumnBranch()} />
@@ -23,41 +22,33 @@ describe('SequentialColumnView', () => {
         should have prefix and space after prefix if there is a prefix,
         should have suffix and space before suffix if there is a suffix`, () => {
     const { componentNode, rerender } = render({
-      columnName
+      columnName,
     });
 
-    expect(componentNode).toHaveTextContent(
-      new RegExp(`^${columnName}`, 'gmi')
-    );
+    expect(componentNode).toHaveTextContent(new RegExp(`^${columnName}`, 'gmi'));
 
     rerender({ prefix, columnName, suffix });
-    expect(componentNode).toHaveTextContent(
-      new RegExp(`^${prefix}${columnName}${suffix}$`, 'gmi')
-    );
+    expect(componentNode).toHaveTextContent(new RegExp(`^${prefix}${columnName}${suffix}$`, 'gmi'));
   });
 
   it('should remove space after prefix if noSpaceAfterPrefix prop is set', () => {
     const { componentNode } = render({
       columnName,
       prefix,
-      noSpaceAfterPrefix: true
+      noSpaceAfterPrefix: true,
     });
 
-    expect(componentNode).toHaveTextContent(
-      new RegExp(`^${prefix}${columnName}`, 'gmi')
-    );
+    expect(componentNode).toHaveTextContent(new RegExp(`^${prefix}${columnName}`, 'gmi'));
   });
 
   it('should remove space before suffix if noSpaceBeforeSuffix prop is set', () => {
     const { componentNode } = render({
       columnName,
       suffix,
-      noSpaceBeforeSuffix: true
+      noSpaceBeforeSuffix: true,
     });
 
-    expect(componentNode).toHaveTextContent(
-      new RegExp(`^${columnName}${suffix}`, 'gmi')
-    );
+    expect(componentNode).toHaveTextContent(new RegExp(`^${columnName}${suffix}`, 'gmi'));
   });
 
   it(`should render suffix after foreign column rather than immediately after current columnName
@@ -67,16 +58,13 @@ describe('SequentialColumnView', () => {
     const { componentNode } = render({
       columnName,
       foreignColumn: new ColumnBranch({
-        columnName: foreignColumnName
+        columnName: foreignColumnName,
       }),
-      suffix
+      suffix,
     });
 
     expect(componentNode).toHaveTextContent(
-      new RegExp(
-        `^(${columnName})\\w+(${foreignColumnName})(${suffix})$`,
-        'gmi'
-      )
+      new RegExp(`^(${columnName})\\w+(${foreignColumnName})(${suffix})$`, 'gmi')
     );
   });
 
@@ -86,8 +74,8 @@ describe('SequentialColumnView', () => {
     const { componentNode } = render({
       columnName,
       foreignColumn: new ColumnBranch({
-        columnName: foreignColumnName
-      })
+        columnName: foreignColumnName,
+      }),
     });
 
     expect(componentNode).toHaveTextContent(
@@ -107,10 +95,10 @@ describe('SequentialColumnView', () => {
         foreignColumn: new ColumnBranch({
           columnName: foreignColumnName2,
           foreignColumn: new ColumnBranch({
-            columnName: foreignColumnName3
-          })
-        })
-      })
+            columnName: foreignColumnName3,
+          }),
+        }),
+      }),
     });
 
     expect(componentNode).toHaveTextContent(

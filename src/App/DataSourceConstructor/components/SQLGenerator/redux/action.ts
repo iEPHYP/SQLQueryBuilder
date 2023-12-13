@@ -1,33 +1,26 @@
 import { Action } from 'store/models/action-types';
+
 import { QueryJSON } from './query-json.model';
 
 export type SetSQLQueryAction = Action<'SET_SQL_QUERY', { query: string }>;
 
 export const setSQLQuery = (query: string): SetSQLQueryAction => ({
   type: 'SET_SQL_QUERY',
-  query
+  query,
 });
 
-export type SetQueryJsonAction = Action<
-  'SET_SQL_QUERY_JSON',
-  { queryJson: QueryJSON }
->;
+export type SetQueryJsonAction = Action<'SET_SQL_QUERY_JSON', { queryJson: QueryJSON }>;
 
 export const setQueryJson = (queryJson: QueryJSON): SetQueryJsonAction => ({
   type: 'SET_SQL_QUERY_JSON',
-  queryJson
+  queryJson,
 });
 
-export type SetDrillDownSQLQueryAction = Action<
-  'SET_DRILL_DOWN_SQL_QUERY',
-  { query: string }
->;
+export type SetDrillDownSQLQueryAction = Action<'SET_DRILL_DOWN_SQL_QUERY', { query: string }>;
 
-export const setDrillDownSQLQuery = (
-  query: string
-): SetDrillDownSQLQueryAction => ({
+export const setDrillDownSQLQuery = (query: string): SetDrillDownSQLQueryAction => ({
   type: 'SET_DRILL_DOWN_SQL_QUERY',
-  query
+  query,
 });
 
 export type SetDrillDownQueryJsonAction = Action<
@@ -35,16 +28,14 @@ export type SetDrillDownQueryJsonAction = Action<
   { queryJson: QueryJSON }
 >;
 
-export const setDrillDownQueryJson = (
-  queryJson: QueryJSON
-): SetDrillDownQueryJsonAction => ({
+export const setDrillDownQueryJson = (queryJson: QueryJSON): SetDrillDownQueryJsonAction => ({
   type: 'SET_DRILL_DOWN_QUERY_JSON',
-  queryJson
+  queryJson,
 });
 
 export const SQLGeneratorActionCreators = {
   setSQLQuery,
   setQueryJson,
   setDrillDownSQLQuery,
-  setDrillDownQueryJson
+  setDrillDownQueryJson,
 };

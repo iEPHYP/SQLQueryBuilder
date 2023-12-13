@@ -2,9 +2,7 @@ import { StyleRulesCallback } from '@material-ui/core';
 
 export type AddEntityClassKeys = 'root' | 'text' | 'add-icon';
 
-export const addEntityStyles: StyleRulesCallback<
-  AddEntityClassKeys
-> = (theme) => ({
+export const addEntityStyles: StyleRulesCallback<AddEntityClassKeys> = (theme) => ({
   root: {
     display: 'flex',
     alignItems: 'center',
@@ -14,17 +12,17 @@ export const addEntityStyles: StyleRulesCallback<
     opacity: 0.5,
     transition: '0.3s',
     '&:hover': {
-      opacity: 0.8
-    }
+      opacity: 0.8,
+    },
   },
   text: {
-    marginRight: '10px'
+    marginRight: '10px',
   },
   'add-icon': {
     fontSize: '18px',
     padding: '2px',
     margin: '0',
     borderRadius: '2px',
-    border: `1px solid ${theme.palette.common.black}`
-  }
+    border: `1px solid ${theme.palette.common.black}`,
+  },
 });

@@ -1,17 +1,15 @@
 import { fireEvent, getByText as getByTextOn } from 'react-testing-library';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
-import {
-  getByText$,
-  regex
-} from 'App/DataSourceConstructor/test-utils/utils';
+import { getByText$, regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { mutatorPanelId } from '../../../../../../../view';
 import { DateOperator, dateOperators } from '../../../../operators';
@@ -19,7 +17,7 @@ import { DateOperator, dateOperators } from '../../../../operators';
 describe(`'Is empty' and 'Is not empty' date operations`, () => {
   it(`should render proper sql query,
       should check the proper filter description render
-  `, async () => {
+`, async () => {
     const { getByText, getByTestId, componentNode } = render();
 
     const columns = selectATable();
@@ -27,10 +25,7 @@ describe(`'Is empty' and 'Is not empty' date operations`, () => {
 
     const checkFilterDescription = (operator: DateOperator) => {
       expect(
-        getByText$(
-          componentNode,
-          new RegExp(`^${dateColumnName}.*empty.*$`, 'i')
-        ).textContent
+        getByText$(componentNode, new RegExp(`^${dateColumnName}.*empty.*$`, 'i')).textContent
       ).toMatchSnapshot(`filter description for '${operator}' date operator`);
     };
 
@@ -45,9 +40,7 @@ describe(`'Is empty' and 'Is not empty' date operations`, () => {
     expect(getGeneratedQuery()).toMatchSnapshot(`'Is empty' operator`);
 
     fireEvent.click(getByText(regex(dateColumnName)));
-    fireEvent.click(
-      getByTextOn(getByTestId(mutatorPanelId), regex(dateOperators[6]))
-    );
+    fireEvent.click(getByTextOn(getByTestId(mutatorPanelId), regex(dateOperators[6])));
     fireEvent.click(getByText(regex(dateOperators[7])));
     clickUpdateTheFilter();
 

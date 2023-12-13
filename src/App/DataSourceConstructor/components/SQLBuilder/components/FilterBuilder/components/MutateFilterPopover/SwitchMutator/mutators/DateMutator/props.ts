@@ -1,7 +1,9 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { CheckedSelectProps } from '../../CheckedSelect/props';
 import { MutatorProps } from '../props';
+
 import { DateOperation } from './DateOperation';
 import { DateOperator } from './operators';
 import { DateMutatorClassKeys } from './styles';
@@ -17,7 +19,7 @@ export type DateMutatorDispatchProps = PickActionCreators<'setOperation' | 'setP
 const { setOperation, setPickedVariables } = actionCreators;
 export const DMMapDispatchToProps: DateMutatorDispatchProps = {
   setOperation,
-  setPickedVariables
+  setPickedVariables,
 };
 
 export type DateMutatorProps = DateMutatorOwnProps &

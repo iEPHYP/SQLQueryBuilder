@@ -7,7 +7,7 @@ enum RelativeDateEnum {
   'Beginning of the current quarter',
   'End of the current quarter',
   'Beginning of the current year',
-  'End of the current year'
+  'End of the current year',
 }
 
 export type RelativeDate = keyof typeof RelativeDateEnum;
@@ -21,5 +21,5 @@ export const relativeDates: RelativeDate[] = [
   'Beginning of the current quarter',
   'End of the current quarter',
   'Beginning of the current year',
-  'End of the current year'
+  'End of the current year',
 ];

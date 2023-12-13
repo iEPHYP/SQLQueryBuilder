@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { NumberOperation } from '../NumberOperation';
+
 import { SwitchNumberMutatorOperandsStateProps } from './props';
 import { SwitchNumberMutatorOperands as View } from './view';
 

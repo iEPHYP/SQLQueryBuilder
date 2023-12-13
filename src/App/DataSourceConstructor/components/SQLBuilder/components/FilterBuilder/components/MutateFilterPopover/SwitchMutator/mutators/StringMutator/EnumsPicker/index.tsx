@@ -1,27 +1,29 @@
 import * as React from 'react';
 import { VariableType } from 'types';
+
 import {
   EnumsPickerProps,
   EnumsPickerState,
   EnumsPickerViewProps as ViewProps,
-  IEnumsPickerHandlers
+  IEnumsPickerHandlers,
 } from './props';
 import { EnumsPicker as View } from './view';
 
 export class EnumsPicker
   extends React.Component<EnumsPickerProps, EnumsPickerState>
-  implements IEnumsPickerHandlers {
+  implements IEnumsPickerHandlers
+{
   public state: EnumsPickerState = { selectIsOpen: false };
 
-  public handleEnumChange: ViewProps['handleEnumChange'] = event => {
+  public handleEnumChange: ViewProps['handleEnumChange'] = (event) => {
     this.props.onEnumSelect(event.target.value);
-  }
+  };
 
-  public handleVariablePick: ViewProps['handleVariablePick'] = variable => {
+  public handleVariablePick: ViewProps['handleVariablePick'] = (variable) => {
     this.props.onVariableSelect(variable);
-  }
+  };
 
-  public filterVariables: ViewProps['filterVariables'] = variable => {
+  public filterVariables: ViewProps['filterVariables'] = (variable) => {
     const { columnName, modelName } = this.props.column;
 
     return (
@@ -29,19 +31,19 @@ export class EnumsPicker
       variable.model === modelName &&
       variable.field === columnName
     );
-  }
+  };
 
   public handleSelectOpen: ViewProps['handleSelectOpen'] = () => {
     this.setState({ selectIsOpen: true });
-  }
+  };
 
   public handleSelectClose: ViewProps['handleSelectClose'] = () => {
     this.setState({ selectIsOpen: false });
-  }
+  };
 
   public handleVariableItemClick: ViewProps['handleVariableItemClick'] = () => () => {
     this.setState({ selectIsOpen: true });
-  }
+  };
 
   public render() {
     return (

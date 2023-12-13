@@ -1,24 +1,21 @@
 import { StyleRulesCallback } from '@material-ui/core';
 
-export type AggregationsBuilderClassKeys =
-  | 'root'
-  | 'aggregations'
-  | 'and-operator';
+export type AggregationsBuilderClassKeys = 'root' | 'aggregations' | 'and-operator';
 
-export const aggregationsBuilderStyles: StyleRulesCallback<
-  AggregationsBuilderClassKeys
-> = (theme) => ({
+export const aggregationsBuilderStyles: StyleRulesCallback<AggregationsBuilderClassKeys> = (
+  theme
+) => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   aggregations: {
     marginRight: '10px',
     display: 'flex',
     alignItems: 'center',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   'and-operator': {
-    padding: '5px'
-  }
+    padding: '5px',
+  },
 });

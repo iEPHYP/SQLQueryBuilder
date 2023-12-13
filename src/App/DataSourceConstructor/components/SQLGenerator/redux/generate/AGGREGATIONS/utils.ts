@@ -8,11 +8,10 @@ export const getAlias = (
 
   if (columnBranch) {
     const {
-      lastColumn: { tableAlias, columnName }
+      lastColumn: { tableAlias, columnName },
     } = columnBranch;
 
-    alias += ` ${
-      columnBranch.hasZeroColumnLevel() ? columnName : `${columnName} (${tableAlias})`}`;
+    alias += ` ${columnBranch.hasZeroColumnLevel() ? columnName : `${columnName} (${tableAlias})`}`;
   }
 
   return alias;

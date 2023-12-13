@@ -1,31 +1,26 @@
-import { MenuItem, Select } from '@material-ui/core';
 import * as React from 'react';
+import { MenuItem, Select } from '@material-ui/core';
+
 import { FixedDatePicker } from './components/FixedDatePicker';
 import { RelativeDatePicker } from './components/RelativeDatePicker';
 import { VariableDatePicker } from './components/VariableDatePicker';
 import { dateOperandTypes } from './date-operand-types';
 import { DatePickerByOperandsTypeViewProps } from './props';
 
-export const DatePickerByOperandsType: React.FC<
-  DatePickerByOperandsTypeViewProps
-> = props => {
+export const DatePickerByOperandsType: React.FC<DatePickerByOperandsTypeViewProps> = (props) => {
   const {
     operands,
     limits,
     handleDateTypeChange,
     handleDateChange,
     handleTimeEnabledChange,
-    handleRelativeDateChange
+    handleRelativeDateChange,
   } = props;
 
   return (
     <>
-      <Select
-        value={operands.dateType}
-        onChange={handleDateTypeChange}
-        style={{ marginTop: 10 }}
-      >
-        {dateOperandTypes.map(dateOperandType => (
+      <Select value={operands.dateType} onChange={handleDateTypeChange} style={{ marginTop: 10 }}>
+        {dateOperandTypes.map((dateOperandType) => (
           <MenuItem key={dateOperandType} value={dateOperandType}>
             {dateOperandType}
           </MenuItem>
@@ -45,9 +40,7 @@ export const DatePickerByOperandsType: React.FC<
           onRelativeDateChange={handleRelativeDateChange}
         />
       )}
-      {operands.dateType === 'Variable date' && (
-        <VariableDatePicker {...props} />
-      )}
+      {operands.dateType === 'Variable date' && <VariableDatePicker {...props} />}
     </>
   );
 };

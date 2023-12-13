@@ -1,6 +1,8 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { PopoverManagerProps } from '../../../common/WithPopoverManagement';
+
 import { CustomColumn } from './model';
 import { CustomColumnItemClassKeys } from './styles';
 
@@ -14,11 +16,10 @@ export type CustomColumnItemDispatchProps = PickActionCreators<
 
 export const GIMapDispatchToProps: CustomColumnItemDispatchProps = {
   removeCustomColumn: actionCreators.removeCustomColumn,
-  updateCustomColumn: actionCreators.updateCustomColumn
+  updateCustomColumn: actionCreators.updateCustomColumn,
 };
 
-export type CustomColumnItemProps = CustomColumnItemOwnProps &
-  CustomColumnItemDispatchProps;
+export type CustomColumnItemProps = CustomColumnItemOwnProps & CustomColumnItemDispatchProps;
 
 export type CustomColumnItemViewProps = {
   handleCustomColumnRemoval: (id: CustomColumn['id']) => () => void;

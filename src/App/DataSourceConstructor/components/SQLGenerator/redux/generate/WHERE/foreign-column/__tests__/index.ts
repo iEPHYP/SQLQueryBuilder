@@ -1,10 +1,8 @@
 import { ForeignColumnOperation } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/ForeignColumnMutator/ForeignColumnOperation';
 import { Variable, VariableType } from 'types';
+
+import { ColumnBranchAliased, FilterAliased } from '../../../JOIN/models/ColumnAliased';
 import { generateForeignColumnOperation } from '..';
-import {
-  ColumnBranchAliased,
-  FilterAliased
-} from '../../../JOIN/models/ColumnAliased';
 
 describe('foreign column filter generator', () => {
   it('should render properly when there is picked record', () => {
@@ -16,7 +14,7 @@ describe('foreign column filter generator', () => {
             tableName: 'balance',
             type: 'string',
             foreignTableName: 'Account',
-            tableAlias: 'balance1'
+            tableAlias: 'balance1',
           }),
           operation: new ForeignColumnOperation({
             operands: {
@@ -25,10 +23,10 @@ describe('foreign column filter generator', () => {
               glyph: null,
               title: 'Feeney',
               rawId: '',
-              through: true
-            }
+              through: true,
+            },
           }),
-          id: 'be2651d6-82bd-41ff-b272-bb4288cf3ce3'
+          id: 'be2651d6-82bd-41ff-b272-bb4288cf3ce3',
         })
       )
     ).toMatchSnapshot();
@@ -41,7 +39,7 @@ describe('foreign column filter generator', () => {
       type: VariableType.Record,
       order: 2,
       model: 'Country',
-      widgets: []
+      widgets: [],
     };
 
     expect(
@@ -52,7 +50,7 @@ describe('foreign column filter generator', () => {
             tableName: 'employee',
             type: 'string',
             foreignTableName: 'Country',
-            tableAlias: 'employee1'
+            tableAlias: 'employee1',
           }),
           operation: new ForeignColumnOperation({
             operands: {
@@ -61,11 +59,11 @@ describe('foreign column filter generator', () => {
               glyph: null,
               title: 'Kazakhstan',
               rawId: '',
-              through: true
-            }
+              through: true,
+            },
           }),
           variables,
-          id: 'd541c88f-a968-4254-a04d-79b67bfef530'
+          id: 'd541c88f-a968-4254-a04d-79b67bfef530',
         })
       )
     ).toMatchSnapshot();

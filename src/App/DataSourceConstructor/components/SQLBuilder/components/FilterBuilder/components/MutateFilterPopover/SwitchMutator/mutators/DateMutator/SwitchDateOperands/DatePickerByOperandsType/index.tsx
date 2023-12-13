@@ -1,36 +1,38 @@
 import * as React from 'react';
+
 import { FixedDateOperands } from './components/FixedDatePicker/model';
 import { RelativeDateOperands } from './components/RelativeDatePicker/model';
 import { DateType } from './date-operand-types';
 import {
   DatePickerByOperandsTypeProps,
   DatePickerByOperandsTypeViewProps as ViewProps,
-  IDatePickerByOperandsTypeHandlers
+  IDatePickerByOperandsTypeHandlers,
 } from './props';
 import { getNewOperands } from './utils';
 import { DatePickerByOperandsType as View } from './view';
 
 export class DatePickerByOperandsType
   extends React.Component<DatePickerByOperandsTypeProps>
-  implements IDatePickerByOperandsTypeHandlers {
-  public handleDateTypeChange: ViewProps['handleDateTypeChange'] = event => {
+  implements IDatePickerByOperandsTypeHandlers
+{
+  public handleDateTypeChange: ViewProps['handleDateTypeChange'] = (event) => {
     const {
       operands: { dateType },
-      onOperandsChange
+      onOperandsChange,
     } = this.props;
 
     dateType !== event.target.value &&
       onOperandsChange(getNewOperands(event.target.value as DateType));
-  }
+  };
 
-  public handleDateChange: ViewProps['handleDateChange'] = date => {
+  public handleDateChange: ViewProps['handleDateChange'] = (date) => {
     const { operands, onOperandsChange } = this.props;
 
     operands.dateType === 'Fixed date' &&
       onOperandsChange(new FixedDateOperands(operands, { date }));
-  }
+  };
 
-  public handleTimeEnabledChange: ViewProps['handleTimeEnabledChange'] = timeEnabled => {
+  public handleTimeEnabledChange: ViewProps['handleTimeEnabledChange'] = (timeEnabled) => {
     const { operands, onOperandsChange } = this.props;
 
     if (operands.dateType === 'Fixed date') {
@@ -40,18 +42,18 @@ export class DatePickerByOperandsType
       onOperandsChange(
         new FixedDateOperands(operands, {
           timeEnabled,
-          ...(!timeEnabled ? { date: dateWithoutTime } : {})
+          ...(!timeEnabled ? { date: dateWithoutTime } : {}),
         })
       );
     }
-  }
+  };
 
-  public handleRelativeDateChange: ViewProps['handleRelativeDateChange'] = relativeDate => {
+  public handleRelativeDateChange: ViewProps['handleRelativeDateChange'] = (relativeDate) => {
     const { operands, onOperandsChange } = this.props;
 
     operands.dateType === 'Relative date' &&
       onOperandsChange(new RelativeDateOperands({ relativeDate }));
-  }
+  };
 
   public render() {
     return (

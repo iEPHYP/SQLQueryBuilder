@@ -9,17 +9,17 @@ export type SequentialColumnViewClassKeys =
   | 'suffix'
   | 'share-icon';
 
-const commonStyles: (color: string) => CSSProperties = color => ({
+const commonStyles: (color: string) => CSSProperties = (color) => ({
   display: 'flex',
   alignItems: 'center',
   whiteSpace: 'nowrap',
   margin: 1,
-  color
+  color,
 });
 
-export const sequentialColumnViewStyles: StyleRulesCallback<
-  SequentialColumnViewClassKeys
-> = theme => {
+export const sequentialColumnViewStyles: StyleRulesCallback<SequentialColumnViewClassKeys> = (
+  theme
+) => {
   const color = theme.palette.primary.main;
 
   return {
@@ -30,7 +30,7 @@ export const sequentialColumnViewStyles: StyleRulesCallback<
     'share-icon': { ...commonStyles(color), fontSize: theme.typography.body2.fontSize },
     'column-icon-couple': {
       display: 'flex',
-      alignItems: 'center'
-    }
+      alignItems: 'center',
+    },
   };
 };

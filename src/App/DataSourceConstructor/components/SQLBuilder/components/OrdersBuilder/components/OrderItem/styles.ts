@@ -2,9 +2,7 @@ import { StyleRulesCallback } from '@material-ui/core';
 
 export type OrderItemClassKeys = 'root' | 'column-view';
 
-export const orderItemStyles: StyleRulesCallback<
-  OrderItemClassKeys
-> = (theme) => ({
+export const orderItemStyles: StyleRulesCallback<OrderItemClassKeys> = (theme) => ({
   root: {
     display: 'flex',
     alignItems: 'center',
@@ -13,8 +11,8 @@ export const orderItemStyles: StyleRulesCallback<
   'column-view': {
     cursor: 'pointer',
     '&:hover': {
-      opacity: 0.8
+      opacity: 0.8,
     },
-    transition: '0.3s'
-  }
+    transition: '0.3s',
+  },
 });

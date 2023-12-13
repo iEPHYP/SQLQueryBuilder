@@ -1,11 +1,8 @@
-export const getCalledProps = <TProps>(
-  mockedComponent: jest.Mock,
-  callNumber = 0
-): TProps => {
+export const getCalledProps = <TProps>(mockedComponent: jest.Mock, callNumber = 0): TProps => {
   const calls = mockedComponent.mock.calls;
 
   if (!calls || (calls && !calls.length)) {
-    throw Error('the mocked component haven\'t been rendered yet');
+    throw Error("the mocked component haven't been rendered yet");
   }
   const lastCall = calls[callNumber];
 

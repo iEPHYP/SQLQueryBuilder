@@ -5,15 +5,11 @@ describe('getNewTableBranch', () => {
   it('should create new table branch on the basis of a column branch', () => {
     const columnName = 'ProductID';
     const columnBranch = new ColumnBranch({
-      columnName
+      columnName,
     });
     const foreignTableName = 'Products';
 
-    const tableBranch = getNewTableBranch(
-      columnBranch,
-      foreignTableName,
-      foreignTableName
-    );
+    const tableBranch = getNewTableBranch(columnBranch, foreignTableName, foreignTableName);
 
     expect(tableBranch).toMatchSnapshot();
   });

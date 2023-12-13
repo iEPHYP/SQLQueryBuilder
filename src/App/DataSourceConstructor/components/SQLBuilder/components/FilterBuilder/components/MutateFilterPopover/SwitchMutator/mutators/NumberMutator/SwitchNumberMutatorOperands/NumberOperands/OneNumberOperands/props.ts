@@ -1,4 +1,5 @@
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { NumberOperands, NumberOperation } from '../../../NumberOperation';
 
 export interface OneNumberOperandsStateProps {
@@ -6,13 +7,10 @@ export interface OneNumberOperandsStateProps {
   operation: NumberOperation;
 }
 
-export type OneNumberOperandsDispatchProps = PickActionCreators<
-  'setOperation'
->;
+export type OneNumberOperandsDispatchProps = PickActionCreators<'setOperation'>;
 
 export const ONOMapDispatchToProps: OneNumberOperandsDispatchProps = {
-  setOperation: actionCreators.setOperation
+  setOperation: actionCreators.setOperation,
 };
 
-export type OneNumberOperandsProps = OneNumberOperandsStateProps &
-  OneNumberOperandsDispatchProps;
+export type OneNumberOperandsProps = OneNumberOperandsStateProps & OneNumberOperandsDispatchProps;

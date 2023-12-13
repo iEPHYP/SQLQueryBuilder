@@ -1,8 +1,9 @@
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import * as React from 'react';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+
 import { ContextProviderApplicator } from '../configured-render';
 
-export const WithMuiThemeProvider: ContextProviderApplicator = children => (
+export const WithMuiThemeProvider: ContextProviderApplicator = (children) => (
   <MuiThemeProvider
     theme={createMuiTheme({
       props: {
@@ -13,7 +14,7 @@ export const WithMuiThemeProvider: ContextProviderApplicator = children => (
         },
       },
       transitions: {
-        create: () => 'none'
+        create: () => 'none',
       },
       typography: {
         useNextVariants: true,

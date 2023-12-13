@@ -7,6 +7,6 @@ export const foreignFieldVariablesMock: Variable[] = [
     order: 2,
     type: VariableType.Record,
     widgets: [],
-    model: 'Users'
-  }
+    model: 'Users',
+  },
 ];

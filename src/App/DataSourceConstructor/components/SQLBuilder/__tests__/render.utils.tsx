@@ -1,6 +1,7 @@
-import { format } from 'pg-formatter';
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+import { format } from 'pg-formatter';
+
 import { DataSourceConstructor } from '../../..';
 import { DataSourceConstructorProps } from '../../../props';
 import { tablesMock } from '../../../redux/tables/tables.mock';
@@ -13,12 +14,10 @@ export const onQueryChange = jest.fn<
 >();
 
 export const render = getConfiguredRender<DataSourceConstructorProps>(
-  (
-    <DataSourceConstructor
-      databaseSchema={new DatabaseSchema({ tables: tablesMock })}
-      onQueryChange={onQueryChange}
-    />
-  ),
+  <DataSourceConstructor
+    databaseSchema={new DatabaseSchema({ tables: tablesMock })}
+    onQueryChange={onQueryChange}
+  />,
   [WithMuiThemeProvider]
 );
 
@@ -30,6 +29,6 @@ export const getGeneratedQuery = (): string => {
   return format(generatedSqlQuery, {
     spaces: 2,
     keywordCase: 'uppercase',
-    functionCase: 'lowercase'
+    functionCase: 'lowercase',
   });
 };

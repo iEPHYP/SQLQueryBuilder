@@ -6,118 +6,118 @@ export const tablesMock = [
     columns: [
       new Column({
         name: 'ID',
-        type: 'primary'
+        type: 'primary',
       }),
       new Column({
         name: 'Details',
         type: 'string',
-        enums: ['Detail1', 'Detail2']
+        enums: ['Detail1', 'Detail2'],
       }),
       new Column({
         name: 'Created At',
-        type: 'Date'
+        type: 'Date',
       }),
       new Column({
         name: 'Quantity',
-        type: 'number'
+        type: 'number',
       }),
       new Column({
         name: 'Paid',
-        type: 'boolean'
+        type: 'boolean',
       }),
       new Column({
         name: 'ProductID',
         type: 'string',
-        foreignTableName: 'Products'
+        foreignTableName: 'Products',
       }),
       new Column({
         name: 'UserID',
         type: 'string',
-        foreignTableName: 'Users'
-      })
-    ]
+        foreignTableName: 'Users',
+      }),
+    ],
   }),
   new Table({
     name: 'Users',
     columns: [
       new Column({
         name: 'ID',
-        type: 'primary'
+        type: 'primary',
       }),
       new Column({
         name: 'AddressID',
         type: 'number',
-        foreignTableName: 'Addresses'
+        foreignTableName: 'Addresses',
       }),
       new Column({
         name: 'Username',
-        type: 'string'
+        type: 'string',
       }),
       new Column({
         name: 'AdminID',
         type: 'string',
-        foreignTableName: 'Users'
-      })
-    ]
+        foreignTableName: 'Users',
+      }),
+    ],
   }),
   new Table({
     name: 'Products',
     columns: [
       new Column({
         name: 'ID',
-        type: 'primary'
+        type: 'primary',
       }),
       new Column({
         name: 'Product name',
-        type: 'string'
+        type: 'string',
       }),
       new Column({
         name: 'Available amount',
-        type: 'number'
+        type: 'number',
       }),
       new Column({
         name: 'AddedBy',
         type: 'string',
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }),
       new Column({
         name: 'CurrencyID',
         type: 'string',
-        foreignTableName: 'Currency'
+        foreignTableName: 'Currency',
       }),
       new Column({
         name: 'LocalCurrencyID',
         type: 'string',
-        foreignTableName: 'Currency'
-      })
-    ]
+        foreignTableName: 'Currency',
+      }),
+    ],
   }),
   new Table({
     name: 'Addresses',
     columns: [
       new Column({
         name: 'ID',
-        type: 'primary'
+        type: 'primary',
       }),
       new Column({
         name: 'StreetID',
         type: 'string',
-        foreignTableName: 'Streets'
-      })
-    ]
+        foreignTableName: 'Streets',
+      }),
+    ],
   }),
   new Table({
     name: 'Streets',
     columns: [
       new Column({
         name: 'ID',
-        type: 'primary'
+        type: 'primary',
       }),
       new Column({
         name: 'Street name',
-        type: 'string'
-      })
-    ]
+        type: 'string',
+      }),
+    ],
   }),
   new Table({
     name: 'Currency',
@@ -125,12 +125,12 @@ export const tablesMock = [
     columns: [
       new Column({
         name: 'ID',
-        type: 'primary'
+        type: 'primary',
       }),
       new Column({
         name: 'name',
-        type: 'string'
-      })
-    ]
-  })
+        type: 'string',
+      }),
+    ],
+  }),
 ];

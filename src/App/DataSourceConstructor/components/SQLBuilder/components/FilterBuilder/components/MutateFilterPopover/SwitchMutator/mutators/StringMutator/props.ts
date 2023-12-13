@@ -2,15 +2,14 @@ import { ChangeEvent } from 'react';
 import { Column } from 'App/DataSourceConstructor/schemas';
 import { ClassesProp } from 'App/utils/classes-prop';
 import { GetExcludedFieldsOf } from 'App/utils/type-filters';
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
 import { PickStates } from 'store/models/State';
 import { Variable } from 'types';
+
 import { CheckedSelectProps } from '../../CheckedSelect/props';
 import { VariableItemProps } from '../../VariableItem';
 import { MutatorProps } from '../props';
+
 import { EnumsPickerProps } from './EnumsPicker/props';
 import { StringOperator } from './operators';
 import { StringOperation } from './StringOperation';
@@ -26,13 +25,11 @@ export type StringMutatorStateProps = GetExcludedFieldsOf<
   enums: Column['enums'];
 } & PickStates<'pickedVariables'>;
 
-export type StringMutatorDispatchProps = PickActionCreators<
-  'setOperation' | 'setPickedVariables'
->;
+export type StringMutatorDispatchProps = PickActionCreators<'setOperation' | 'setPickedVariables'>;
 const { setOperation, setPickedVariables } = actionCreators;
 export const SMMapDispatchToProps: StringMutatorDispatchProps = {
   setOperation,
-  setPickedVariables
+  setPickedVariables,
 };
 
 export type StringMutatorProps = StringMutatorOwnProps &

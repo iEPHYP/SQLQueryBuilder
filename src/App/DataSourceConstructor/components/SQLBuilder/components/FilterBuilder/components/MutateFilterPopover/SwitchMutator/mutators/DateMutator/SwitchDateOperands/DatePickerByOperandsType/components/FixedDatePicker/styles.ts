@@ -1,16 +1,11 @@
 import { StyleRulesCallback } from '@material-ui/core';
 
-export type FixedDatePickerClassKeys =
-  | 'root'
-  | 'add-time'
-  | 'variables-picker-button';
+export type FixedDatePickerClassKeys = 'root' | 'add-time' | 'variables-picker-button';
 
-export const fixedDatePickerStyles: StyleRulesCallback<
-  FixedDatePickerClassKeys
-> = theme => ({
+export const fixedDatePickerStyles: StyleRulesCallback<FixedDatePickerClassKeys> = (theme) => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   'add-time': {
     display: 'flex',
@@ -19,10 +14,10 @@ export const fixedDatePickerStyles: StyleRulesCallback<
     cursor: 'pointer',
     transition: '0.3s',
     '&:hover': {
-      color: theme.palette.primary.main
-    }
+      color: theme.palette.primary.main,
+    },
   },
   'variables-picker-button': {
-    marginRight: -7
-  }
+    marginRight: -7,
+  },
 });

@@ -3,32 +3,30 @@ import {
   getAllByText as getAllByTextOn,
   getByDisplayValue as getByDisplayValueOn,
   getByText as getByTextOn,
-  wait
+  wait,
 } from 'react-testing-library';
 import {
   expandMoreIconPlaceholder,
   shareIconPlaceholder,
-  variableIconPlaceholder
+  variableIconPlaceholder,
 } from '__tests__/utils/mock-placeholders';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
 import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
-import {
-  getAllByText$,
-  getByText$,
-  regex
-} from 'App/DataSourceConstructor/test-utils/utils';
+import { getAllByText$, getByText$, regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { addFilterText, mutatorPanelId } from '../../../../view';
 import { StringOperator, stringOperators } from '../operators';
 import { caseSensitivityText, stringMutatorPlaceholder } from '../view';
+
 import { enumVariableMock } from './utils/enum-variables-mock';
 
 describe(`String operations`, () => {
@@ -38,7 +36,7 @@ describe(`String operations`, () => {
       - case insensitive cases,
       should check the proper filter description render,
       should check the variable pick and from variable to enum pick
-  `, async () => {
+`, async () => {
     const {
       rerender,
       getByText,
@@ -47,7 +45,7 @@ describe(`String operations`, () => {
       getByLabelText,
       getByPlaceholderText,
       componentNode,
-      debug
+      debug,
     } = render();
 
     const columns = selectATable();
@@ -60,17 +58,15 @@ describe(`String operations`, () => {
 
     const checkFilterDescription = (operator: StringOperator) => {
       expect(
-        getByText$(
-          componentNode,
-          new RegExp(`^${foreignColumnName}.*${innerField}.+$`, 'i')
-        ).textContent
+        getByText$(componentNode, new RegExp(`^${foreignColumnName}.*${innerField}.+$`, 'i'))
+          .textContent
       ).toMatchSnapshot(`filter description for '${operator}' date operator`);
     };
 
     const checkOperation = (
       nextOperator: StringOperator,
       prevOperator: StringOperator,
-      caseSensitive: boolean = false,
+      caseSensitive = false,
       doBeforeSave: () => void = () => null
     ) => {
       clickOnFilter();
@@ -82,9 +78,7 @@ describe(`String operations`, () => {
       checkFilterDescription(nextOperator);
 
       expect(getGeneratedQuery()).toMatchSnapshot(
-        `${
-          caseSensitive ? 'case sensitive ' : ''
-        }'${nextOperator}' string operator`
+        `${caseSensitive ? 'case sensitive ' : ''}'${nextOperator}' string operator`
       );
     };
 
@@ -92,18 +86,13 @@ describe(`String operations`, () => {
     clickAddAFilter();
     fireEvent.click(
       getByTextOn(
-        getByText$(
-          componentNode,
-          regex(`${shareIconPlaceholder}.*${foreignColumnName}.*`)
-        ),
+        getByText$(componentNode, regex(`${shareIconPlaceholder}.*${foreignColumnName}.*`)),
         regex(expandMoreIconPlaceholder)
       )
     );
     fireEvent.click(getByText(regex(innerField)));
 
-    const textField = getByPlaceholderText(
-      regex(stringMutatorPlaceholder)
-    ) as HTMLInputElement;
+    const textField = getByPlaceholderText(regex(stringMutatorPlaceholder)) as HTMLInputElement;
     textField.defaultValue = 'Candy';
     fireEvent.input(textField);
     clickAddTheFilter();
@@ -122,8 +111,7 @@ describe(`String operations`, () => {
     // Check case sensitive operators
     const caseSensitiveOperators = stringOperators.slice(2, 6);
     for (let i = 0; i < caseSensitiveOperators.length; i++) {
-      const prevOperator: StringOperator =
-        i === 0 ? 'Is not empty' : caseSensitiveOperators[i - 1];
+      const prevOperator: StringOperator = i === 0 ? 'Is not empty' : caseSensitiveOperators[i - 1];
       const nextOperator = caseSensitiveOperators[i];
       checkOperation(
         nextOperator,
@@ -155,9 +143,7 @@ describe(`String operations`, () => {
     fireEvent.click(getByTextOn(document.body, enums[1]));
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      `Enum string operation with second enum's value`
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot(`Enum string operation with second enum's value`);
 
     // Check the variable pick
     const validVariable = enumVariableMock[1].name;
@@ -171,33 +157,23 @@ describe(`String operations`, () => {
 
     fireEvent.click(getByText(validVariable));
 
-    expect(getByText(validVariable).textContent).toMatchSnapshot(
-      'valid variable is selected'
-    );
+    expect(getByText(validVariable).textContent).toMatchSnapshot('valid variable is selected');
 
     clickUpdateTheFilter();
 
     expect(
-      getByText$(
-        componentNode,
-        regex(`${columnName}.*${stringOperators[0]}.*${validVariable}$`)
-      ).textContent
+      getByText$(componentNode, regex(`${columnName}.*${stringOperators[0]}.*${validVariable}$`))
+        .textContent
     ).toMatchSnapshot('valid variable is drawn correctly');
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      `Variable picked after the enum value pick`
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot(`Variable picked after the enum value pick`);
 
     // Check picking enum value after variable pick
     clickOnFilter();
-    fireEvent.click(
-      getByTextOn(getByTestId(mutatorPanelId), regex(validVariable))
-    );
+    fireEvent.click(getByTextOn(getByTestId(mutatorPanelId), regex(validVariable)));
     fireEvent.click(getByTextOn(document.body, enums[1]));
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      `Enum value picked after variable pick`
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot(`Enum value picked after variable pick`);
   });
 });

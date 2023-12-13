@@ -1,10 +1,11 @@
 import { IDateOperation } from '../../../DateOperation';
+
 import { PluralDateComponent } from './plural-date-components';
 
 export class NearDateOperands {
-  public shiftAmount: number = 30;
+  public shiftAmount = 30;
   public dateComponentType: PluralDateComponent = 'Days';
-  public includeCurrentDate: boolean = false;
+  public includeCurrentDate = false;
 
   constructor(...inits: Partial<NearDateOperands>[]) {
     Object.assign(this, ...inits);

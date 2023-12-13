@@ -1,5 +1,7 @@
 import { SelectProps } from '@material-ui/core/Select';
+
 import { SingleDateOperands } from '../DateOperandsComponents/SingleDate/model';
+
 import { FixedDatePickerProps } from './components/FixedDatePicker/props';
 import { RelativeDatePickerProps } from './components/RelativeDatePicker';
 import { VariableDatePickerOwnProps } from './components/VariableDatePicker/props';

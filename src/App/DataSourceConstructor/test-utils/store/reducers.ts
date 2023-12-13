@@ -9,14 +9,10 @@ export function testInitialAndCurrentState<S, A extends Action>(
   previousState: S
 ) {
   it('should return appropriate initial state if empty state and unknown action is given', async () => {
-    expect(reducer(undefined, unknownAction as A)).toEqual(
-      initialState
-    );
+    expect(reducer(undefined, unknownAction as A)).toEqual(initialState);
   });
 
   it('should return previous state if unknown action is given', async () => {
-    expect(reducer(previousState, unknownAction as A)).toBe(
-      previousState
-    );
+    expect(reducer(previousState, unknownAction as A)).toBe(previousState);
   });
 }

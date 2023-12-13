@@ -2,24 +2,25 @@ import {
   fireEvent,
   getAllByText as getAllByTextOn,
   getByText as getByTextOn,
-  wait
+  wait,
 } from 'react-testing-library';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
 import { regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { addFilterText } from '../../../../../../../view';
 import { dateOperators } from '../../../../operators';
 import {
   getDateSetter,
-  getTimeSetter
+  getTimeSetter,
 } from '../../../DatePickerByOperandsType/components/FixedDatePicker/__tests__/utils/date-time-setters';
 import { addATimeText } from '../../../DatePickerByOperandsType/components/FixedDatePicker/view';
 import { relativeDates } from '../../../DatePickerByOperandsType/components/RelativeDatePicker/singular-date-components';
@@ -42,7 +43,7 @@ describe('Dates Between operation', () => {
             one variable operand is not picked
         - variable date operand and relative date operand
         - relative date operand and relative date operand
-  `, async () => {
+`, async () => {
     const fixedDate1 = new Date(2019, 0, 1, 0, 0, 0, 0);
     const fixedDate2 = new Date(2019, 0, 2, 0, 0, 0, 0);
     const fixedTime1 = '06:00 AM';
@@ -67,24 +68,18 @@ describe('Dates Between operation', () => {
     setDate(fixedDate1, getOperand1Panel());
     setDate(fixedDate2, getOperand2Panel());
     // check for date limits
-    expect(getByText(regex('Min date is')).textContent).toMatchSnapshot(
-      'Min date is'
-    );
+    expect(getByText(regex('Min date is')).textContent).toMatchSnapshot('Min date is');
     expect(getByText(regex('Min date message is')).textContent).toMatchSnapshot(
       'Min date message is'
     );
-    expect(getByText(regex('Max date is')).textContent).toMatchSnapshot(
-      'Max date is'
-    );
+    expect(getByText(regex('Max date is')).textContent).toMatchSnapshot('Max date is');
     expect(getByText(regex('Max date message is')).textContent).toMatchSnapshot(
       'Max date message is'
     );
 
     clickAddTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'Default operands values with fixed dates'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('Default operands values with fixed dates');
 
     // Time enabled on first operand
     fireEvent.click(getByText(regex(columns[2].name)));
@@ -93,9 +88,7 @@ describe('Dates Between operation', () => {
     setTime(fixedTime1, panel1);
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'Time enabled on first operand'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('Time enabled on first operand');
 
     // Time enabled on both operands
     fireEvent.click(getByText(regex(columns[2].name)));
@@ -106,9 +99,7 @@ describe('Dates Between operation', () => {
     setTime(fixedTime2, panel2);
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'Time enabled on both operands'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('Time enabled on both operands');
 
     // variable date operand and fixed date operand with time
     rerender({ variables: dateVariablesMock });
@@ -186,9 +177,7 @@ describe('Dates Between operation', () => {
 
     clickAddTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'variable date operand and variable date operand'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('variable date operand and variable date operand');
 
     // variable date operand and relative date operand
     fireEvent.click(getByText(regex(columns[2].name)));
@@ -197,9 +186,7 @@ describe('Dates Between operation', () => {
     fireEvent.click(getByTextOn(document.body, dateOperandTypes[2]));
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'variable date operand and relative date operand'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('variable date operand and relative date operand');
 
     // relative date operand and relative date operand
     fireEvent.click(getByText(regex(columns[2].name)));
@@ -213,8 +200,6 @@ describe('Dates Between operation', () => {
     fireEvent.click(getByTextOn(panel2, regex(relativeDates[2])));
     clickUpdateTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'relative date operand and relative date operand'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('relative date operand and relative date operand');
   });
 });

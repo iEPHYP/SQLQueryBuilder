@@ -1,7 +1,9 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { actionCreators, PickActionCreators } from 'store/action-creators';
+
 import { PopoverManagerProps } from '../../../common/WithPopoverManagement';
 import { CheckedSelectProps } from '../../../FilterBuilder/components/MutateFilterPopover/SwitchMutator/CheckedSelect/props';
+
 import { Order } from './model';
 import { SortOrder } from './orders';
 import { OrderItemClassKeys } from './styles';
@@ -10,17 +12,14 @@ export interface OrderItemOwnProps {
   order: Order;
 }
 
-export type OrderItemDispatchProps = PickActionCreators<
-  'removeOrder' | 'updateOrder'
->;
+export type OrderItemDispatchProps = PickActionCreators<'removeOrder' | 'updateOrder'>;
 
 export const OIMapDispatchToProps: OrderItemDispatchProps = {
   removeOrder: actionCreators.removeOrder,
-  updateOrder: actionCreators.updateOrder
+  updateOrder: actionCreators.updateOrder,
 };
 
-export type OrderItemProps = OrderItemOwnProps &
-  OrderItemDispatchProps;
+export type OrderItemProps = OrderItemOwnProps & OrderItemDispatchProps;
 
 export type OrderItemViewProps = {
   handleOrderRemoval: (id: Order['id']) => () => void;

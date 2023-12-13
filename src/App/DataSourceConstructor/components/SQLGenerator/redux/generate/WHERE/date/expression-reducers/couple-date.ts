@@ -1,26 +1,26 @@
 import { CoupleDateOperands } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DateOperandsComponents/CoupleDates/model';
 import { SingleDateOperands } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DateOperandsComponents/SingleDate/model';
-import { DateExpressionReducer } from '.';
+
 import { dateOperand1 } from './before-after';
 import { getSingleVariableOrder } from './single-date';
 import { getRelativeDateSqlExp, toSqlDate } from './utils';
+import { DateExpressionReducer } from '.';
 
 export const getCoupleVariableOrders = (
   variables: Parameters<typeof getSingleVariableOrder>[0]
 ): [number | false, number | false] => {
   if (variables instanceof Array) {
-    return [
-      getSingleVariableOrder(variables[0]),
-      getSingleVariableOrder(variables[1])
-    ];
+    return [getSingleVariableOrder(variables[0]), getSingleVariableOrder(variables[1])];
   } else {
     return [false, false];
   }
 };
 
-export const coupleDateExpressionReducer: DateExpressionReducer<
-  CoupleDateOperands
-> = (column, operands, variables) => {
+export const coupleDateExpressionReducer: DateExpressionReducer<CoupleDateOperands> = (
+  column,
+  operands,
+  variables
+) => {
   const [operand1, operand2] = operands;
 
   const [order1, order2] = getCoupleVariableOrders(variables);
@@ -65,9 +65,7 @@ export const getExpression = (
     case 'Fixed date':
       const sqlDate = toSqlDate(new Date(operand.date));
 
-      return `${
-        operand.timeEnabled ? `${sqlDate}::timestamp` : `${sqlDate}::date`
-      }`;
+      return `${operand.timeEnabled ? `${sqlDate}::timestamp` : `${sqlDate}::date`}`;
     case 'Variable date':
       return `$${variableOrder}::date`;
     case 'Relative date':

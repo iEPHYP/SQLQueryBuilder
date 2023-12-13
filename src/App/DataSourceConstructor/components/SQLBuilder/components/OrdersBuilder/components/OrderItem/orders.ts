@@ -1,11 +1,8 @@
 enum SortOrderEnum {
   'ascending',
-  'descending'
+  'descending',
 }
 
 export type SortOrder = keyof typeof SortOrderEnum;
 
-export const sortOrders: SortOrder[] = [
-  'ascending',
-  'descending'
-];
+export const sortOrders: SortOrder[] = ['ascending', 'descending'];

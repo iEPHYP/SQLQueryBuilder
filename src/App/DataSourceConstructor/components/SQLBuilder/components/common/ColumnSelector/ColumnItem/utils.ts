@@ -1,4 +1,5 @@
 import { clone } from 'ramda';
+
 import { ColumnBranch } from './SelectedColumn.models';
 
 export const getNewTableBranch = (
@@ -10,7 +11,7 @@ export const getNewTableBranch = (
 
   newTableBranch.lastColumn.foreignColumn = new ColumnBranch({
     tableName: foreignTableName,
-    modelName: foreignModelName
+    modelName: foreignModelName,
   });
 
   newTableBranch.lastColumn = newTableBranch.lastColumn.foreignColumn;
@@ -18,8 +19,8 @@ export const getNewTableBranch = (
   return newTableBranch;
 };
 
-export const listItemOwnPaddingLeft: number = 16;
-export const paddingShiftAmountByLevel: number = 15;
+export const listItemOwnPaddingLeft = 16;
+export const paddingShiftAmountByLevel = 15;
 export const calcPaddingAccordingTo = (level: number) => {
   return listItemOwnPaddingLeft + level * paddingShiftAmountByLevel;
 };

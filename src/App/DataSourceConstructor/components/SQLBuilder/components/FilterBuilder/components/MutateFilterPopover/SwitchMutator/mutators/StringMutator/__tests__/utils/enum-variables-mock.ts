@@ -8,7 +8,7 @@ export const enumVariableMock: Variable[] = [
     type: VariableType.Enum,
     model: 'Products',
     field: 'Details',
-    widgets: []
+    widgets: [],
   },
   {
     id: '2',
@@ -17,13 +17,13 @@ export const enumVariableMock: Variable[] = [
     type: VariableType.Enum,
     model: 'Orders',
     field: 'Details',
-    widgets: []
+    widgets: [],
   },
   {
     id: '3',
     name: 'Sample Date',
     order: 3,
     type: VariableType.Date,
-    widgets: []
-  }
+    widgets: [],
+  },
 ];

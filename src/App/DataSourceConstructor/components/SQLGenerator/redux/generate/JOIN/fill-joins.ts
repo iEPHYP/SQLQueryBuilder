@@ -11,11 +11,11 @@ export const fillJoins = (treeTable: TreeTable): Join[] => {
       const foreignKeyColumn = foreignColumns[index];
       const join = new Join({
         primaryTable: new JoinTable(treeTable, {
-          keyColumn: foreignKeyColumn
+          keyColumn: foreignKeyColumn,
         }),
         foreignTable: new JoinTable(foreignTable, {
-          keyColumn: foreignTable.primaryKeyColumn
-        })
+          keyColumn: foreignTable.primaryKeyColumn,
+        }),
       });
       joins.push(join);
 

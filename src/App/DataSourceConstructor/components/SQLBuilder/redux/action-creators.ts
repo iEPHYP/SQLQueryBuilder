@@ -1,4 +1,5 @@
 import { Action } from 'store/models/action-types';
+
 import { AggregationBuilderActionCreators } from '../components/AggregationsBuilder/redux/action';
 import { SQLBCommonComponentsActionCreators } from '../components/common/action-creators';
 import { CustomColumnsBuilderActionCreators } from '../components/CustomColumnsBuilder/redux/action';
@@ -21,5 +22,5 @@ export const SQLBActionCreators = {
   ...AggregationBuilderActionCreators,
   ...GroupingsBuilderActionCreators,
   ...OrdersBuilderActionCreators,
-  ...RowLimitBuilderActionCreators
+  ...RowLimitBuilderActionCreators,
 };

@@ -10,11 +10,11 @@ export const selfRef1LvlGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'Username',
         tableName: 'users',
-        type: 'string'
+        type: 'string',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: '064cb667-d3c3-4d4f-96ac-c87b48036f87'
+    id: '064cb667-d3c3-4d4f-96ac-c87b48036f87',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -24,11 +24,11 @@ export const selfRef1LvlGroupings = [
       foreignColumn: new ColumnBranch({
         columnName: 'ID',
         tableName: 'users',
-        type: 'number'
+        type: 'number',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'b9f3885f-98ea-4084-a400-130aa03f3295'
+    id: 'b9f3885f-98ea-4084-a400-130aa03f3295',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -39,12 +39,12 @@ export const selfRef1LvlGroupings = [
         columnName: 'AddressID',
         tableName: 'users',
         type: 'number',
-        foreignTableName: 'Addresses'
+        foreignTableName: 'Addresses',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'a7619863-2e78-4ede-8ac9-358ce9a629d8'
-  })
+    id: 'a7619863-2e78-4ede-8ac9-358ce9a629d8',
+  }),
 ];
 export const selfRef2LvlGroupings = [
   new Grouping({
@@ -59,13 +59,13 @@ export const selfRef2LvlGroupings = [
         foreignColumn: new ColumnBranch({
           columnName: 'ID',
           tableName: 'users',
-          type: 'number'
+          type: 'number',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: '6a438463-ecf7-4906-af84-09945db87967'
+    id: '6a438463-ecf7-4906-af84-09945db87967',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -79,13 +79,13 @@ export const selfRef2LvlGroupings = [
         foreignColumn: new ColumnBranch({
           columnName: 'Username',
           tableName: 'users',
-          type: 'string'
+          type: 'string',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'c2470bc6-254c-48d8-82e5-6fe0defb33f5'
+    id: 'c2470bc6-254c-48d8-82e5-6fe0defb33f5',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -100,14 +100,14 @@ export const selfRef2LvlGroupings = [
           columnName: 'AddressID',
           tableName: 'users',
           type: 'number',
-          foreignTableName: 'Addresses'
+          foreignTableName: 'Addresses',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'c73f5c6a-d3eb-4e90-8982-5d07f5368c33'
-  })
+    id: 'c73f5c6a-d3eb-4e90-8982-5d07f5368c33',
+  }),
 ];
 export const selfRef3LvlGroupings = [
   new Grouping({
@@ -126,15 +126,15 @@ export const selfRef3LvlGroupings = [
           foreignColumn: new ColumnBranch({
             columnName: 'ID',
             tableName: 'users',
-            type: 'number'
+            type: 'number',
           }).normalize(),
-          foreignTableName: 'Users'
+          foreignTableName: 'Users',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: '33270e33-3028-4408-907b-b0f307478073'
+    id: '33270e33-3028-4408-907b-b0f307478073',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -152,15 +152,15 @@ export const selfRef3LvlGroupings = [
           foreignColumn: new ColumnBranch({
             columnName: 'Username',
             tableName: 'users',
-            type: 'string'
+            type: 'string',
           }).normalize(),
-          foreignTableName: 'Users'
+          foreignTableName: 'Users',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'bb7660ee-afe9-4088-9053-28427e6f62ed'
+    id: 'bb7660ee-afe9-4088-9053-28427e6f62ed',
   }),
   new Grouping({
     column: new ColumnBranch({
@@ -179,14 +179,14 @@ export const selfRef3LvlGroupings = [
             columnName: 'AddressID',
             tableName: 'users',
             type: 'number',
-            foreignTableName: 'Addresses'
+            foreignTableName: 'Addresses',
           }).normalize(),
-          foreignTableName: 'Users'
+          foreignTableName: 'Users',
         }).normalize(),
-        foreignTableName: 'Users'
+        foreignTableName: 'Users',
       }).normalize(),
-      foreignTableName: 'Users'
+      foreignTableName: 'Users',
     }).normalize(),
-    id: 'ce4fbeac-9c7d-4e6f-9db2-9ed7410de72f'
-  })
+    id: 'ce4fbeac-9c7d-4e6f-9db2-9ed7410de72f',
+  }),
 ];

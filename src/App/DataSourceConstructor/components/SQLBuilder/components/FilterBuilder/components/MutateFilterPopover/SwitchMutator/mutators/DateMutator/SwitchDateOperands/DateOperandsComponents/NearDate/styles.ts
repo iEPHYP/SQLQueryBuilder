@@ -8,15 +8,13 @@ export type NearDateClassKeys =
   | 'label'
   | 'date-component';
 
-export const nearDateStyles: StyleRulesCallback<
-  NearDateClassKeys
-> = (theme) => ({
+export const nearDateStyles: StyleRulesCallback<NearDateClassKeys> = (theme) => ({
   'near-date': {
     display: 'flex',
-    padding: '10px'
+    padding: '10px',
   },
   'text-field': {
-    margin: '0px 10px'
+    margin: '0px 10px',
   },
   'shift-amount': {
     padding: '8px 5px',
@@ -24,13 +22,13 @@ export const nearDateStyles: StyleRulesCallback<
     textAlign: 'center',
     '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
       WebkitAppearance: 'none',
-      margin: '0'
+      margin: '0',
     },
   },
   FormControlLabel: {
     marginLeft: '0px',
-    fontSize: '12px'
+    fontSize: '12px',
   },
   label: { fontSize: 12 },
-  'date-component': { fontWeight: 'bold', fontSize: 12 }
+  'date-component': { fontWeight: 'bold', fontSize: 12 },
 });

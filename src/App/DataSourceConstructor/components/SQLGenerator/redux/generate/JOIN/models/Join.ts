@@ -10,7 +10,7 @@ export class Join {
 export class JoinTable {
   public name: string;
   public alias: string;
-  public keyColumn: string = 'ID';
+  public keyColumn = 'ID';
 
   constructor(...inits: Partial<JoinTable>[]) {
     Object.assign(this, ...inits);

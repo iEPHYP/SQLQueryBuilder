@@ -1,5 +1,6 @@
 import { ClassesProp } from 'App/utils/classes-prop';
 import { PickStates } from 'store/models/State';
+
 import { CustomColumnsBuilderClassKeys } from './styles';
 
 export type CustomColumnsBuilderStateProps = PickStates<

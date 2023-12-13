@@ -1,4 +1,5 @@
 import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
+
 import { generateSQLQuery, SQLGeneratorStateProps } from '..';
 
 const state: SQLGeneratorStateProps = {
@@ -9,7 +10,7 @@ const state: SQLGeneratorStateProps = {
   groupings: [],
   orders: [],
   rowLimit: null,
-  tables: tablesMock
+  tables: tablesMock,
 };
 
 describe('FROM clause', () => {
@@ -18,12 +19,8 @@ describe('FROM clause', () => {
   });
 
   it('should render properly when there is selected table', () => {
-    expect(
-      generateSQLQuery({ ...state, selectedTable: tablesMock[0] })
-    ).toMatchSnapshot();
+    expect(generateSQLQuery({ ...state, selectedTable: tablesMock[0] })).toMatchSnapshot();
 
-    expect(
-      generateSQLQuery({ ...state, selectedTable: tablesMock[1] })
-    ).toMatchSnapshot();
+    expect(generateSQLQuery({ ...state, selectedTable: tablesMock[1] })).toMatchSnapshot();
   });
 });

@@ -1,13 +1,12 @@
 import { ClassesProp } from 'App/utils/classes-prop';
-import {
-  actionCreators,
-  PickActionCreators
-} from 'store/action-creators';
+import { actionCreators, PickActionCreators } from 'store/action-creators';
 import { PickStates } from 'store/models/State';
+
 import { ColumnBranch } from '../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { ColumnSelectorProps } from '../../../common/ColumnSelector/props';
 import { PopoverPaperProps } from '../../../common/PopoverPaper';
 import { Filter } from '../FilterItem/model';
+
 import { MutateFilterPopoverClassKeys } from './styles';
 
 export type MutateFilterPopoverOwnProps = {
@@ -47,7 +46,7 @@ export type MutateFilterPopoverDispatchProps = PickActionCreators<
 const { setOperation, setPickedVariables } = actionCreators;
 export const MFPMapDispatchToProps: MutateFilterPopoverDispatchProps = {
   setOperation,
-  setPickedVariables
+  setPickedVariables,
 };
 
 export type MutateFilterPopoverProps = MutateFilterPopoverOwnProps &

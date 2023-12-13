@@ -6,17 +6,17 @@ export const getModels = (
   const {
     enums,
     column: {
-      lastColumn: { foreignModelName, modelName, type }
-    }
+      lastColumn: { foreignModelName, modelName, type },
+    },
   } = props;
 
   return type === 'uuid' && !enums
     ? undefined
     : type === 'uuid' && enums
-    ? enums
-    : type === 'primary'
-    ? [modelName]
-    : foreignModelName
-    ? [foreignModelName]
-    : undefined;
+      ? enums
+      : type === 'primary'
+        ? [modelName]
+        : foreignModelName
+          ? [foreignModelName]
+          : undefined;
 };

@@ -3,16 +3,17 @@ import { SingleDateOperands } from 'App/DataSourceConstructor/components/SQLBuil
 import { FixedDateOperands } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DatePickerByOperandsType/components/FixedDatePicker/model';
 import { RelativeDateOperands } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DatePickerByOperandsType/components/RelativeDatePicker/model';
 import { VariableDateOperands } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/DateMutator/SwitchDateOperands/DatePickerByOperandsType/components/VariableDatePicker/model';
-import { DateExpressionReducer } from '.';
+
 import { dateOperand1 } from './before-after';
 import { getRelativeDateSqlExp, toSqlDate, truncDate } from './utils';
+import { DateExpressionReducer } from '.';
 
 export const singleDateOperatorToSignMap: {
-  [K in DateOperator]?: '<' | '>' | '='
+  [K in DateOperator]?: '<' | '>' | '=';
 } = {
   Before: '<',
   After: '>',
-  On: '='
+  On: '=',
 };
 
 export const getSingleVariableOrder = (
@@ -27,26 +28,14 @@ export const getSingleVariableOrder = (
 
 export const singleDateExpressionReducer: (
   operator: DateOperator
-) => DateExpressionReducer<SingleDateOperands> = operator => (
-  column,
-  operands,
-  variable
-) => {
+) => DateExpressionReducer<SingleDateOperands> = (operator) => (column, operands, variable) => {
   switch (operands.dateType) {
     case 'Fixed date':
       return fixedDateExpressionReducer(operator)(column, operands, variable);
     case 'Relative date':
-      return relativeDateExpressionReducer(operator)(
-        column,
-        operands,
-        variable
-      );
+      return relativeDateExpressionReducer(operator)(column, operands, variable);
     case 'Variable date':
-      return variableDateExpressionReducer(operator)(
-        column,
-        operands,
-        variable
-      );
+      return variableDateExpressionReducer(operator)(column, operands, variable);
     default:
       throw new Error('invalid operands date type');
   }
@@ -54,53 +43,35 @@ export const singleDateExpressionReducer: (
 
 export const fixedDateExpressionReducer: (
   operator: DateOperator
-) => DateExpressionReducer<FixedDateOperands> = operator => (
-  column,
-  { date, timeEnabled }
-) => {
-  return commonSingleDateExpressionReducer(
-    operator,
-    column,
-    `${toSqlDate(new Date(date))}::timestamp`,
-    timeEnabled,
-    timeEnabled ? 'Minutes' : 'Days'
-  );
-};
+) => DateExpressionReducer<FixedDateOperands> =
+  (operator) =>
+  (column, { date, timeEnabled }) => {
+    return commonSingleDateExpressionReducer(
+      operator,
+      column,
+      `${toSqlDate(new Date(date))}::timestamp`,
+      timeEnabled,
+      timeEnabled ? 'Minutes' : 'Days'
+    );
+  };
 
 export const variableDateExpressionReducer: (
   operator: DateOperator
-) => DateExpressionReducer<VariableDateOperands> = operator => (
-  column,
-  operands,
-  variable
-) => {
+) => DateExpressionReducer<VariableDateOperands> = (operator) => (column, operands, variable) => {
   const order = getSingleVariableOrder(variable);
 
-  return commonSingleDateExpressionReducer(
-    operator,
-    column,
-    `$${order}::timestamp`,
-    false,
-    'Days'
-  );
+  return commonSingleDateExpressionReducer(operator, column, `$${order}::timestamp`, false, 'Days');
 };
 
 export const relativeDateExpressionReducer: (
   operator: DateOperator
-) => DateExpressionReducer<RelativeDateOperands> = operator => (
-  column,
-  { relativeDate }
-) => {
-  const relativeDateExpr = getRelativeDateSqlExp(relativeDate);
+) => DateExpressionReducer<RelativeDateOperands> =
+  (operator) =>
+  (column, { relativeDate }) => {
+    const relativeDateExpr = getRelativeDateSqlExp(relativeDate);
 
-  return commonSingleDateExpressionReducer(
-    operator,
-    column,
-    relativeDateExpr,
-    false,
-    'Days'
-  );
-};
+    return commonSingleDateExpressionReducer(operator, column, relativeDateExpr, false, 'Days');
+  };
 
 export const commonSingleDateExpressionReducer = (
   operator: DateOperator,
@@ -113,13 +84,9 @@ export const commonSingleDateExpressionReducer = (
 
   switch (operator) {
     case 'Before':
-      return dateOperand1(columnExpr, timeEnabled).before.dateOperand2(
-        operandExpr
-      );
+      return dateOperand1(columnExpr, timeEnabled).before.dateOperand2(operandExpr);
     case 'After':
-      return dateOperand1(columnExpr, timeEnabled).after.dateOperand2(
-        operandExpr
-      );
+      return dateOperand1(columnExpr, timeEnabled).after.dateOperand2(operandExpr);
     case 'On':
       return `
       ${truncDate(format, columnExpr)}

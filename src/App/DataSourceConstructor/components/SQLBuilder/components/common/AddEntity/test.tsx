@@ -1,6 +1,7 @@
-import * as casual from 'casual';
 import * as React from 'react';
 import { getConfiguredRender } from 'App/DataSourceConstructor/test-utils/configured-render';
+import * as casual from 'casual';
+
 import { AddEntity, AddEntityProps } from '.';
 
 const render = getConfiguredRender<AddEntityProps>(
@@ -14,7 +15,7 @@ describe('AddEntity', () => {
     const onClick = jest.fn();
 
     const { componentNode } = render({
-      onClick
+      onClick,
     });
 
     componentNode.click();
@@ -24,7 +25,7 @@ describe('AddEntity', () => {
 
   it('should show text by default', () => {
     const { componentNode } = render({
-      children
+      children,
     });
 
     expect(componentNode).toHaveTextContent(children);
@@ -33,10 +34,9 @@ describe('AddEntity', () => {
   it('should hide text if showText prop is set to false', () => {
     const { componentNode } = render({
       children,
-      showText: false
+      showText: false,
     });
 
     expect(componentNode).not.toHaveTextContent(children);
   });
-
 });

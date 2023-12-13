@@ -2,8 +2,7 @@ import { fireEvent, getAllByText, getByText } from 'react-testing-library';
 
 export const regex = (expression: string) => new RegExp(expression, 'i');
 
-export const regexWord = (expression: string) =>
-  new RegExp(`^${expression}$`, 'i');
+export const regexWord = (expression: string) => new RegExp(`^${expression}$`, 'i');
 
 // getByText fixed version
 export const getByText$: typeof getByText = (container, id, options) =>

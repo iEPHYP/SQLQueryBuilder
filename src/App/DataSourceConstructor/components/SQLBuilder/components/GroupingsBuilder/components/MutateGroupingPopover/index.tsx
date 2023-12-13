@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { Grouping } from '../GroupingItem/model';
+
 import {
   MutateGroupingPopoverOwnProps,
   MutateGroupingPopoverProps,
   MutateGroupingPopoverState,
   MutateGroupingPopoverStateProps,
-  MutateGroupingPopoverViewProps as ViewProps
+  MutateGroupingPopoverViewProps as ViewProps,
 } from './props';
 import { filterGrouping } from './utils';
 import { MutateGroupingPopover as View } from './view';
@@ -18,31 +20,30 @@ export const MutateGroupingPopover = connect<
   MutateGroupingPopoverOwnProps,
   State
 >(({ groupings }) => ({ groupings }))(
-  class extends React.Component<
-    MutateGroupingPopoverProps,
-    MutateGroupingPopoverState
-  > {
+  class extends React.Component<MutateGroupingPopoverProps, MutateGroupingPopoverState> {
     public state = { popoverPositionUpdater: undefined };
 
-    public positionUpdaterCallback: ViewProps['positionUpdaterCallback'] = popoverPositionUpdater => {
+    public positionUpdaterCallback: ViewProps['positionUpdaterCallback'] = (
+      popoverPositionUpdater
+    ) => {
       if (!this.state.popoverPositionUpdater) {
         this.setState({ popoverPositionUpdater });
       }
-    }
+    };
 
-    public handleColumnSelection: ViewProps['onColumnSelected'] = column => {
+    public handleColumnSelection: ViewProps['onColumnSelected'] = (column) => {
       const { action, grouping, onClose } = this.props;
 
       action(new Grouping(grouping ? grouping : {}, { column }));
 
       onClose();
-    }
+    };
 
-    public canShowColumnBranch: ViewProps['canShowColumnBranch'] = columnBranch => {
+    public canShowColumnBranch: ViewProps['canShowColumnBranch'] = (columnBranch) => {
       const { groupings } = this.props;
 
       return filterGrouping(columnBranch, groupings);
-    }
+    };
 
     public render() {
       return (

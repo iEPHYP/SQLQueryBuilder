@@ -1,28 +1,23 @@
 import {
   fireEvent,
   getByDisplayValue as getByDisplayValueOn,
-  getByText as getByTextOn
+  getByText as getByTextOn,
 } from 'react-testing-library';
 import {
   getGeneratedQuery,
-  render
+  render,
 } from 'App/DataSourceConstructor/components/SQLBuilder/__tests__/render.utils';
 import {
   clickAddTheFilter,
-  clickUpdateTheFilter
+  clickUpdateTheFilter,
 } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/__tests__/utils/filter-utils';
 import { selectATable } from 'App/DataSourceConstructor/components/SQLBuilder/components/TableSelector/__tests__/utils/select-table';
-import {
-  getByText$,
-  regex
-} from 'App/DataSourceConstructor/test-utils/utils';
+import { getByText$, regex } from 'App/DataSourceConstructor/test-utils/utils';
+
 import { clickAddAFilter } from '../../../../../../../../AddFilter/__tests__/utils/click-add-a-filter';
 import { mutatorPanelId } from '../../../../../../../view';
 import { DateOperator } from '../../../../operators';
-import {
-  PluralDateComponent,
-  pluralDateComponents
-} from '../plural-date-components';
+import { PluralDateComponent, pluralDateComponents } from '../plural-date-components';
 
 describe('Previous and Next date operations', () => {
   it(`should render proper sql query on:
@@ -31,14 +26,8 @@ describe('Previous and Next date operations', () => {
         - Including and excluding the current date component
       should check the shift amount text field,
       should check the proper filter description render
-  `, async () => {
-    const {
-      getByText,
-      getByTestId,
-      getByLabelText,
-      componentNode,
-      debug
-    } = render();
+`, async () => {
+    const { getByText, getByTestId, getByLabelText, componentNode, debug } = render();
 
     const columns = selectATable();
     const dateColumnName = columns[2].name;
@@ -52,13 +41,9 @@ describe('Previous and Next date operations', () => {
       operator: DateOperator = 'Previous'
     ) => {
       expect(
-        getByText$(
-          componentNode,
-          new RegExp(`^${dateColumnName}.*${dateComponent}.*$`, 'i')
-        ).textContent
-      ).toMatchSnapshot(
-        `filter description for ${operator} date operator by ${dateComponent}`
-      );
+        getByText$(componentNode, new RegExp(`^${dateColumnName}.*${dateComponent}.*$`, 'i'))
+          .textContent
+      ).toMatchSnapshot(`filter description for ${operator} date operator by ${dateComponent}`);
     };
 
     const checkDateComponent = (
@@ -73,9 +58,7 @@ describe('Previous and Next date operations', () => {
       clickOnFilter();
 
       if (nextDateComponent !== prevDateComponent) {
-        fireEvent.click(
-          getByTextOn(getByTestId(mutatorPanelId), regex(prevDateComponent))
-        );
+        fireEvent.click(getByTextOn(getByTestId(mutatorPanelId), regex(prevDateComponent)));
         fireEvent.click(getByText(regex(nextDateComponent)));
       }
 
@@ -91,10 +74,7 @@ describe('Previous and Next date operations', () => {
       expect(getGeneratedQuery()).toMatchSnapshot(
         `${operator} date operator by ${nextDateComponent} ${
           currentDateIncluded
-            ? ` including current ${nextDateComponent.substr(
-                0,
-                nextDateComponent.length - 1
-              )}`
+            ? ` including current ${nextDateComponent.substr(0, nextDateComponent.length - 1)}`
             : ''
         }`
       );
@@ -103,7 +83,7 @@ describe('Previous and Next date operations', () => {
     const checkAllBy = (
       nextOperator: DateOperator,
       prevOperator: DateOperator,
-      includeCurrentDate: boolean = false
+      includeCurrentDate = false
     ) => {
       if (nextOperator !== prevOperator) {
         clickOnFilter();
@@ -128,8 +108,7 @@ describe('Previous and Next date operations', () => {
           nextOperator,
           includeCurrentDate
         );
-        includeCurrentDate &&
-          checkFilterDescription(pluralDateComponents[i], nextOperator);
+        includeCurrentDate && checkFilterDescription(pluralDateComponents[i], nextOperator);
       }
     };
 
@@ -151,9 +130,7 @@ describe('Previous and Next date operations', () => {
     fireEvent.click(getByText(regex(dateColumnName)));
     clickAddTheFilter();
 
-    expect(getGeneratedQuery()).toMatchSnapshot(
-      'Previous operator by Days should be default one'
-    );
+    expect(getGeneratedQuery()).toMatchSnapshot('Previous operator by Days should be default one');
 
     // Check all cases for Previous operator
     checkAllBy('Previous', 'Previous');

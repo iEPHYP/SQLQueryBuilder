@@ -1,5 +1,6 @@
 import * as casual from 'casual';
 import { clone } from 'ramda';
+
 import { ColumnBranch } from '../SelectedColumn.models';
 
 const columnBranchWithForeignColumns = new ColumnBranch({
@@ -7,8 +8,8 @@ const columnBranchWithForeignColumns = new ColumnBranch({
   columnName: casual.title,
   foreignColumn: new ColumnBranch({
     tableName: casual.title,
-    columnName: casual.title
-  })
+    columnName: casual.title,
+  }),
 });
 
 describe('ColumnBranch', () => {
@@ -21,9 +22,7 @@ describe('ColumnBranch', () => {
     const columnBranch = new ColumnBranch({ columnName });
     const comparingColumnBranch = new ColumnBranch({ columnName });
 
-    expect(
-      columnBranch.areFieldsMatch('columnName', comparingColumnBranch)
-    ).toBeTruthy();
+    expect(columnBranch.areFieldsMatch('columnName', comparingColumnBranch)).toBeTruthy();
   });
 
   it('should have properly working isEqual method', () => {
@@ -41,8 +40,6 @@ describe('ColumnBranch', () => {
     const expectedColumnBranch = clone(columnBranchWithForeignColumns);
     expectedColumnBranch.lastColumn = expectedColumnBranch.foreignColumn as ColumnBranch;
 
-    expect(originalColumnBranch.normalizeLastColumn()).toEqual(
-      expectedColumnBranch
-    );
+    expect(originalColumnBranch.normalizeLastColumn()).toEqual(expectedColumnBranch);
   });
 });

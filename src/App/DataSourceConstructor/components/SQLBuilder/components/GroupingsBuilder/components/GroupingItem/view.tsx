@@ -1,8 +1,10 @@
-import { withStyles } from '@material-ui/core';
 import * as React from 'react';
+import { withStyles } from '@material-ui/core';
 import { RemoveButton } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/Icons/RemoveButton';
 import { SequentialColumnView } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/SequentialColumnView';
+
 import { MutateGroupingPopover } from '../MutateGroupingPopover';
+
 import { GroupingItemViewProps } from './props';
 import { groupingItemStyles } from './styles';
 
@@ -24,7 +26,7 @@ export const GroupingItem = withStyles(groupingItemStyles)(
         isOpen,
         handleOpen,
         handleClose,
-        handleGroupingRemoval
+        handleGroupingRemoval,
       } = this.props;
 
       const { id, column } = grouping;
@@ -36,16 +38,13 @@ export const GroupingItem = withStyles(groupingItemStyles)(
               ref={this.popoverLauncher}
               onClick={handleOpen}
               className={classes['column-view']}
-              data-testid='column-view'
+              data-testid="column-view"
             >
               <SequentialColumnView {...column} />
             </div>
-            <RemoveButton
-              onClick={handleGroupingRemoval(id)}
-              data-testid='remove'
-            />
+            <RemoveButton onClick={handleGroupingRemoval(id)} data-testid="remove" />
           </div>
-          { isOpen && (
+          {isOpen && (
             <MutateGroupingPopover
               isOpen={isOpen}
               anchorEl={this.popoverLauncher.current}
@@ -53,7 +52,7 @@ export const GroupingItem = withStyles(groupingItemStyles)(
               onClose={handleClose}
               grouping={grouping}
             />
-          ) }
+          )}
         </>
       );
     }

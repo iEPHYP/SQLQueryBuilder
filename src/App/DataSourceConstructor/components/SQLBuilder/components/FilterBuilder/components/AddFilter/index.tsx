@@ -1,23 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { WithPopoverManagement } from '../../../common/WithPopoverManagement';
+
 import {
   AddFilterDispatchProps,
   AddFilterProps,
   AddFilterStateProps,
-  FBMapDispatchToProps
+  FBMapDispatchToProps,
 } from './props';
 import { AddFilter as View } from './view';
 
-export const AddFilter = connect<
-  AddFilterStateProps,
-  AddFilterDispatchProps,
-  {},
-  State
->(
+export const AddFilter = connect<AddFilterStateProps, AddFilterDispatchProps, {}, State>(
   ({ filters }) => ({
-    filters
+    filters,
   }),
   FBMapDispatchToProps
 )(
@@ -27,12 +24,7 @@ export const AddFilter = connect<
     public render() {
       const { filters, addFilter } = this.props;
 
-      return (
-        <AddFilter.ViewWithPopoverManagement
-          filters={filters}
-          addFilter={addFilter}
-        />
-      );
+      return <AddFilter.ViewWithPopoverManagement filters={filters} addFilter={addFilter} />;
     }
   }
 );

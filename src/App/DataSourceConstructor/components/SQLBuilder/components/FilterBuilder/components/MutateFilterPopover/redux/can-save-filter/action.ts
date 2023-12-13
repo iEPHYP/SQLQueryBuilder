@@ -1,4 +1,5 @@
 import { Action } from 'store/models/action-types';
+
 import { CanSaveFilterState } from './state';
 
 export type ChangeCanSaveFilterStateAction = Action<
@@ -10,9 +11,9 @@ export const changeCanSaveFilterState = (
   canSaveFilter: CanSaveFilterState['canSaveFilter']
 ): ChangeCanSaveFilterStateAction => ({
   type: 'CHANGE_CAN_SAVE_FILTER_STATE',
-  canSaveFilter
+  canSaveFilter,
 });
 
 export const MutateFilterPopoverActionCreators = {
-  changeCanSaveFilterState
+  changeCanSaveFilterState,
 };

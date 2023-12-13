@@ -1,28 +1,27 @@
-import * as casual from 'casual';
 import * as React from 'react';
 import { render } from 'react-testing-library';
 import { getCertainCalledProps } from 'App/DataSourceConstructor/test-utils/react-utils';
+import * as casual from 'casual';
+
 import { PopoverManagerProps, WithPopoverManagement } from '.';
 
 describe('WithPopoverManagement', () => {
   it('should delegate all props to PopoverManagerUser wrapped component', () => {
     const PopoverManagerUserMock = jest.fn(() => null);
 
-    const UserWithPopoverManagement = WithPopoverManagement(
-      PopoverManagerUserMock
-    );
+    const UserWithPopoverManagement = WithPopoverManagement(PopoverManagerUserMock);
 
     const someProps = {
       someHandler: jest.fn(),
-      someProp: casual.title
+      someProp: casual.title,
     };
 
     render(<UserWithPopoverManagement {...someProps} />);
 
-    const calledProps = getCertainCalledProps<typeof someProps>(
-      PopoverManagerUserMock,
-      ['someHandler', 'someProp']
-    );
+    const calledProps = getCertainCalledProps<typeof someProps>(PopoverManagerUserMock, [
+      'someHandler',
+      'someProp',
+    ]);
     expect(someProps).toEqual(calledProps);
   });
 
@@ -32,15 +31,14 @@ describe('WithPopoverManagement', () => {
     when handleClose method prop is called`, () => {
     const PopoverManagerUserMock = jest.fn(() => null);
 
-    const UserWithPopoverManagement = WithPopoverManagement(
-      PopoverManagerUserMock
-    );
+    const UserWithPopoverManagement = WithPopoverManagement(PopoverManagerUserMock);
 
     render(<UserWithPopoverManagement />);
 
-    const { handleOpen, handleClose } = getCertainCalledProps<
-      PopoverManagerProps
-    >(PopoverManagerUserMock, ['handleClose', 'handleOpen']);
+    const { handleOpen, handleClose } = getCertainCalledProps<PopoverManagerProps>(
+      PopoverManagerUserMock,
+      ['handleClose', 'handleOpen']
+    );
 
     expect(PopoverManagerUserMock).toHaveBeenLastCalledWith(
       { handleOpen, handleClose, isOpen: false },

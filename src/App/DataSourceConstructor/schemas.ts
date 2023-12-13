@@ -9,9 +9,9 @@ export class DatabaseSchema {
 
 export class Table {
   public columns: Column[] = [];
-  public primaryKeyColumn: string = '';
+  public primaryKeyColumn = '';
   public modelName: string;
-  private _name: string = '';
+  private _name = '';
   public get name(): Table['_name'] {
     return this._name;
   }
@@ -26,15 +26,13 @@ export class Table {
   }
 
   private findOutPrimaryKeyColumn() {
-    const primaryKeyColumn = this.columns.find(
-      column => column.type === 'primary'
-    );
+    const primaryKeyColumn = this.columns.find((column) => column.type === 'primary');
     primaryKeyColumn && (this.primaryKeyColumn = primaryKeyColumn.name);
   }
 }
 
 export class Column {
-  public name: string = '';
+  public name = '';
   public type: 'string' | 'number' | 'Date' | 'boolean' | 'uuid' | 'primary';
   public enums: string[] | undefined;
   public foreignModelName: string | undefined;

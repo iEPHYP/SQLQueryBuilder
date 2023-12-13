@@ -1,15 +1,11 @@
-import {
-  Checkbox,
-  FormControlLabel,
-  Input,
-  withStyles
-} from '@material-ui/core';
 import * as React from 'react';
-
+import { Checkbox, FormControlLabel, Input, withStyles } from '@material-ui/core';
 import { VariableType } from 'types';
+
 import { CheckedSelect } from '../../CheckedSelect';
 import { VariableItem } from '../../VariableItem';
 import { VariablesPicker } from '../../VariablesPicker';
+
 import { EnumsPicker } from './EnumsPicker';
 import { StringOperator, stringOperators } from './operators';
 import { StringMutatorViewProps } from './props';
@@ -37,14 +33,12 @@ export const StringMutator = withStyles(stringMutatorStyles)(
         handleTextFieldChange,
         handleCaseSensitivityChange,
         handleVariableSelect,
-        handleVariableClick
+        handleVariableClick,
       } = this.props;
 
       return (
         <div className={classes.root}>
-          <div
-            className={`${classes['title-and-operator']} ${classes['common-padding']}`}
-          >
+          <div className={`${classes['title-and-operator']} ${classes['common-padding']}`}>
             <div className={classes.title}>{titleComponent}</div>
             <div className={classes.operator}>
               <CheckedSelect<StringOperator>
@@ -57,75 +51,63 @@ export const StringMutator = withStyles(stringMutatorStyles)(
           <hr className={classes.hr} />
           {operator !== 'Is empty' && operator !== 'Is not empty' && (
             <>
-              {
-                <div
-                  className={`${classes.operands} ${classes['common-padding']}`}
-                >
-                  {enums && enums.length ? (
-                    <EnumsPicker
-                      selectedEnum={operands}
-                      selectedVariable={
-                        pickedVariables instanceof Array
-                          ? null
-                          : pickedVariables
-                      }
-                      enums={enums}
-                      column={column}
-                      onEnumSelect={handleOperandChange}
-                      onVariableSelect={handleVariableSelect}
-                    />
-                  ) : (
-                    <Input
-                      fullWidth
-                      autoComplete='off'
-                      value={operands}
-                      placeholder={
-                        pickedVariables ? '' : stringMutatorPlaceholder
-                      }
-                      disabled={!!pickedVariables}
-                      startAdornment={
-                        pickedVariables &&
-                        !(pickedVariables instanceof Array) && (
-                          <VariableItem
-                            className={classes['variable-item']}
-                            variable={pickedVariables}
-                            onVariableClick={handleVariableClick}
-                          />
-                        )
-                      }
-                      endAdornment={
-                        <VariablesPicker
-                          type={VariableType.String}
-                          onVariablePicked={handleVariableSelect}
+              <div className={`${classes.operands} ${classes['common-padding']}`}>
+                {enums && enums.length ? (
+                  <EnumsPicker
+                    selectedEnum={operands}
+                    selectedVariable={pickedVariables instanceof Array ? null : pickedVariables}
+                    enums={enums}
+                    column={column}
+                    onEnumSelect={handleOperandChange}
+                    onVariableSelect={handleVariableSelect}
+                  />
+                ) : (
+                  <Input
+                    fullWidth
+                    autoComplete="off"
+                    value={operands}
+                    placeholder={pickedVariables ? '' : stringMutatorPlaceholder}
+                    disabled={!!pickedVariables}
+                    startAdornment={
+                      pickedVariables &&
+                      !(pickedVariables instanceof Array) && (
+                        <VariableItem
+                          className={classes['variable-item']}
+                          variable={pickedVariables}
+                          onVariableClick={handleVariableClick}
                         />
-                      }
-                      onChange={handleTextFieldChange}
-                    />
-                  )}
-                </div>
-              }
+                      )
+                    }
+                    endAdornment={
+                      <VariablesPicker
+                        type={VariableType.String}
+                        onVariablePicked={handleVariableSelect}
+                      />
+                    }
+                    onChange={handleTextFieldChange}
+                  />
+                )}
+              </div>
             </>
           )}
           <hr className={classes.hr} />
-          <div
-            className={`${classes['mutator-action']} ${classes['common-padding']}`}
-          >
+          <div className={`${classes['mutator-action']} ${classes['common-padding']}`}>
             {hasCaseSensivity(operator) ? (
               <FormControlLabel
                 control={
                   <Checkbox
-                    id='case-sensitive'
+                    id="case-sensitive"
                     checked={caseSensitive}
                     onChange={handleCaseSensitivityChange}
-                    color='primary'
+                    color="primary"
                     className={classes.CheckBox}
                   />
                 }
-                htmlFor='case-sensitive'
+                htmlFor="case-sensitive"
                 label={caseSensitivityText}
                 classes={{
                   root: classes.FormControlLabel,
-                  label: classes.label
+                  label: classes.label,
                 }}
               />
             ) : (

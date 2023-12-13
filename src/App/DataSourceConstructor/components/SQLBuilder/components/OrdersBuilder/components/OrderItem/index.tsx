@@ -1,23 +1,20 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
+
 import { WithPopoverManagement } from '../../../common/WithPopoverManagement';
+
 import { Order } from './model';
 import {
   OIMapDispatchToProps,
   OrderItemDispatchProps,
   OrderItemOwnProps,
   OrderItemProps,
-  OrderItemViewProps as ViewProps
+  OrderItemViewProps as ViewProps,
 } from './props';
 import { OrderItem as View } from './view';
 
-export const OrderItem = connect<
-  {},
-  OrderItemDispatchProps,
-  OrderItemOwnProps,
-  State
->(
+export const OrderItem = connect<{}, OrderItemDispatchProps, OrderItemOwnProps, State>(
   null,
   OIMapDispatchToProps
 )(
@@ -25,16 +22,16 @@ export const OrderItem = connect<
     public static ViewWithPopoverManagement = WithPopoverManagement(View);
 
     public handleOrderRemoval: ViewProps['handleOrderRemoval'] = (id) => () =>
-      this.props.removeOrder(id)
+      this.props.removeOrder(id);
 
     public handleSortOrderChange: ViewProps['handleSortOrderChange'] = (sortOrder) => {
       const { updateOrder, order } = this.props;
       updateOrder(
         new Order(order, {
-          sortOrder
+          sortOrder,
         })
       );
-    }
+    };
 
     public render() {
       return (

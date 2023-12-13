@@ -1,4 +1,5 @@
 import { Action } from 'store/models/action-types';
+
 import { DatabaseSchema } from '../../schemas';
 
 export type SetDatabaseSchemaAction = Action<
@@ -6,9 +7,7 @@ export type SetDatabaseSchemaAction = Action<
   { databaseSchema: DatabaseSchema }
 >;
 
-export const setDatabaseSchema = (
-  databaseSchema: DatabaseSchema
-): SetDatabaseSchemaAction => ({
+export const setDatabaseSchema = (databaseSchema: DatabaseSchema): SetDatabaseSchemaAction => ({
   type: 'SET_DATABASE_SCHEMA',
-  databaseSchema
+  databaseSchema,
 });

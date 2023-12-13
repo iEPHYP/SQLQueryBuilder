@@ -1,5 +1,7 @@
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { ColumnBranchFields } from '../ColumnSelector/ColumnItem/SelectedColumn.models';
+
 import { SequentialColumnViewClassKeys } from './styles';
 
 export type SequentialColumnViewProps = ColumnBranchFields &

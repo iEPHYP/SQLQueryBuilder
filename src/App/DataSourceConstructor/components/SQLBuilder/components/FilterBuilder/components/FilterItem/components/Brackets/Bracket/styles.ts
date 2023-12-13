@@ -2,9 +2,7 @@ import { StyleRulesCallback } from '@material-ui/core';
 
 export type BracketClassKeys = 'root' | 'bracket' | 'dashed';
 
-export const bracketStyles: StyleRulesCallback<
-  BracketClassKeys
-> = (theme) => ({
+export const bracketStyles: StyleRulesCallback<BracketClassKeys> = (theme) => ({
   root: {
     cursor: 'pointer',
     opacity: 1,
@@ -12,16 +10,16 @@ export const bracketStyles: StyleRulesCallback<
     height: '35px',
     width: '6px',
     '&:hover': {
-      opacity: 0.5
-    }
+      opacity: 0.5,
+    },
   },
   bracket: {
     stroke: 'black',
     strokeWidth: '3px',
-    fill: 'none'
+    fill: 'none',
   },
   dashed: {
     opacity: 0.2,
-    strokeDasharray: '8, 5'
-  }
+    strokeDasharray: '8, 5',
+  },
 });

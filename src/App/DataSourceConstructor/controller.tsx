@@ -1,13 +1,14 @@
-import { equals } from 'ramda';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { equals } from 'ramda';
 import { State } from 'store/models/State';
+
 import {
   DataSourceConstructorDispatchProps,
   DataSourceConstructorOwnProps,
   DataSourceConstructorProps,
   DataSourceConstructorStateProps,
-  DSCMapDispatchToProps
+  DSCMapDispatchToProps,
 } from './props';
 import { getNewState, preprocessVariables } from './utils';
 import { DataSourceConstructor as View } from './view';
@@ -17,7 +18,7 @@ export const DataSourceConstructor = connect<
   DataSourceConstructorDispatchProps,
   DataSourceConstructorOwnProps,
   State
->(state => {
+>((state) => {
   const { sqlQuery, queryJson, drillDownSqlQuery, drillDownQueryJson } = state;
 
   return {
@@ -25,7 +26,7 @@ export const DataSourceConstructor = connect<
     queryJson,
     drillDownSqlQuery,
     drillDownQueryJson,
-    rootState: state
+    rootState: state,
   };
 }, DSCMapDispatchToProps)(
   class extends React.Component<DataSourceConstructorProps> {
@@ -39,7 +40,7 @@ export const DataSourceConstructor = connect<
         rootState,
         variables,
         setDatabaseSchema,
-        updateRootState
+        updateRootState,
       } = props;
 
       setDatabaseSchema(databaseSchema);
@@ -48,11 +49,9 @@ export const DataSourceConstructor = connect<
         updateRootState(
           getNewState(initialQuery, {
             ...rootState,
-            ...(initialDrillDownQueryJson
-              ? { drillDownQueryJson: initialDrillDownQueryJson }
-              : {}),
+            ...(initialDrillDownQueryJson ? { drillDownQueryJson: initialDrillDownQueryJson } : {}),
             tables: databaseSchema.tables,
-            variables: preprocessVariables(variables)
+            variables: preprocessVariables(variables),
           })
         );
     }
@@ -65,7 +64,7 @@ export const DataSourceConstructor = connect<
       drillDownQueryJson: nextDrillDownQueryJson,
       initialQuery: nextInitialQuery,
       initialDrillDownQueryJson: nextInitialDrillDownQueryJson,
-      variables: nextVariables
+      variables: nextVariables,
     }: DataSourceConstructorProps) {
       const {
         databaseSchema,
@@ -77,7 +76,7 @@ export const DataSourceConstructor = connect<
         rootState,
         onQueryChange,
         setDatabaseSchema,
-        updateRootState
+        updateRootState,
       } = this.props;
 
       if (!equals(databaseSchema, nextDatabaseSchema)) {
@@ -92,25 +91,15 @@ export const DataSourceConstructor = connect<
         updateRootState(
           getNewState(nextInitialQuery, {
             ...rootState,
-            variables: preprocessVariables(nextVariables)
+            variables: preprocessVariables(nextVariables),
           })
         );
       }
 
       if (sqlQuery !== '' && nextSqlQuery !== sqlQuery && onQueryChange) {
-        onQueryChange(
-          nextSqlQuery,
-          nextQueryJson,
-          nextDrillDownSqlQuery,
-          nextDrillDownQueryJson
-        );
+        onQueryChange(nextSqlQuery, nextQueryJson, nextDrillDownSqlQuery, nextDrillDownQueryJson);
       } else if (drillDownSqlQuery !== nextDrillDownSqlQuery && onQueryChange) {
-        onQueryChange(
-          nextSqlQuery,
-          nextQueryJson,
-          nextDrillDownSqlQuery,
-          nextDrillDownQueryJson
-        );
+        onQueryChange(nextSqlQuery, nextQueryJson, nextDrillDownSqlQuery, nextDrillDownQueryJson);
       }
     }
 

@@ -1,4 +1,5 @@
 import { ClassesProp } from 'App/utils/classes-prop';
+
 import { CheckedSelectClassKeys } from './styles';
 
 export interface CheckedSelectState {
@@ -12,9 +13,7 @@ export interface CheckedSelectProps<TItem extends string = string> {
   hasBorder?: boolean;
 }
 
-export type CheckedSelectViewProps<
-  TItem extends string = string
-> = CheckedSelectProps<TItem> &
+export type CheckedSelectViewProps<TItem extends string = string> = CheckedSelectProps<TItem> &
   CheckedSelectState & {
     classes?: Record<CheckedSelectClassKeys, string>;
     handleItemSelect: (item: TItem) => () => void;

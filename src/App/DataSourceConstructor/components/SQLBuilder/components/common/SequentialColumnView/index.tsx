@@ -1,7 +1,8 @@
+import * as React from 'react';
 import { Typography, withStyles } from '@material-ui/core';
 import ShareIcon from '@material-ui/icons/Share';
-import * as React from 'react';
 import { GetExcludedFieldsOf } from 'App/utils/type-filters';
+
 import { SequentialColumnViewConfigProps, SequentialColumnViewProps } from './props';
 import { sequentialColumnViewStyles } from './styles';
 
@@ -18,11 +19,11 @@ export const SequentialColumnItem = withStyles(sequentialColumnViewStyles)(
         suffix,
         noSpaceBeforeSuffix,
         isForeignColumn = false,
-        classes
+        classes,
       } = this.props;
       const partialProps: Partial<SequentialColumnViewConfigProps> = {
         suffix,
-        noSpaceBeforeSuffix
+        noSpaceBeforeSuffix,
       };
 
       return (
@@ -39,12 +40,12 @@ export const SequentialColumnItem = withStyles(sequentialColumnViewStyles)(
           </>
           <div className={classes['column-icon-couple']}>
             {isForeignColumn && (
-              <ShareIcon className={classes['share-icon']} data-testid='share-icon' />
+              <ShareIcon className={classes['share-icon']} data-testid="share-icon" />
             )}
             <Typography
               className={classes.column}
               style={{
-                ...(!foreignColumn && suffix && noSpaceBeforeSuffix ? { marginRight: 0 } : {})
+                ...(!foreignColumn && suffix && noSpaceBeforeSuffix ? { marginRight: 0 } : {}),
               }}
             >
               {columnName}
@@ -66,7 +67,7 @@ export const SequentialColumnItem = withStyles(sequentialColumnViewStyles)(
 
 export const SequentialColumnView: React.FC<
   GetExcludedFieldsOf<Pick<SequentialColumnViewProps, 'classes'>, SequentialColumnViewProps>
-> = props => (
+> = (props) => (
   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
     <SequentialColumnItem {...props} />
   </div>

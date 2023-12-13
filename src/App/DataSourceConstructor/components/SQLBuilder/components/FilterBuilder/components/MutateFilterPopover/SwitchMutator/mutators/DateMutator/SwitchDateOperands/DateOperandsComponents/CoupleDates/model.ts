@@ -4,10 +4,7 @@ import { SingleDateOperands } from '../SingleDate/model';
 
 export class CoupleDateOperation implements IDateOperation<CoupleDateOperands> {
   public operator: 'Between' = 'Between';
-  public operands: CoupleDateOperands = [
-    new FixedDateOperands(),
-    new FixedDateOperands()
-  ];
+  public operands: CoupleDateOperands = [new FixedDateOperands(), new FixedDateOperands()];
   public type: 'Date' = 'Date';
 
   constructor(...inits: Partial<CoupleDateOperation>[]) {

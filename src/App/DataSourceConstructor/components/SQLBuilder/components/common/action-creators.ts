@@ -1,2 +1,1 @@
-export const SQLBCommonComponentsActionCreators = {
-};
+export const SQLBCommonComponentsActionCreators = {};
