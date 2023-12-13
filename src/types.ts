@@ -1,6 +1,6 @@
 type Maybe<T> = T | null | undefined;
 
-export type Scalars = {
+type Scalars = {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -51,7 +51,7 @@ export type Variable = {
 };
 
 
-export type Widget = {
+ type Widget = {
   readonly id?: Maybe<Scalars["Primary"]>;
   readonly query?: Maybe<Scalars["String"]>;
   readonly queryJson?: Maybe<Scalars["JSON"]>;
@@ -72,7 +72,7 @@ export type Widget = {
   readonly requiredNumberOfVariables: Scalars["Int"];
 };
 
-export enum WidgetType {
+ enum WidgetType {
   Bar = "BAR",
   Gauge = "GAUGE",
   Heatmap = "HEATMAP",
@@ -89,7 +89,7 @@ export enum WidgetType {
   TimeSeries = "TIME_SERIES"
 }
 
-export type NavigationSearchResultItem = {
+ type NavigationSearchResultItem = {
   readonly id: Scalars["String"];
   readonly url: Scalars["String"];
   readonly type: Scalars["String"];
@@ -100,7 +100,7 @@ export type NavigationSearchResultItem = {
   readonly glyph?: Maybe<Scalars["String"]>;
 };
 
-export type QueryResult = {
+ type QueryResult = {
   readonly fields?: Maybe<ReadonlyArray<QueryResultField>>;
   readonly rows?: Maybe<ReadonlyArray<Scalars["JSON"]>>;
   readonly records?: Maybe<ReadonlyArray<ReadonlyArray<QueryResultRecord>>>;
@@ -108,7 +108,7 @@ export type QueryResult = {
 };
 
 
-export type QueryResultField = {
+ type QueryResultField = {
   readonly name: Scalars["String"];
   readonly tableID: Scalars["Int"];
   readonly columnID: Scalars["Int"];
@@ -118,13 +118,13 @@ export type QueryResultField = {
   readonly format: Scalars["String"];
 };
 
-export type QueryResultRecord = {
+ type QueryResultRecord = {
   readonly name: Scalars["String"];
   readonly type: Scalars["String"];
   readonly value?: Maybe<Scalars["JSON"]>;
 };
 
-export type QueryError = {
+ type QueryError = {
   readonly message: Scalars["String"];
   readonly detail?: Maybe<Scalars["String"]>;
   readonly code?: Maybe<Scalars["String"]>;
