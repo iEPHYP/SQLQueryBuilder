@@ -1,11 +1,11 @@
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import { DataSourceConstructor } from './App/DataSourceConstructor';
-import { databaseSchemaMock } from 'App/DataSourceConstructor/mock.data';
+import { tablesMock } from 'App/DataSourceConstructor/redux/tables/tables.mock';
 
 ReactDOM.render(
   <React.StrictMode>
-    <DataSourceConstructor databaseSchema={databaseSchemaMock} showQuery />
+    <DataSourceConstructor databaseSchema={{ tables: tablesMock }} showQuery />
   </React.StrictMode>,
   document.getElementById('root')
 );

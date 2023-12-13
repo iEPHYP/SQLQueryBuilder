@@ -23,36 +23,36 @@ const state: SQLGeneratorStateProps = {
 };
 
 describe('JOINs', () => {
-  it('should be rendered nothing when there is only selected table', () => {
+  it('should render nothing when there is only selected table', () => {
     expect(generateSQLQuery(state)).toMatchSnapshot();
   });
 
-  it('should be rendered nothing when there are 0 lvl column', () => {
+  it('should render nothing when there are 0 lvl column', () => {
     expect(
       generateSQLQuery({ ...state, groupings: [zeroLvlGroupings[0]] })
     ).toMatchSnapshot();
   });
 
-  it('should be rendered nothing when there are 0 lvl columns', () => {
+  it('should render nothing when there are 0 lvl columns', () => {
     expect(
       generateSQLQuery({ ...state, groupings: zeroLvlGroupings })
     ).toMatchSnapshot();
   });
 
-  it(`should be rendered properly when there are
+  it(`should render properly when there are
       two 1 lvl columns on the same foreign table`, () => {
     expect(
       generateSQLQuery({ ...state, groupings: similarForeignGroupings })
     ).toMatchSnapshot();
   });
 
-  it('should be rendered properly when there are 1 lvl column', () => {
+  it('should render properly when there are 1 lvl column', () => {
     expect(
       generateSQLQuery({ ...state, groupings: [oneLvlGroupings[0]] })
     ).toMatchSnapshot();
   });
 
-  it('should be rendered properly when there are 1 lvl columns', () => {
+  it('should render properly when there are 1 lvl columns', () => {
     expect(
       generateSQLQuery({ ...state, groupings: oneLvlGroupings })
     ).toMatchSnapshot();
