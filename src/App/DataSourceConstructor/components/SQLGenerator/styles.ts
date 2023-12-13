@@ -5,7 +5,7 @@ export type SQLGeneratorClassKeys = 'root' | 'title' | 'query';
 export const sqlGeneratorStyles: StyleRulesCallback<SQLGeneratorClassKeys> = (theme) => ({
   root: {
     display: 'flex',
-    flexBasis: '50%',
+    width: '750px',
     flexDirection: 'column',
     padding: '20px',
   },

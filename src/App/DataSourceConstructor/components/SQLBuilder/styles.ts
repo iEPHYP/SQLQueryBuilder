@@ -8,6 +8,6 @@ export const sqlBuilderStyles: StyleRulesCallback<SQLBuilderClassKeys> = (theme)
     flexDirection: 'column',
     justifyContent: 'left',
     background: '#fff',
-    flexBasis: '50%',
+    width: '400px'
   },
 });
