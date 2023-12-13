@@ -3,7 +3,17 @@
 exports[`getNewTableBranch should create new table branch on the basis of a column branch 1`] = `
 Object {
   "_foreignTableName": undefined,
-  "_lastColumn": undefined,
+  "_lastColumn": Object {
+    "_foreignTableName": undefined,
+    "_lastColumn": undefined,
+    "columnName": "",
+    "foreignColumn": undefined,
+    "foreignModelName": undefined,
+    "foreignTableName": undefined,
+    "modelName": "Products",
+    "tableName": "Products",
+    "type": undefined,
+  },
   "columnName": "ProductID",
   "foreignColumn": Object {
     "_foreignTableName": undefined,
@@ -12,11 +22,13 @@ Object {
     "foreignColumn": undefined,
     "foreignModelName": undefined,
     "foreignTableName": undefined,
+    "modelName": "Products",
     "tableName": "Products",
     "type": undefined,
   },
   "foreignModelName": undefined,
   "foreignTableName": undefined,
+  "modelName": "",
   "tableName": "",
   "type": undefined,
 }

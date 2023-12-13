@@ -3,6 +3,7 @@
 exports[`GroupingsBuilder action creators should return appropriate actions addGrouping 1`] = `
 Object {
   "grouping": Grouping {
+    "column": undefined,
     "id": "566af397-c08b-42b7-b10b-a4548e0a17ba",
   },
   "type": "ADD_GROUPING",
@@ -25,6 +26,7 @@ Object {
 exports[`GroupingsBuilder action creators should return appropriate actions updateGrouping 1`] = `
 Object {
   "grouping": Grouping {
+    "column": undefined,
     "id": "c3c15257-27e4-49bb-8803-4c9d87e7cd77",
   },
   "type": "UPDATE_GROUPING",

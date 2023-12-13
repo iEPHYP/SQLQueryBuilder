@@ -4,19 +4,23 @@ exports[`filterColumns should filter by filter callback
     should not remove foreign columns 1`] = `
 Array [
   Column {
-    "isPrimaryKey": false,
+    "_foreignTableName": undefined,
+    "enums": undefined,
+    "foreignModelName": undefined,
     "name": "FirstName",
     "type": "string",
   },
   Column {
     "_foreignTableName": "users",
+    "enums": undefined,
     "foreignModelName": "Users",
-    "isPrimaryKey": false,
     "name": "UserID",
     "type": "number",
   },
   Column {
-    "isPrimaryKey": false,
+    "_foreignTableName": undefined,
+    "enums": undefined,
+    "foreignModelName": undefined,
     "name": "number of name",
     "type": "number",
   },
@@ -33,6 +37,7 @@ Object {
     "foreignColumn": undefined,
     "foreignModelName": undefined,
     "foreignTableName": undefined,
+    "modelName": "",
     "tableName": "Users",
     "type": "number",
   },
@@ -48,16 +53,19 @@ Object {
       "foreignColumn": undefined,
       "foreignModelName": undefined,
       "foreignTableName": undefined,
+      "modelName": "",
       "tableName": "Users",
       "type": "number",
     },
     "foreignModelName": undefined,
     "foreignTableName": undefined,
+    "modelName": "",
     "tableName": "",
     "type": undefined,
   },
   "foreignModelName": undefined,
   "foreignTableName": undefined,
+  "modelName": "",
   "tableName": "",
   "type": undefined,
 }
@@ -71,6 +79,7 @@ Object {
   "foreignColumn": undefined,
   "foreignModelName": undefined,
   "foreignTableName": undefined,
+  "modelName": "Users",
   "tableName": "Users",
   "type": undefined,
 }
@@ -79,24 +88,32 @@ Object {
 exports[`sortInOrderForeignColumnsBelow should sort in order foreign columns in the bottom 1`] = `
 Array [
   Column {
-    "isPrimaryKey": true,
+    "_foreignTableName": undefined,
+    "enums": undefined,
+    "foreignModelName": undefined,
     "name": "ID",
+    "type": "primary",
   },
   Column {
-    "isPrimaryKey": false,
+    "_foreignTableName": undefined,
+    "enums": undefined,
+    "foreignModelName": undefined,
     "name": "name",
+    "type": undefined,
   },
   Column {
     "_foreignTableName": "products",
+    "enums": undefined,
     "foreignModelName": "Products",
-    "isPrimaryKey": false,
     "name": "ProductID",
+    "type": undefined,
   },
   Column {
     "_foreignTableName": "users",
+    "enums": undefined,
     "foreignModelName": "Users",
-    "isPrimaryKey": false,
     "name": "AddedBy",
+    "type": undefined,
   },
 ]
 `;
