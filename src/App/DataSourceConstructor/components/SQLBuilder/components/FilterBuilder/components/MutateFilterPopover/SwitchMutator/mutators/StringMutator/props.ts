@@ -7,7 +7,7 @@ import {
   PickActionCreators
 } from 'store/action-creators';
 import { PickStates } from 'store/models/State';
-import { Variable } from 'schema';
+import { Variable } from 'types';
 import { CheckedSelectProps } from '../../CheckedSelect/props';
 import { VariableItemProps } from '../../VariableItem';
 import { MutatorProps } from '../props';

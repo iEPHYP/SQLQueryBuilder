@@ -3,7 +3,7 @@ import {
   PickActionCreators
 } from 'store/action-creators';
 import { PickStates } from 'store/models/State';
-import { Variable } from 'schema';
+import { Variable } from 'types';
 import { NullableVariable } from '../../../../../../../../FilterItem/model';
 
 export interface VariableDatePickerOwnProps {

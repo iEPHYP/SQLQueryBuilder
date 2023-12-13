@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import * as React from 'react';
 
-import { VariableType } from 'schema';
+import { VariableType } from 'types';
 import { CheckedSelect } from '../../CheckedSelect';
 import { VariableItem } from '../../VariableItem';
 import { VariablesPicker } from '../../VariablesPicker';

@@ -1,7 +1,7 @@
 import { PopoverManagerProps } from 'App/DataSourceConstructor/components/SQLBuilder/components/common/WithPopoverManagement';
 import { ClassesProp } from 'App/utils/classes-prop';
 import { PickStates } from 'store/models/State';
-import { Variable, VariableType } from 'schema';
+import { Variable, VariableType } from 'types';
 import { VariablesPickerClassKeys } from './styles';
 
 export interface VariablesPickerOwnProps {

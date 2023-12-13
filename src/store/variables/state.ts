@@ -1,4 +1,4 @@
-import { Variable } from 'schema';
+import { Variable } from 'types';
 
 export type VariablesState = {
   variables: Variable[];

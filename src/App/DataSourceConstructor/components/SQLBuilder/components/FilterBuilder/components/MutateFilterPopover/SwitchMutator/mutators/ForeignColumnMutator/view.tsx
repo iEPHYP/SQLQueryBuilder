@@ -1,7 +1,7 @@
 import { withStyles } from '@material-ui/core';
 import * as React from 'react';
 // import { ForeignField } from 'process/startnew/ForeignField';
-// import { VariableType } from 'schema';
+// import { VariableType } from 'types';
 // import { VariableItem } from '../../VariableItem';
 // import { VariablesPicker } from '../../VariablesPicker';
 import { ForeignColumnMutatorViewProps } from './props';

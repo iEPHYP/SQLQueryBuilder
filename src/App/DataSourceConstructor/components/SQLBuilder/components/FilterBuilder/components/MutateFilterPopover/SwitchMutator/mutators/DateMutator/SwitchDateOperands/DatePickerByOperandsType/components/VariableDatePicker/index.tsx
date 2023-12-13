@@ -3,7 +3,7 @@ import { SelectProps } from '@material-ui/core/Select';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
-import { VariableType } from 'schema';
+import { VariableType } from 'types';
 import { VariableItem } from '../../../../../../VariableItem';
 import {
   VariableDatePickerDispatchProps,

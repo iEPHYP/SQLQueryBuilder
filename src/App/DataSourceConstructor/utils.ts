@@ -1,6 +1,6 @@
 import { Table } from 'App/DataSourceConstructor/schemas';
 import { State } from 'store/models/State';
-import { Variable } from 'schema';
+import { Variable } from 'types';
 import { DataSourceConstructorProps } from './props';
 
 export const getTable = (tableName: string, tables: Table[]) =>

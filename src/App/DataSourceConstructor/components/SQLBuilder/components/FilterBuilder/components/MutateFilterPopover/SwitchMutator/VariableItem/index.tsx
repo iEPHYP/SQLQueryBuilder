@@ -2,7 +2,7 @@ import { Chip } from '@material-ui/core';
 import { ChipProps } from '@material-ui/core/Chip';
 import VariableIcon from '@material-ui/icons/Code';
 import * as React from 'react';
-import { Variable } from 'schema';
+import { Variable } from 'types';
 
 export interface VariableItemProps {
   variable: Variable;

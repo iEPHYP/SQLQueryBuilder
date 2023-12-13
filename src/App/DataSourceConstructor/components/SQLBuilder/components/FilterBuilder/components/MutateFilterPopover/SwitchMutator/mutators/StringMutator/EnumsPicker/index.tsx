@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VariableType } from 'schema';
+import { VariableType } from 'types';
 import {
   EnumsPickerProps,
   EnumsPickerState,

@@ -1,4 +1,4 @@
-import { GraphNode } from 'schema';
+import { GraphNode } from 'types';
 import { IOperation, Operation } from '../../../Operation';
 
 export class ForeignColumnOperation implements IOperation<'Foreign', ForeignColumnOperand> {

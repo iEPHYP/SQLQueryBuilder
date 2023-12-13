@@ -1,5 +1,5 @@
 import { ForeignColumnOperation } from 'App/DataSourceConstructor/components/SQLBuilder/components/FilterBuilder/components/MutateFilterPopover/SwitchMutator/mutators/ForeignColumnMutator/ForeignColumnOperation';
-import { Variable, VariableType } from 'schema';
+import { Variable, VariableType } from 'types';
 import { generateForeignColumnOperation } from '..';
 import {
   ColumnBranchAliased,

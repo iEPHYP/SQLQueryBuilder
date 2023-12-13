@@ -6,7 +6,7 @@ import {
   PickStates,
   State
 } from 'store/models/State';
-import { Variable } from 'schema';
+import { Variable } from 'types';
 import { ClassesProp } from '../utils/classes-prop';
 import { QueryJSON } from './components/SQLGenerator/redux/query-json.model';
 import { DatabaseSchema } from './schemas';

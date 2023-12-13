@@ -1,4 +1,4 @@
-import { Variable } from 'schema';
+import { Variable } from 'types';
 import * as uuid from 'uuid';
 import { ColumnBranch } from '../../../common/ColumnSelector/ColumnItem/SelectedColumn.models';
 import { Operation } from '../MutateFilterPopover/Operation';

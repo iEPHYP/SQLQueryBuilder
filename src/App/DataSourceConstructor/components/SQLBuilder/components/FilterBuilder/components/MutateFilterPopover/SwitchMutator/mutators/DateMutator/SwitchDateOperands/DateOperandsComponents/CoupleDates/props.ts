@@ -3,7 +3,7 @@ import {
   actionCreators,
   PickActionCreators
 } from 'store/action-creators';
-import { Variable } from 'schema';
+import { Variable } from 'types';
 import { OperatorViewProp } from '../..';
 import { DatePickerByOperandsTypeProps } from '../../DatePickerByOperandsType/props';
 import { CoupleDateOperands, CoupleDateOperation } from './model';

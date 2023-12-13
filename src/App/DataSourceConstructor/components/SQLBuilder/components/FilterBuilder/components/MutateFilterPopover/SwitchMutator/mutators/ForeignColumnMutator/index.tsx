@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { State } from 'store/models/State';
-import { GraphNode } from 'schema';
+import { GraphNode } from 'types';
 import { getEnums } from '../utils';
 import { ForeignColumnOperation } from './ForeignColumnOperation';
 import {

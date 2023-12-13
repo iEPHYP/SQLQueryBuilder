@@ -1,4 +1,4 @@
-import { Variable, VariableType } from 'schema';
+import { Variable, VariableType } from 'types';
 
 export const enumVariableMock: Variable[] = [
   {
